@@ -1,103 +1,127 @@
+import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
+import { Marquee } from "@/components/ui/marquee";
 import Image from "next/image";
+import fs from "node:fs/promises";
+import { getPlaiceholder } from "plaiceholder";
 
-export default function Home() {
+export default async function Home() {
+  const src = "/conor-selfie.jpeg";
+
+  const buffer = await fs.readFile(`./public${src}`);
+
+  const { base64 } = await getPlaiceholder(buffer);
+
+  // Stats data for the marquee
+  const statsData = [
+    { number: "6+", text: "Years Sober" },
+    { number: "150+", text: "Schools Visited" },
+    { number: "10,000+", text: "Students Reached" },
+    { number: "300+", text: "Hours Breathwork" },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <div className="bg-primary h-full lg:min-h-[calc(100vh-6rem)] w-screen">
+        {/* Hero Section */}
+        <div className="lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
+          <div className="w-full min-h-full lg:flex lg:flex-row flex flex-col justify-between pt-10 pb-10 relative">
+            <div className="flex flex-col w-full min-h-full items-start lg:justify-between gap-8">
+              <h1 className="h1 font-fraunces font-bold text-foreground">
+                Helping you become the best <br></br> version of yourself
+              </h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+              <div className="flex flex-col items-start gap-6">
+                <div className="flex flex-col items-start gap-4">
+                  <p className="font-fraunces lg:text-2xl md:text-xl text-[16px] font-semibold text-foreground">
+                    Breathwork Coaching: Transform your wellbeing
+                  </p>
+                  <div className="flex items-center justify-start gap-3">
+                    <div className="flex items-center justify-center rounded-full w-6 h-6 bg-accent-1">
+                      <div className="rounded-full w-2.5 h-2.5 bg-accent-2 animate-pulse"></div>
+                    </div>
+                    <p className="lg:text-lg md:text-[16px] text-sm font-nunito font-semibold">
+                      Offering Individual, Group & Online Breathwork Sessions.
+                    </p>
+                  </div>
+                </div>
+
+                <hr className="w-full bg-secondary/80" />
+
+                <div className="flex flex-col items-start gap-4">
+                  <p className="font-fraunces lg:text-2xl md:text-xl text-[16px] font-semibold text-foreground">
+                    Sharing a Journey to the other side of addiction
+                  </p>
+                  <div className="flex items-center justify-start gap-3">
+                    <div className="flex items-center justify-center rounded-full w-6 h-6 bg-transparent border-2 border-accent-1">
+                      <div className="rounded-full w-2.5 h-2.5 bg-accent-1 animate-pulse"></div>
+                    </div>
+                    <p className="lg:text-lg md:text-[16px] text-sm font-nunito font-semibold">
+                      Helping Students Understand the Realities of Addiction.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center w-full lg:gap-12 md:gap-8 gap-6">
+                <InteractiveButton
+                  variant="filled"
+                  text="Breathwork"
+                  className="md:w-56 w-44 py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-primary"
+                  ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+                />
+                <InteractiveButton
+                  variant="transparent"
+                  text="Book a talk"
+                  className="md:w-56 w-44 py-4 hover:text-primary transition-all ease-in duration-100"
+                  ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+                />
+              </div>
+            </div>
+
+            {/* Right image section - aligned with buttons */}
+            <div className="relative lg:w-[28%] md:w-[60%] w-full lg:min-h-full h-[400px] md:h-[500px] flex lg:items-start items-end lg:mt-0 mt-8">
+              {/* Main portrait image - height controlled to align with buttons */}
+              <div className="lg:shadow-right md:shadow-left shadow-right w-full h-full rounded-3xl lg:rounded-bl-none md:rounded-br-none lg:rounded-br-3xl z-20">
+                <Image
+                  src={src.replace("./public", "")}
+                  alt="Portrait"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  priority
+                  placeholder="blur"
+                  blurDataURL={base64}
+                  className="rounded-3xl lg:rounded-bl-none md:rounded-br-none lg:rounded-br-3xl"
+                />
+              </div>
+
+              {/* Presentation image - positioning adjusted to eliminate shadow gap */}
+              <div className="absolute md:shadow-right lg:shadow-left md:-right-[65%] lg:-left-[75%] bottom-0 w-[80%] h-[60%] rounded-2xl md:rounded-tl-none md:rounded-bl-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-br-none lg:rounded-tr-none overflow-hidden z-10 hidden md:block">
+                <Image
+                  src="/conor-public-speaking-1.png"
+                  alt="Presentation"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  className="rounded-2xl lg:rounded-br-none lg:rounded-tr-none md:rounded-tl-none md:rounded-bl-none lg:rounded-tl-2xl lg:rounded-bl-2xl"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+
+        {/* Stats Marquee Section */}
+      </div>
+      <div className="w-full overflow-hidden shadow-marquee">
+        <div className="container mx-auto overflow-hidden z-10">
+          <Marquee
+            items={statsData}
+            className="py-6 bg-primary"
+            speed={1.5}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </div>
+      <div className="bg-primary h-screen w-screen z-9 mt-[7px]">
+
+      </div>
+    </>
   );
 }
