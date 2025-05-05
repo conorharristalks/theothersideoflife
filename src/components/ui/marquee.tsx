@@ -43,8 +43,11 @@ export const Marquee: React.FC<MarqueeProps> = ({
     // Get width of the scroller container
     const scrollerContainer = scrollerRef.current;
     
+    // Detect if on mobile
+    const isMobile = window.innerWidth < 768;
+    
     // Clone enough items to ensure no gaps
-    const itemsToClone = Math.ceil(window.innerWidth / (scrollerContainer.scrollWidth / items.length)) + 1;
+    const itemsToClone = Math.ceil(window.innerWidth / (scrollerContainer.scrollWidth / items.length)) + (isMobile ? 2 : 1);
     
     // Clear existing clones first (in case of re-renders)
     const originalChildren = Array.from(scrollerContainer.children).slice(0, items.length);
@@ -52,7 +55,7 @@ export const Marquee: React.FC<MarqueeProps> = ({
     
     // Re-add original items
     originalChildren.forEach(child => {
-      scrollerContainer.appendChild(child);
+      scrollerContainer.appendChild(child.cloneNode(true));
     });
     
     // Add enough clones to fill the screen with no gaps
@@ -80,6 +83,12 @@ export const Marquee: React.FC<MarqueeProps> = ({
       }
     );
     
+    // Force hardware acceleration on mobile devices to improve performance
+    if (isMobile) {
+      scrollerContainer.style.transform = 'translateZ(0)';
+      scrollerContainer.style.willChange = 'transform';
+    }
+    
     // Pause animation when not in viewport or tab is not active
     const observer = new IntersectionObserver(
       entries => {
@@ -95,17 +104,36 @@ export const Marquee: React.FC<MarqueeProps> = ({
     observer.observe(scrollerContainer);
     
     // Pause when tab is not active
-    document.addEventListener("visibilitychange", () => {
+    const handleVisibilityChange = () => {
       if (document.hidden) {
         scrollerAnimation.pause();
       } else {
         scrollerAnimation.play();
       }
-    });
+    };
+    
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    
+    // Handle orientation changes on mobile
+    const handleOrientationChange = () => {
+      if (isMobile) {
+        // Give browser time to calculate new dimensions
+        setTimeout(() => {
+          scrollerAnimation.cancel();
+          // Force a re-render by changing a ref value
+          scrollerRef.current?.classList.toggle('orientation-changed');
+          scrollerRef.current?.classList.toggle('orientation-changed');
+        }, 100);
+      }
+    };
+    
+    window.addEventListener('orientationchange', handleOrientationChange);
     
     return () => {
       scrollerAnimation.cancel();
       observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener('orientationchange', handleOrientationChange);
     };
   }, [speed, items]);
   
