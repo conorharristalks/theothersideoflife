@@ -126,7 +126,7 @@ export default async function Home() {
                 <h2 className="h2">Meet Conor Harris</h2>
                 <p className="body-text-lg font-bold italic">
                   6 years ago, I broke free from addiction and rebuilt my life.
-                  Now, at The Other Side of Life, I'm on a mission to help
+                  Now, at The Other Side of Life, I&apos;m on a mission to help
                   others do the same.
                 </p>
               </div>
@@ -136,7 +136,7 @@ export default async function Home() {
                 <div className="features-list">
                   <ul className="flex flex-col items-start gap-4">
                     <li className="body-text font-semibold">
-                      Here at "The Other Side of Life" my main aim is speaking
+                      Here at &quot;The Other Side of Life&quot; my main aim is speaking
                       in schools to help young people learn the realities of
                       drug misuse, and promoting a balanced lifestyle without
                       them.
@@ -198,9 +198,9 @@ export default async function Home() {
                   <ul className="flex flex-col items-start gap-4">
                     <li className="body-text font-semibold">
                       <strong className="font-bold font-fraunces">
-                        I've Been There:
+                        I&apos;ve Been There:
                       </strong>{" "}
-                      I know what it's like to feel lost — but also the joy of
+                      I know what it&apos;s like to feel lost — but also the joy of
                       reclaiming your life.
                     </li>
                     <li className="body-text font-semibold">
@@ -213,7 +213,7 @@ export default async function Home() {
                   </ul>
                 </div>
                 <p className="body-text-lg italic font-semibold mt-4">
-                  Whatever you're facing, I'm here to show you that you can
+                  Whatever you&apos;re facing, I&apos;m here to show you that you can
                   transform your life too.
                 </p>
               </div>
@@ -241,7 +241,7 @@ export default async function Home() {
                 <div className="bg-primary-light p-6 rounded-xl border border-secondary shadow-md">
                   <h4 className="h5 mb-3">Real Experience</h4>
                   <p className="body-text font-semibold">
-                    I’ve overcome addiction and mental health issues myself. I
+                    I&apos;ve overcome addiction and mental health issues myself. I
                     have the ability to connect with people on a deeper level.
                   </p>
                 </div>
@@ -256,16 +256,16 @@ export default async function Home() {
                 <div className="bg-primary-light p-6 rounded-xl border border-secondary shadow-md">
                   <h4 className="h5 mb-3">Breathwork Expertise</h4>
                   <p className="body-text font-semibold">
-                    As a certified coach with over 300 hours of training, I’m
+                    As a certified coach with over 300 hours of training, I&apos;m
                     here to guide you through your personal journey - whatever
-                    stage you’re at - via 1:1, group, and online sessions.
+                    stage you&apos;re at - via 1:1, group, and online sessions.
                   </p>
                 </div>
 
                 <div className="bg-primary-light p-6 rounded-xl border border-secondary shadow-md">
                   <h4 className="h5 mb-3">My Mission</h4>
                   <p className="body-text font-semibold">
-                    Supporting you towards greater wellbeing, whether you’re
+                    Supporting you towards greater wellbeing, whether you&apos;re
                     seeking healing, direction, stress management, or support
                     with addiction.
                   </p>
@@ -315,9 +315,9 @@ export default async function Home() {
                     ))}
                   </div>
                   <p className="body-text italic">
-                    "Conor's breathwork sessions have completely transformed how
-                    I handle stress. I've gained tools I use every day to center
-                    myself and stay calm."
+                    &quot;Conor&apos;s breathwork sessions have completely transformed how
+                    I handle stress. I&apos;ve gained tools I use every day to center
+                    myself and stay calm.&quot;
                   </p>
                   <div className="mt-4">
                     <p className="font-fraunces font-semibold">Sarah L.</p>
@@ -337,9 +337,9 @@ export default async function Home() {
                     ))}
                   </div>
                   <p className="body-text italic">
-                    "Having Conor speak at our school was eye-opening for our
+                    &quot;Having Conor speak at our school was eye-opening for our
                     students. His personal story and honesty about addiction
-                    created a lasting impact."
+                    created a lasting impact.&quot;
                   </p>
                   <div className="mt-4">
                     <p className="font-fraunces font-semibold">Michael T.</p>
@@ -359,9 +359,9 @@ export default async function Home() {
                     ))}
                   </div>
                   <p className="body-text italic">
-                    "The group breathwork session Conor led for our team was
+                    &quot;The group breathwork session Conor led for our team was
                     profound. It brought us closer together and improved our
-                    overall workplace wellbeing."
+                    overall workplace wellbeing.&quot;
                   </p>
                   <div className="mt-4">
                     <p className="font-fraunces font-semibold">Jessica M.</p>
@@ -387,8 +387,8 @@ export default async function Home() {
               <div className="p-8 lg:p-16 flex flex-col gap-8 z-10">
                 <h2 className="h2">Ready to Begin Your Journey?</h2>
                 <p className="body-text-lg font-bold">
-                  Whether you're interested in breathwork, looking to book a
-                  talk, or simply want to learn more, I'm here to help you take
+                  Whether you&apos;re interested in breathwork, looking to book a
+                  talk, or simply want to learn more, I&apos;m here to help you take
                   the next step.
                 </p>
                 <div className="flex flex-wrap gap-4 mt-4">
