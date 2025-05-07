@@ -111,14 +111,14 @@ export default async function Home() {
 
       {/* Stats Marquee Section */}
       <section className="w-full overflow-hidden shadow-marquee">
-        <div className="container mx-auto overflow-hidden z-10">
+        <div className="w-full overflow-hidden z-10">
           <Marquee items={statsData} className="py-6 bg-primary" speed={1.5} />
         </div>
       </section>
 
       {/* Content Sections */}
       <div className="bg-primary-light min-h-screen w-full mt-[7px] py-20 bg-[url('/wave-icon.svg')] bg-repeat bg-cover bg-right md:bg-cover md:bg-top">
-        <div className="container flex items-center flex-col lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
+        <div className="lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
           {/* Meet Conor Harris Section */}
           <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-32 mx-[7px]">
             <div className="lg:col-span-2 shadow-left px-4 py-8 md:p-8 lg:p-10 flex flex-col gap-8 bg-primary border-secondary border rounded-3xl">
@@ -292,7 +292,7 @@ export default async function Home() {
       </div>
 
       <div className="bg-primary-light w-full py-20">
-        <div className="container flex items-center flex-col lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
+        <div className="lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
           {/* Testimonials Section */}
           <section className="mb-32">
             <div className="text-center mb-16">
