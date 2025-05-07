@@ -2,6 +2,7 @@
 @plugin "tailwindcss-animate";
 
 
+
 * {
   box-sizing: border-box;
 }
@@ -178,6 +179,19 @@ main {
   box-shadow: 0px 2px 0px 0px #003049;
   transition: box-shadow 0.3s ease;
 }
+
 .button-shadow:hover {
   box-shadow: 0px 2px 0px 0px transparent;
+}
+
+@layer components {
+  /* Add styling for feature lists */
+  .features-list ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+  }
+  
+  .features-list ul li {
+    margin-bottom: 0.5rem;
+  }
 }
