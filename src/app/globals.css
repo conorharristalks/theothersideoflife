@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin "tailwindcss-animate";
 
 
 
@@ -47,6 +46,15 @@ main {
   --shadow-marquee: 0px 7px 0px 0px #1e1e1e;
 }
 
+@theme inline {
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+ 
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+}
 
 
 /* Typography System */

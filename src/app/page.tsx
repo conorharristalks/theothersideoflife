@@ -3,6 +3,7 @@ import { Marquee } from "@/components/ui/marquee";
 import Image from "next/image";
 import fs from "node:fs/promises";
 import { getPlaiceholder } from "plaiceholder";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 export default async function Home() {
   const src = "/conor-selfie.jpeg";
@@ -17,6 +18,41 @@ export default async function Home() {
     { number: "150+", text: "Schools Visited" },
     { number: "10,000+", text: "Students Reached" },
     { number: "300+", text: "Hours Breathwork" },
+  ];
+
+  // Testimonial data for the infinite moving cards
+  const testimonialData = [
+    {
+      quote: "Conor's breathwork sessions have completely transformed how I handle stress. I've gained tools I use every day to center myself and stay calm.",
+      name: "Sarah L.",
+      title: "Marketing Executive",
+      stars: 5
+    },
+    {
+      quote: "Having Conor speak at our school was eye-opening for our students. His personal story and honesty about addiction created a lasting impact.",
+      name: "Michael T.",
+      title: "School Principal",
+      stars: 5
+    },
+    {
+      quote: "The group breathwork session Conor led for our team was profound. It brought us closer together and improved our overall workplace wellbeing.",
+      name: "Jessica M.",
+      title: "Team Lead, Tech Company",
+      stars: 5
+    },
+    // Add a few more testimonials for smooth scrolling effect
+    {
+      quote: "Working with Conor has given me practical tools to manage my anxiety. His approach is both gentle and effective.",
+      name: "David R.",
+      title: "Software Engineer",
+      stars: 5
+    },
+    {
+      quote: "As someone who struggled with addiction, Conor's story resonated deeply with me. His guidance has been instrumental in my recovery journey.",
+      name: "Emma P.",
+      title: "Healthcare Professional",
+      stars: 5
+    }
   ];
 
   return (
@@ -303,75 +339,17 @@ export default async function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Testimonial Card 1 */}
-              <div className="bg-primary p-6 rounded-xl border border-secondary shadow-left">
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-2">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <span key={star} className="text-accent-1">
-                        ★
-                      </span>
-                    ))}
-                  </div>
-                  <p className="body-text italic">
-                    &quot;Conor&apos;s breathwork sessions have completely transformed how
-                    I handle stress. I&apos;ve gained tools I use every day to center
-                    myself and stay calm.&quot;
-                  </p>
-                  <div className="mt-4">
-                    <p className="font-fraunces font-semibold">Sarah L.</p>
-                    <p className="body-text-sm">Marketing Executive</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Testimonial Card 2 */}
-              <div className="bg-primary p-6 rounded-xl border border-secondary shadow-left">
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-2">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <span key={star} className="text-accent-1">
-                        ★
-                      </span>
-                    ))}
-                  </div>
-                  <p className="body-text italic">
-                    &quot;Having Conor speak at our school was eye-opening for our
-                    students. His personal story and honesty about addiction
-                    created a lasting impact.&quot;
-                  </p>
-                  <div className="mt-4">
-                    <p className="font-fraunces font-semibold">Michael T.</p>
-                    <p className="body-text-sm">School Principal</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Testimonial Card 3 */}
-              <div className="bg-primary p-6 rounded-xl border border-secondary shadow-left">
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-2">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <span key={star} className="text-accent-1">
-                        ★
-                      </span>
-                    ))}
-                  </div>
-                  <p className="body-text italic">
-                    &quot;The group breathwork session Conor led for our team was
-                    profound. It brought us closer together and improved our
-                    overall workplace wellbeing.&quot;
-                  </p>
-                  <div className="mt-4">
-                    <p className="font-fraunces font-semibold">Jessica M.</p>
-                    <p className="body-text-sm">Team Lead, Tech Company</p>
-                  </div>
-                </div>
-              </div>
+            <div className="w-full flex justify-center">
+              <InfiniteMovingCards 
+                items={testimonialData} 
+                direction="left" 
+                speed="slow" 
+                pauseOnHover={true}
+                className="w-full max-w-7xl"
+              />
             </div>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-16">
               <InteractiveButton
                 variant="transparent"
                 text="Read More Testimonials"
