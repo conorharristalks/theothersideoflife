@@ -34,7 +34,6 @@ const BookingManager: React.FC<BookingManagerProps> = ({ token }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState<ViewStep>('view');
-  const [isUpdating, setIsUpdating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   
@@ -105,7 +104,6 @@ const BookingManager: React.FC<BookingManagerProps> = ({ token }) => {
       return;
     }
 
-    setIsUpdating(true);
     setError(null);
 
     try {
@@ -142,8 +140,6 @@ const BookingManager: React.FC<BookingManagerProps> = ({ token }) => {
     } catch (error: unknown) {
       console.error('Update error:', error);
       setError(error instanceof Error ? error.message : 'Failed to update booking');
-    } finally {
-      setIsUpdating(false);
     }
   };
 
@@ -223,8 +219,7 @@ const BookingManager: React.FC<BookingManagerProps> = ({ token }) => {
 
   useEffect(() => {
     if (booking) {
-      const initialData = prepareInitialFormData(booking);
-      // Set your form data here with the parsed phone number
+      prepareInitialFormData(booking);
     }
   }, [booking]);
 

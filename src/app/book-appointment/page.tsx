@@ -18,7 +18,6 @@ const Page: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<BookingStep>("select-date");
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -78,7 +77,6 @@ const Page: React.FC = () => {
   const handleSubmit = async (formData: BookingFormData) => {
     if (!selectedDate || !selectedTimeSlot) return;
 
-    setIsSubmitting(true);
     setError(null);
 
     try {
@@ -127,8 +125,6 @@ const Page: React.FC = () => {
       setError(
         error instanceof Error ? error.message : "An error occurred while submitting your booking"
       );
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -360,7 +356,7 @@ const Page: React.FC = () => {
                   • You can request between 1-5 wellbeing talks for your school
                 </li>
                 <li>
-                  • After submitting, you'll receive a confirmation email with
+                  • After submitting, you&apos;ll receive a confirmation email with
                   details
                 </li>
                 <li>
@@ -422,7 +418,7 @@ const Page: React.FC = () => {
                     • You can request between 1-5 wellbeing talks for your school
                   </li>
                   <li>
-                    • After submitting, you'll receive a confirmation email with
+                    • After submitting, you&apos;ll receive a confirmation email with
                     details
                   </li>
                   <li>
