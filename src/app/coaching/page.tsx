@@ -13,7 +13,7 @@ const Page = () => {
           <div className="w-full min-h-full lg:flex lg:flex-row flex flex-col justify-between items-center pt-10 pb-10 relative">
             <div className="flex flex-col md:w-[55%] w-full min-h-full bg-transparent items-start lg:justify-between gap-8">
               <h1 className="h1 font-fraunces font-bold text-foreground">
-                1:1 Coaching for When You're Ready to Rebuild from the Inside
+                1:1 Coaching for When You&apos;re Ready to Rebuild from the Inside
                 Out
               </h1>
 
@@ -201,7 +201,7 @@ const Page = () => {
 
             <div className="w-full max-w-7xl bg-[#FFF4D6] border border-secondary/20 rounded-3xl p-8 md:p-10 shadow-lg">
               <p className="font-nunito text-secondary lg:text-lg text-md mb-8">
-                Your coaching journey with me is designed around you. We'll focus
+                Your coaching journey with me is designed around you. We&apos;ll focus
                 on your unique goals, navigate your specific challenges, and
                 actively work towards creating the life you genuinely desire.
                 While every path is personal, all my clients benefit from:
@@ -215,7 +215,7 @@ const Page = () => {
                       Consistent Weekly Check-ins:
                     </span>
                     <span className="text-secondary">
-                      We'll have a dedicated weekly touchpoint to celebrate your
+                      We&apos;ll have a dedicated weekly touchpoint to celebrate your
                       successes, track your progress, and address any challenges,
                       ensuring you stay accountable and motivated.
                     </span>
