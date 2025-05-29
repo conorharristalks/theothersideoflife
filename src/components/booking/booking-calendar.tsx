@@ -29,7 +29,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ onDateSelect, selecte
   // Fetch booked dates when displayedMonth changes
   useEffect(() => {
     fetchBookedDatesForMonth(displayedMonth);
-  }, [displayedMonth]);
+  }, [displayedMonth, excludeToken]);
 
   // Fetch booked dates for a given month
   const fetchBookedDatesForMonth = async (month: Date) => {

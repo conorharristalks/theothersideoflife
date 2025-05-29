@@ -14,10 +14,10 @@ function Calendar({
 }: React.ComponentProps<typeof DayPicker>) {
   return (
     <DayPicker
-      showOutsideDays={false} // Always hide outside days
-      fixedWeeks={false} // Don't fix weeks - let them adjust naturally
+      showOutsideDays={false}
+      fixedWeeks={false}
       className={cn("p-3", className)}
-      weekStartsOn={0} // Start week on Sunday - this helps with the layout
+      weekStartsOn={0}
       classNames={{
         months: "flex flex-col sm:flex-row w-full",
         month: "space-y-4 w-full",
@@ -34,7 +34,7 @@ function Calendar({
         head_row: "flex w-full",
         head_cell:
           "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem] flex items-center justify-center",
-        row: "flex w-full mt-2 justify-start", // Changed to justify-start
+        row: "flex w-full mt-2 justify-start",
         cell: cn(
           "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 w-9 h-9",
           "[&:has([aria-selected])]:bg-accent",
@@ -54,18 +54,20 @@ function Calendar({
         day_selected:
           "bg-accent-1 text-primary hover:bg-accent-1 hover:text-primary focus:bg-accent-1 focus:text-primary",
         day_today: "bg-accent text-accent-foreground font-semibold hover:bg-accent-1 hover:text-primary",
-        day_outside: "hidden", // Completely hide outside days
+        day_outside: "hidden",
         day_disabled: "text-muted-foreground opacity-50 cursor-not-allowed hover:bg-transparent hover:text-muted-foreground",
         day_range_middle:
           "aria-selected:bg-accent-1 aria-selected:text-primary hover:bg-accent-1 hover:text-primary",
-        day_hidden: "hidden", // Make sure hidden days are truly hidden
+        day_hidden: "hidden",
         ...classNames,
       }}
       components={{
-        Chevron: ({ orientation, ...props }) => {
-          const Icon = orientation === "left" ? ChevronLeft : ChevronRight;
-          return <Icon className="size-4 cursor-pointer" {...props} />;
-        }
+        IconLeft: ({ className: iconClassName, ...iconProps }) => (
+          <ChevronLeft className={cn("size-4 cursor-pointer", iconClassName)} {...iconProps} />
+        ),
+        IconRight: ({ className: iconClassName, ...iconProps }) => (
+          <ChevronRight className={cn("size-4 cursor-pointer", iconClassName)} {...iconProps} />
+        ),
       }}
       {...props}
     />

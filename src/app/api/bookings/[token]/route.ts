@@ -20,14 +20,14 @@ interface BookingUpdateBody {
 }
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     token: string;
-  }
+  }>
 }
 
 // Get a booking by its edit token
 export async function GET(request: NextRequest, { params }: RouteParams) {
-  const { token } = params;
+  const { token } = await params;
   
   if (!token) {
     return NextResponse.json(
@@ -60,7 +60,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 // Update a booking by its edit token
 export async function PUT(request: NextRequest, { params }: RouteParams) {
-  const { token } = params;
+  const { token } = await params;
   
   if (!token) {
     return NextResponse.json(
@@ -179,7 +179,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
 // Delete a booking by its edit token
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
-  const { token } = params;
+  const { token } = await params;
   
   if (!token) {
     return NextResponse.json(
