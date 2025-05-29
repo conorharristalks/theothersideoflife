@@ -10,7 +10,6 @@ import { buttonVariants } from "@/components/ui/button"
 function Calendar({
   className,
   classNames,
-  showOutsideDays = false,
   ...props
 }: React.ComponentProps<typeof DayPicker>) {
   return (
@@ -63,12 +62,10 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ className, ...props }) => (
-          <ChevronLeft className={cn("size-4 cursor-pointer", className)} {...props} />
-        ),
-        IconRight: ({ className, ...props }) => (
-          <ChevronRight className={cn("size-4 cursor-pointer", className)} {...props} />
-        ),
+        Chevron: ({ orientation, ...props }) => {
+          const Icon = orientation === "left" ? ChevronLeft : ChevronRight;
+          return <Icon className="size-4 cursor-pointer" {...props} />;
+        }
       }}
       {...props}
     />

@@ -12,13 +12,22 @@ interface GlobalMongoose {
 }
 
 declare global {
-  var mongoose: GlobalMongoose | undefined;
+  namespace NodeJS {
+    interface Global {
+      mongoose?: GlobalMongoose;
+    }
+  }
 }
 
-let cached = global.mongoose || { conn: null, promise: null };
+// Use globalThis instead of global for better TypeScript support
+const globalWithMongoose = globalThis as typeof globalThis & {
+  mongoose?: GlobalMongoose;
+};
 
-if (!global.mongoose) {
-  global.mongoose = cached;
+const cached = globalWithMongoose.mongoose || { conn: null, promise: null };
+
+if (!globalWithMongoose.mongoose) {
+  globalWithMongoose.mongoose = cached;
 }
 
 async function dbConnect() {
