@@ -34,8 +34,8 @@ const InteractiveButton = React.forwardRef<
     <button
       ref={ref}
       className={cn(
-        "group relative w-48 cursor-pointer overflow-hidden rounded-xl border-2 border-accent-1 text-center button-shadow transition-all",
-        isTransparent ? "bg-transparent" : "hover:border-0",
+        "group relative w-48 cursor-pointer overflow-hidden rounded-xl border-2 border-accent-1 text-center button-blue-shadow transition-all",
+        isTransparent ? "bg-transparent button-shadow hover:border-2" : "hover:border-2",
         className,
       )} 
       {...props}

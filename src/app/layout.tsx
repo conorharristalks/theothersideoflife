@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Nunito_Sans, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 // Configure fonts with display=swap for better performance
 const fraunces = Fraunces({
@@ -26,7 +27,11 @@ const libreBaskerville = Libre_Baskerville({
 export const metadata: Metadata = {
   title: "Conor Harris | The Other Side of Life",
   description: "Breathwork coaching and addiction recovery talks by Conor Harris",
-  viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -48,6 +53,7 @@ export default function RootLayout({
       >
         <Navbar />
         <main className="overflow-hidden">{children}</main>
+        <Footer />
       </body>
     </html>
   );
