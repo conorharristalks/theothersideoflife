@@ -34,7 +34,17 @@ export async function GET(request: NextRequest) {
     const startOfDay = new Date(Date.UTC(year, month, day, 0, 0, 0));
     const endOfDay = new Date(Date.UTC(year, month, day, 23, 59, 59, 999));
     
-    let query: any = {
+    interface DateQuery {
+      date: {
+        $gte: Date;
+        $lte: Date;
+      };
+      editToken?: {
+        $ne: string;
+      };
+    }
+    
+    const query: DateQuery = {
       date: {
         $gte: startOfDay,
         $lte: endOfDay

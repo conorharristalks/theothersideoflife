@@ -1,9 +1,6 @@
 "use client";
 
-import BenefitCard from "@/components/breathwork/benefit-card";
-import { Testimonials } from "@/components/sections/home/Testimonials";
 import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
-import { testimonialData } from "@/lib/constants";
 import Image from "next/image";
 
 const Page = () => {
@@ -166,9 +163,9 @@ const Page = () => {
                 <p className="lg:text-lg text-md font-nunito leading-relaxed font-semibold text-foreground">
                   My coaching approach is built on a unique foundation. I coach
                   from a place of personal experience partnered with education.
-                  I've navigated the downfalls, challenges, and dark places that
+                  I&apos;ve navigated the downfalls, challenges, and dark places that
                   many struggle with. As I guide you through this healing
-                  journey, know that I've walked this road myself
+                  journey, know that I&apos;ve walked this road myself
                 </p>
               </div>
 
@@ -328,7 +325,7 @@ const Page = () => {
                       Weekday Direct Communication:
                     </span>
                     <span className="text-secondary">
-                      You'll have ongoing support available during the week via
+                      You&apos;ll have ongoing support available during the week via
                       WhatsApp. This means quick guidance and encouragement
                       whenever you need it the most.
                     </span>
@@ -342,7 +339,7 @@ const Page = () => {
                       Personalised Daily Wellbeing Practices:
                     </span>
                     <span className="text-secondary">
-                      I'll design practical exercises that you can easily integrate
+                      I&apos;ll design practical exercises that you can easily integrate
                       into your routine to build positive habits and improve your
                       daily wellbeing.
                     </span>
@@ -356,7 +353,7 @@ const Page = () => {
                       1-1 Monthly Breathwork Sessions:
                     </span>
                     <span className="text-secondary">
-                      Each month, you'll receive 1-1 breathwork sessions. Find out
+                      Each month, you&apos;ll receive 1-1 breathwork sessions. Find out
                       more about breathwork and its benefits{" "}
                       <a
                         href="/breathwork"
@@ -376,7 +373,7 @@ const Page = () => {
                       Your Individualised Wellbeing Program:
                     </span>
                     <span className="text-secondary">
-                      Together, we'll build a custom roadmap designed around you,
+                      Together, we&apos;ll build a custom roadmap designed around you,
                       ensuring you achieve your goals and grow as a person.
                     </span>
                   </div>
@@ -389,7 +386,7 @@ const Page = () => {
                       Monthly Review Zoom Calls:
                     </span>
                     <span className="text-secondary">
-                      Once a month, we'll connect via zoom to reassess your journey,
+                      Once a month, we&apos;ll connect via zoom to reassess your journey,
                       re-evaluate your goals, and fine-tune your program.
                     </span>
                   </div>
@@ -402,7 +399,7 @@ const Page = () => {
         <div className="mt-24 mb-8 md:max-w-2xl w-full mx-auto">
           <div className="text-center mb-12">
             <h3 className="font-fraunces text-2xl font-bold text-secondary mb-4">
-              Not sure if I'm right for you?
+              Not sure if I&apos;m right for you?
             </h3>
             <p className="font-nunito text-lg text-secondary">
               Book a free discovery call to find out!
@@ -431,7 +428,7 @@ const Page = () => {
             {/* Step 2 */}
             <div className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full">
               <p className="font-nunito text-secondary text-lg">
-                Find out what's the best plan for you
+                Find out what&apos;s the best plan for you
               </p>
             </div>
 
@@ -449,7 +446,7 @@ const Page = () => {
             {/* Step 3 */}
             <div className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full">
               <p className="font-nunito text-secondary text-lg">
-                We'll develop an individualised plan tailored to you
+                We&apos;ll develop an individualised plan tailored to you
               </p>
             </div>
 

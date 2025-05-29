@@ -90,9 +90,10 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ onDateSelect, selecte
 
   // Expose refresh function globally for debugging
   React.useEffect(() => {
-    (window as any).refreshCalendar = refreshCalendarData;
+    const globalWindow = window as { refreshCalendar?: () => void };
+    globalWindow.refreshCalendar = refreshCalendarData;
     return () => {
-      delete (window as any).refreshCalendar;
+      delete globalWindow.refreshCalendar;
     };
   }, [displayedMonth]);
 

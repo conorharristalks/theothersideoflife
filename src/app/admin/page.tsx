@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { format, addDays, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
+import { addDays, eachDayOfInterval, endOfWeek, format, isSameDay, startOfWeek } from 'date-fns';
+import { useState } from 'react';
 
 interface BlockedDate {
   date: string;
@@ -30,7 +30,7 @@ export default function AdminPage() {
       } else {
         setMessage('Invalid password');
       }
-    } catch (error) {
+    } catch (_error) {
       setMessage('Authentication failed');
     }
   };
@@ -47,8 +47,8 @@ export default function AdminPage() {
         const data = await response.json();
         setBlockedDates(data.blockedDates);
       }
-    } catch (error) {
-      console.error('Error fetching blocked dates:', error);
+    } catch (_error) {
+      console.error('Error fetching blocked dates:', _error);
     }
   };
 
@@ -77,7 +77,7 @@ export default function AdminPage() {
       } else {
         setMessage(data.error || 'Failed to block date');
       }
-    } catch (error) {
+    } catch (_error) {
       setMessage('Error blocking date');
     } finally {
       setIsLoading(false);
@@ -102,7 +102,7 @@ export default function AdminPage() {
       } else {
         setMessage(data.error || 'Failed to unblock date');
       }
-    } catch (error) {
+    } catch (_error) {
       setMessage('Error unblocking date');
     } finally {
       setIsLoading(false);

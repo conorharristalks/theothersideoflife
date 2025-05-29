@@ -195,7 +195,7 @@ const Page = () => {
                   Breathwork encompasses a variety of conscious breathing
                   techniques practiced to improve mental, emotional, and
                   physical wellbeing. By changing the rhythm, depth, and pace of
-                  your breath, you can tap into your body's natural healing
+                  your breath, you can tap into your body&apos;s natural healing
                   abilities, reduce stress, increase energy, and gain deeper
                   self-awareness.
                 </p>
@@ -315,7 +315,7 @@ const Page = () => {
             {/* Step 2 */}
             <div className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full">
               <p className="font-nunito text-secondary text-lg">
-                Find out what's the best plan for you
+                Find out what&apos;s the best plan for you
               </p>
             </div>
 
@@ -333,7 +333,7 @@ const Page = () => {
             {/* Step 3 */}
             <div className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full">
               <p className="font-nunito text-secondary text-lg">
-                We'll develop an individualised plan tailored to you
+                We&apos;ll develop an individualised plan tailored to you
               </p>
             </div>
 

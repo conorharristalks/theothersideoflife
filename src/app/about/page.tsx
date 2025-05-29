@@ -1,12 +1,9 @@
 "use client";
 
-import BenefitCard from "@/components/breathwork/benefit-card";
-import { Testimonials } from "@/components/sections/home/Testimonials";
 import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
-import { testimonialData } from "@/lib/constants";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const Page = () => {
   // State to track which image to show (0, 1, or 2)
@@ -70,7 +67,7 @@ const Page = () => {
                   <div className="flex items-start justify-start w-full lg:w-[92%]">
                     <p className="lg:text-xl md:text-lg text-[16px] font-nunito font-medium">
                       By 19, after a 5-month rehab program, I found my way into
-                      recovery. Now, 6 years sober, I've built a new life,
+                      recovery. Now, 6 years sober, I&apos;ve built a new life,
                       grounded in discipline from the gym and sports, and
                       sustained by daily practices like journaling and
                       meditation. This journey has given me a new purpose: to
@@ -218,7 +215,7 @@ const Page = () => {
                     through a journey of self-discovery. My coaching integrates
                     techniques like breathwork - I use to reduce stress and
                     guide you towards inner clarity and meaningful change.
-                    Together, we'll explore areas where you feel stuck, fearful,
+                    Together, we&apos;ll explore areas where you feel stuck, fearful,
                     and disconnected. I help you let go of the past and guide
                     you on the resolution, leaving you empowered every step of
                     the way.
@@ -234,9 +231,9 @@ const Page = () => {
                   </h2>
                   <p className="font-nunito lg:text-lg">
                     My mission is for anyone ready to embrace a more balanced
-                    and fulfilled life. Whether you're looking to redefine your
+                    and fulfilled life. Whether you&apos;re looking to redefine your
                     relationship with yourself, find clarity, or cultivate
-                    healthier habits, I'm here to support your journey.
+                    healthier habits, I&apos;m here to support your journey.
                   </p>
                 </div>
                 {/* Service buttons */}

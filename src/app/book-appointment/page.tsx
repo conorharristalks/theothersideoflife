@@ -18,7 +18,6 @@ const Page: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<BookingStep>("select-date");
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -78,7 +77,6 @@ const Page: React.FC = () => {
   const handleSubmit = async (formData: BookingFormData) => {
     if (!selectedDate || !selectedTimeSlot) return;
 
-    setIsSubmitting(true);
     setError(null);
 
     try {
@@ -122,13 +120,11 @@ const Page: React.FC = () => {
       setTimeout(() => {
         router.push("/book-appointment/confirmation");
       }, 2000);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Booking submission error:", error);
       setError(
-        error.message || "An error occurred while submitting your booking"
+        error instanceof Error ? error.message : "An error occurred while submitting your booking"
       );
-    } finally {
-      setIsSubmitting(false);
     }
   };
 

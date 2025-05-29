@@ -1,4 +1,5 @@
 import mongoose, { Document, Model } from 'mongoose';
+import { randomBytes } from 'crypto';
 import { VALIDATION, DEFAULTS } from '@/lib/constants';
 
 // Define interfaces for type safety
@@ -171,7 +172,7 @@ BookingSchema.statics.isDateBooked = async function(date: Date): Promise<boolean
 
 // Generate a secure random token for editing/canceling bookings
 BookingSchema.statics.generateEditToken = function(): string {
-  return require('crypto').randomBytes(32).toString('hex');
+  return randomBytes(32).toString('hex');
 };
 
 // Helper method to create a blocked date
@@ -185,7 +186,7 @@ BookingSchema.statics.createBlockedDate = async function(date: Date, reason: str
     )
   );
 
-  const editToken = require('crypto').randomBytes(32).toString('hex');
+  const editToken = randomBytes(32).toString('hex');
 
   const blockedBooking = new this({
     date: standardizedDate,

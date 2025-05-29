@@ -1,13 +1,30 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export async function GET(request: Request) {
+interface EmailConfig {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth: {
+    user: string;
+    pass: string;
+  };
+}
+
+interface EmailResponse {
+  success: boolean;
+  messageId?: string;
+  message?: string;
+  error?: string;
+}
+
+export async function GET(request: Request): Promise<NextResponse<EmailResponse>> {
   try {
     const { searchParams } = new URL(request.url);
     const email = searchParams.get('email') || process.env.EMAIL_USER || 'test@example.com';
     
     // Use the same configuration as in your email-service.ts
-    const transporter = nodemailer.createTransport({
+    const emailConfig: EmailConfig = {
       host: process.env.EMAIL_HOST as string,
       port: parseInt(process.env.EMAIL_PORT || '587'),
       secure: process.env.EMAIL_SECURE === 'true',
@@ -15,7 +32,9 @@ export async function GET(request: Request) {
         user: process.env.EMAIL_USER as string,
         pass: process.env.EMAIL_PASSWORD as string,
       },
-    });
+    };
+    
+    const transporter = nodemailer.createTransport(emailConfig);
     
     // Send a simple test email
     try {
@@ -42,17 +61,19 @@ export async function GET(request: Request) {
       });
     } catch (emailError) {
       console.error('Error sending test email:', emailError);
+      const errorMessage = emailError instanceof Error ? emailError.message : 'Unknown email error';
       return NextResponse.json({
         success: false,
-        error: emailError instanceof Error ? emailError.message : 'Unknown email error'
+        error: errorMessage
       }, { status: 500 });
     }
   } catch (error) {
     console.error('Error in test email API:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     
     return NextResponse.json({
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error'
+      error: errorMessage
     }, { status: 500 });
   }
 }

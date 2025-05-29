@@ -1,8 +1,9 @@
 'use client';
 
 import { format } from 'date-fns/format';
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { FormEvent, ChangeEvent } from 'react';
 import { VALIDATION, COUNTRY_CODES } from '@/lib/constants';
+import { useState } from 'react';
 
 interface BookingFormProps {
   selectedDate: Date;
@@ -181,11 +182,17 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedDate, initialData, on
         fullPhoneNumber = formData.phone;
       }
       
-      const submissionData = {
-        ...formData,
-        phone: fullPhoneNumber
+      const submissionData: BookingFormData = {
+        schoolName: formData.schoolName,
+        contactName: formData.contactName,
+        email: formData.email,
+        countryCode: formData.countryCode,
+        phone: fullPhoneNumber,
+        address: formData.address,
+        city: formData.city,
+        numberOfTalks: formData.numberOfTalks,
+        includeWorkshop: formData.includeWorkshop
       };
-      delete (submissionData as any).countryCode; // Remove countryCode from submission
       
       await onSubmit(submissionData);
     } catch (error) {

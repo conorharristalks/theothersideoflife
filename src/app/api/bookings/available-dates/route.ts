@@ -33,7 +33,17 @@ export async function GET(request: NextRequest) {
     const endDate = new Date(yearNum, monthNum, 0, 23, 59, 59, 999);
     
     // Build query to exclude current booking if editing
-    let query: any = {
+    interface BookingQuery {
+      date: {
+        $gte: Date;
+        $lte: Date;
+      };
+      editToken?: {
+        $ne: string;
+      };
+    }
+    
+    const query: BookingQuery = {
       date: {
         $gte: startDate,
         $lte: endDate

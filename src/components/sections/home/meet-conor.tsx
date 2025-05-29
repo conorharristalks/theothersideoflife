@@ -1,7 +1,7 @@
 "use client";
 import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
+import { motion, useInView } from "motion/react";
 import Image from "next/image";
-import { motion, useInView, MotionValue, useTransform } from "motion/react";
 import { useRef } from "react";
 
 
@@ -45,20 +45,7 @@ export function MeetConor() {
     },
   };
 
-  // Button animation variant with scale and bounce effect
-  const buttonVariants = {
-    hidden: { scale: 0 },
-    visible: {
-      scale: 1,
-
-      transition: {
-        type: "spring",
-        bounce: 0.4,
-        delay: 0.5,
-        duration: 0.8,
-      },
-    },
-  };
+ ;
   
 
 

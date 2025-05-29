@@ -1,8 +1,9 @@
-import dbConnect from '@/lib/mongodb';
-import Booking, { IBooking } from '@/models/booking';
 import { sendBookingConfirmation } from '@/lib/email-service';
-import { NextRequest, NextResponse } from 'next/server';
+import dbConnect from '@/lib/mongodb';
+import Booking from '@/models/booking';
+import { randomBytes } from 'crypto';
 import mongoose from 'mongoose';
+import { NextRequest, NextResponse } from 'next/server';
 
 interface BookingRequestBody {
   date: string;
@@ -80,7 +81,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Generate a secure token for editing/canceling the booking
-    const editToken = require('crypto').randomBytes(32).toString('hex');
+    const editToken = randomBytes(32).toString('hex');
     
     // Create the new booking with the standardized date
     const booking = new Booking({
@@ -108,7 +109,7 @@ export async function POST(request: NextRequest) {
     console.error('Error creating booking:', error);
     
     // Type guard for MongoDB duplicate key error
-    const isMongoError = (err: unknown): err is { code: number; keyPattern?: Record<string, any> } => {
+    const isMongoError = (err: unknown): err is { code: number; keyPattern?: Record<string, number> } => {
       return typeof err === 'object' && err !== null && 'code' in err;
     };
     

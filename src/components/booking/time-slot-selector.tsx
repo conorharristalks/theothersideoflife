@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 interface TimeSlotSelectorProps {
   onSelectTimeSlot: (timeSlot: string) => void;
   selectedTimeSlot: string | null;
@@ -72,7 +70,7 @@ const TimeSlotSelector: React.FC<TimeSlotSelectorProps> = ({
       {selectedTimeSlot && (
         <div className="mt-4 p-3 bg-blue-50 text-blue-800 rounded-md">
           <p className="font-medium">Selected Time: {selectedTimeSlot}</p>
-          <p className="text-sm">Click "Continue" below to complete your booking details</p>
+          <p className="text-sm">Click &quot;Continue&quot; below to complete your booking details</p>
         </div>
       )}
     </div>

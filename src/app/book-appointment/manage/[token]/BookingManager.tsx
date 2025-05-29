@@ -139,15 +139,15 @@ const BookingManager: React.FC<BookingManagerProps> = ({ token }) => {
       }
 
       router.push('/book-appointment/edit-confirmation');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Update error:', error);
-      setError(error.message || 'Failed to update booking');
+      setError(error instanceof Error ? error.message : 'Failed to update booking');
     } finally {
       setIsUpdating(false);
     }
   };
 
-  const prepareInitialFormData = (booking: any): BookingFormData => {
+  const prepareInitialFormData = (booking: Booking): BookingFormData => {
     // Parse phone number to separate country code and number
     const parsePhone = (phoneString: string) => {
       const phoneMatch = phoneString.match(/^(\+\d{1,4})\s*(.+)$/);

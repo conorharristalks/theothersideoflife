@@ -134,9 +134,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
         
         // Handle the date specially since it might be a string
         if (key === 'date' && value) {
-          (existingBooking as any)[typedKey] = new Date(value as string);
+          (existingBooking as unknown as Record<string, unknown>)[typedKey] = new Date(value as string);
         } else if (value !== undefined) {
-          (existingBooking as any)[typedKey] = value;
+          (existingBooking as unknown as Record<string, unknown>)[typedKey] = value;
         }
       }
     });
@@ -158,7 +158,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     console.error('Error updating booking:', error);
     
     // Type guard for MongoDB duplicate key error
-    const isMongoError = (err: unknown): err is { code: number; keyPattern?: Record<string, any> } => {
+    const isMongoError = (err: unknown): err is { code: number; keyPattern?: Record<string, number> } => {
       return typeof err === 'object' && err !== null && 'code' in err;
     };
     

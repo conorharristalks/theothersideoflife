@@ -17,7 +17,7 @@ interface BenefitCardProps {
 }
 
 const BenefitCard: React.FC<BenefitCardProps> = ({
-  id,
+ 
   title,
   description,
   icon,

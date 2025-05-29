@@ -11,7 +11,7 @@ export function WhatSetsMeApart() {
     offset: ["start end", "end start"]
   });
   
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
