@@ -4,103 +4,7 @@ import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
 import Image from "next/image";
 
 const Page = () => {
-  // Define benefit cards data
-  const benefitCards = [
-    {
-      id: 1,
-      title: (
-        <>
-          Reduces Stress &<br />
-          Anxiety
-        </>
-      ),
-      description:
-        "Conscious breathing techniques can activate the parasympathetic nervous system, which promotes relaxation and helps to calm the mind and body, effectively lowering stress and anxiety levels.",
-      icon: "/icons/breathwork-benefit-1.svg",
-      shadowDirection: "right" as const,
-      expandedContent: {
-        description:
-          "The 4-7-8 breathing technique, where you inhale for 4 counts, hold for 7, and exhale for 8, is particularly effective for stress reduction. Regular practice can lower cortisol levels and decrease anxiety symptoms over time. Studies have shown that just 10 minutes of deep breathing daily can significantly improve your body's stress response.",
-        listItems: [
-          "Reduces cortisol levels in the body",
-          "Activates the body's relaxation response",
-          "Improves sleep quality and reduces insomnia",
-          "Helps manage panic attacks and acute anxiety",
-        ],
-      },
-    },
-    {
-      id: 2,
-      title: (
-        <>
-          Increase Energy
-          <br />
-          Levels
-        </>
-      ),
-      description:
-        "Certain breathwork practices can oxygenate the body more efficiently, leading to an increase in energy, improved focus, and a reduction in feelings of fatigue.",
-      icon: "/icons/breathwork-benefit-2.svg",
-      shadowDirection: "left" as const,
-      expandedContent: {
-        description:
-          "Energizing breathwork techniques like the Wim Hof Method or Breath of Fire can invigorate your body by increasing oxygen intake and circulation. These practices stimulate the sympathetic nervous system in a controlled way, leading to natural energy boosts without the crash associated with caffeine or other stimulants.",
-        listItems: [
-          "Increases oxygen delivery to cells and tissues",
-          "Stimulates the release of endorphins and natural energy hormones",
-          "Improves mental clarity and focus",
-          "Can be more effective than caffeine for sustainable energy",
-        ],
-      },
-    },
-    {
-      id: 3,
-      title: (
-        <>
-          Enhances Emotional
-          <br />
-          WellBeing
-        </>
-      ),
-      description:
-        "Breathwork can help to release held emotions and process past experiences, leading to greater emotional clarity, resilience, and an improved overall mood.",
-      icon: "/icons/breathwork-benefit-3.svg",
-      shadowDirection: "right" as const,
-      expandedContent: {
-        description:
-          "Techniques like Holotropic Breathwork and Transformational Breath can facilitate emotional release by accessing stored tension in the body. These methods create a safe space to process emotions that may have been suppressed, allowing them to be acknowledged and released. Regular practice builds emotional resilience and creates a healthier relationship with your feelings.",
-        listItems: [
-          "Helps process and release trapped emotions",
-          "Reduces emotional reactivity and increases response flexibility",
-          "Improves mood and emotional balance",
-          "Creates a healthy way to process difficult emotions",
-        ],
-      },
-    },
-    {
-      id: 4,
-      title: (
-        <>
-          Self-Awareness &<br />
-          Inner Connection
-        </>
-      ),
-      description:
-        "By focusing on the breath, individuals can gain a deeper understanding of their thoughts, feelings, and bodily sensations, developing a stronger connection to their inner selves and promoting personal growth.",
-      icon: "/icons/breathwork-benefit-4.svg",
-      shadowDirection: "left" as const,
-      expandedContent: {
-        description:
-          "Mindful breathing practices create a pathway to deeper self-awareness. By observing your breath without judgment, you develop the ability to witness your thoughts and feelings with greater objectivity. This cultivates presence and mindfulness, allowing you to respond to life's challenges with intention rather than reactivity.",
-        listItems: [
-          "Cultivates present moment awareness",
-          "Enhances mind-body connection",
-          "Helps identify and release limiting beliefs",
-          "Fosters compassion toward self and others",
-        ],
-      },
-    },
-  ];
+
 
   return (
     <>
@@ -118,8 +22,8 @@ const Page = () => {
                   <div className="flex items-start justify-start gap-3 w-full md:w-[90%]">
                     <p className="lg:text-xl md:text-lg text-[16px] font-nunito">
                       This is a space for honest conversations, healing, and
-                      real change. Whether you're feeling stuck, burned out, or
-                      just know there's more to life — this coaching helps you
+                      real change. Whether you&apos;re feeling stuck, burned out, or
+                      just know there&apos;s more to life — this coaching helps you
                       reconnect, reframe, and move forward with clarity and
                       confidence.
                     </p>

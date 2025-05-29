@@ -183,9 +183,9 @@ const Page = () => {
                   <p className="font-nunito lg:text-lg">
                     My personal journey from breaking free of addiction and
                     reclaiming my life fuels my work today. I still vividly
-                    recall my path of struggle and healing. I'm determined to
+                    recall my path of struggle and healing. I&apos;m determined to
                     help others navigate this dark path and find their own
-                    purpose and balance. I've seen countless others facing
+                    purpose and balance. I&apos;ve seen countless others facing
                     similar struggles. This experience motivates me to guide
                     others with authentic empathy and practical wisdom, helping
                     them build a life they genuinely desire.

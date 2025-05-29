@@ -356,7 +356,7 @@ const Page: React.FC = () => {
                   • You can request between 1-5 wellbeing talks for your school
                 </li>
                 <li>
-                  • After submitting, you'll receive a confirmation email with
+                  • After submitting, you&apos;ll receive a confirmation email with
                   details
                 </li>
                 <li>
@@ -418,7 +418,7 @@ const Page: React.FC = () => {
                     • You can request between 1-5 wellbeing talks for your school
                   </li>
                   <li>
-                    • After submitting, you'll receive a confirmation email with
+                    • After submitting, you&apos;ll receive a confirmation email with
                     details
                   </li>
                   <li>

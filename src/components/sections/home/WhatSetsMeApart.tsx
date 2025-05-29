@@ -1,15 +1,12 @@
 "use client"
 import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
+import { motion } from "motion/react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
 export function WhatSetsMeApart() {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+  
   
   
 

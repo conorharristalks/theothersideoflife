@@ -30,7 +30,7 @@ export default function AdminPage() {
       } else {
         setMessage('Invalid password');
       }
-    } catch (_error) {
+    } catch (_) {
       setMessage('Authentication failed');
     }
   };
@@ -47,8 +47,8 @@ export default function AdminPage() {
         const data = await response.json();
         setBlockedDates(data.blockedDates);
       }
-    } catch (_error) {
-      console.error('Error fetching blocked dates:', _error);
+    } catch (_) {
+      console.error('Error fetching blocked dates:', _);
     }
   };
 
@@ -77,7 +77,7 @@ export default function AdminPage() {
       } else {
         setMessage(data.error || 'Failed to block date');
       }
-    } catch (_error) {
+    } catch (_) {
       setMessage('Error blocking date');
     } finally {
       setIsLoading(false);
@@ -102,7 +102,7 @@ export default function AdminPage() {
       } else {
         setMessage(data.error || 'Failed to unblock date');
       }
-    } catch (_error) {
+    } catch (_) {
       setMessage('Error unblocking date');
     } finally {
       setIsLoading(false);

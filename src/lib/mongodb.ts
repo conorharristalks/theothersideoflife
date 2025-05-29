@@ -12,11 +12,7 @@ interface GlobalMongoose {
 }
 
 declare global {
-  namespace NodeJS {
-    interface Global {
-      mongoose?: GlobalMongoose;
-    }
-  }
+  const mongoose: GlobalMongoose | undefined;
 }
 
 // Use globalThis instead of global for better TypeScript support
