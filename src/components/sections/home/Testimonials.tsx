@@ -1,4 +1,3 @@
-import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 interface TestimonialsProps {

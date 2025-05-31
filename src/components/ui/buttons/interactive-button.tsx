@@ -1,8 +1,12 @@
 "use client"
-import React from "react";
+import React, { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+
+// Create a combined type that includes both button and anchor props
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
 interface InteractiveButtonProps {
   text?: string;
@@ -15,12 +19,15 @@ interface InteractiveButtonProps {
   };
   href?: string; // Add href prop for navigation
   className?: string;
-  [key: string]: any; // Allow other props to pass through
 }
+
+// Combine the interfaces, but make the props optional with Partial
+type CombinedProps = InteractiveButtonProps & 
+  (({ href: string } & Partial<AnchorProps>) | (Partial<ButtonProps>));
 
 const InteractiveButton = React.forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
-  InteractiveButtonProps
+  CombinedProps
 >(({ 
   text = "Button", 
   className, 
@@ -78,7 +85,7 @@ const InteractiveButton = React.forwardRef<
       <Link 
         href={href} 
         className={commonClasses}
-        {...props}
+        {...props as AnchorProps}
       >
         {content}
       </Link>
@@ -90,7 +97,7 @@ const InteractiveButton = React.forwardRef<
     <button
       ref={ref as React.Ref<HTMLButtonElement>}
       className={commonClasses}
-      {...props}
+      {...props as ButtonProps}
     >
       {content}
     </button>
