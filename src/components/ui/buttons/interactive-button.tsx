@@ -2,9 +2,9 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
-interface InteractiveButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface InteractiveButtonProps {
   text?: string;
   variant?: "transparent" | "filled";
   ballClassName?: string;
@@ -13,10 +13,13 @@ interface InteractiveButtonProps
     left?: string;
     top?: string;
   };
+  href?: string; // Add href prop for navigation
+  className?: string;
+  [key: string]: any; // Allow other props to pass through
 }
 
 const InteractiveButton = React.forwardRef<
-  HTMLButtonElement,
+  HTMLButtonElement | HTMLAnchorElement,
   InteractiveButtonProps
 >(({ 
   text = "Button", 
@@ -25,21 +28,22 @@ const InteractiveButton = React.forwardRef<
   ballClassName,
   textClassName,
   ballPosition,
+  href,
   ...props 
 }, ref) => {
   // Define styling based on variant
   const isTransparent = variant === "transparent";
   
-  return (
-    <button
-      ref={ref}
-      className={cn(
-        "group relative w-48 cursor-pointer overflow-hidden rounded-xl border-2 border-accent-1 text-center button-blue-shadow transition-all",
-        isTransparent ? "bg-transparent button-shadow hover:border-2" : "hover:border-2",
-        className,
-      )} 
-      {...props}
-    >
+  // Common styles and content for both button and link
+  const commonClasses = cn(
+    "group relative w-48 cursor-pointer overflow-hidden rounded-xl border-2 border-accent-1 text-center button-blue-shadow transition-all active:scale-97",
+    isTransparent ? "bg-transparent button-shadow hover:border-2" : "hover:border-2",
+    className,
+  );
+  
+  // The shared inner content of the button/link
+  const content = (
+    <>
       <span className={cn(
         "inline-block translate-x-1 transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0 font-semibold font-baskerville",
         textClassName
@@ -65,6 +69,30 @@ const InteractiveButton = React.forwardRef<
           top: ballPosition.top
         } : undefined}
       ></div>
+    </>
+  );
+  
+  // Render as Link if href is provided, otherwise as button
+  if (href) {
+    return (
+      <Link 
+        href={href} 
+        className={commonClasses}
+        {...props}
+      >
+        {content}
+      </Link>
+    );
+  }
+  
+  // Default rendering as button
+  return (
+    <button
+      ref={ref as React.Ref<HTMLButtonElement>}
+      className={commonClasses}
+      {...props}
+    >
+      {content}
     </button>
   );
 });

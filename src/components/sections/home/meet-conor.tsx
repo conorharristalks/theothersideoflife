@@ -3,8 +3,7 @@ import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
 import { motion, useInView } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
-
-
+import Link from "next/link";
 
 export function MeetConor() {
   const body = useRef(null);
@@ -44,10 +43,6 @@ export function MeetConor() {
       },
     },
   };
-
- ;
-  
-
 
   return (
     <section className="z-20 grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20 md:mb-32 mx-[7px] sticky top-0">
@@ -105,36 +100,40 @@ export function MeetConor() {
 
           <div className="features-list">
             <ul className="flex flex-col items-start gap-4">
-              {/* First list item with masked animation */}
-              <div className="overflow-y-hidden">
-                <motion.li
-                  variants={itemVariants}
-                  custom={3}
-                  initial="hidden"
-                  animate={isInView ? "enter" : "hidden"}
-                  className="body-text font-semibold"
-                >
-                  Here at &quot;The Other Side of Life&quot; my main aim is
-                  speaking in schools to help young people learn the realities
-                  of drug misuse, and promoting a balanced lifestyle without
-                  them.
-                </motion.li>
-              </div>
+              {/* First list item with visible bullets */}
+              <li>
+                <div className="overflow-y-hidden">
+                  <motion.div
+                    variants={itemVariants}
+                    custom={3}
+                    initial="hidden"
+                    animate={isInView ? "enter" : "hidden"}
+                    className="body-text font-semibold"
+                  >
+                    Here at &quot;The Other Side of Life&quot; my main aim is
+                    speaking in schools to help young people learn the realities
+                    of drug misuse, and promoting a balanced lifestyle without
+                    them.
+                  </motion.div>
+                </div>
+              </li>
 
-              {/* Second list item with masked animation */}
-              <div className="overflow-y-hidden overflow-x-visible">
-                <motion.li
-                  variants={itemVariants}
-                  custom={4}
-                  initial="hidden"
-                  animate={isInView ? "enter" : "hidden"}
-                  className="body-text font-semibold"
-                >
-                  I also guide individuals through transformative breathwork
-                  sessions to explore parts of themselves they never knew
-                  existed, and guide them to rediscover themselves.
-                </motion.li>
-              </div>
+              {/* Second list item with visible bullets */}
+              <li>
+                <div className="overflow-y-hidden overflow-x-visible">
+                  <motion.div
+                    variants={itemVariants}
+                    custom={4}
+                    initial="hidden"
+                    animate={isInView ? "enter" : "hidden"}
+                    className="body-text font-semibold"
+                  >
+                    I also guide individuals through transformative breathwork
+                    sessions to explore parts of themselves they never knew
+                    existed, and guide them to rediscover themselves.
+                  </motion.div>
+                </div>
+              </li>
             </ul>
           </div>
 
@@ -161,12 +160,15 @@ export function MeetConor() {
             custom={6}
             animate={isInView ? "enter" : "hidden"}
           >
-            <InteractiveButton
-              variant="transparent"
-              text="More About Me"
-              className="md:w-64 w-full py-4 hover:text-primary transition-all ease-in duration-100"
-              ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%]"
-            />
+            {/* Wrapping the button in an anchor tag instead of using href prop */}
+            <Link href="/about">
+              <InteractiveButton
+                variant="transparent"
+                text="More About Me"
+                className="md:w-64 w-full py-4 hover:text-primary transition-all ease-in duration-100"
+                ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%]"
+              />
+            </Link>
           </motion.div>
         </div>
       </motion.div>

@@ -75,16 +75,17 @@ const Navbar = () => {
       <div className="hidden md:flex items-center gap-20 justify-between">
         <div className="flex items-center gap-10 justify-start pr-10 border-r-2 border-foreground h-12 ">
             <Link href="/" className="font-baskerville font-semibold">Home</Link>
-            <Link href="/" className="font-baskerville font-semibold">About</Link>
-            <Link href="/" className="font-baskerville font-semibold">Live Better</Link>
-            <Link href="/" className="font-baskerville font-semibold">Breathwork</Link>
-            <Link href="/" className="font-baskerville font-semibold">Help</Link>
+            <Link href="/about" className="font-baskerville font-semibold">About</Link>
+            <Link href="/coaching" className="font-baskerville font-semibold">Live Better</Link>
+            <Link href="/breathwork" className="font-baskerville font-semibold">Breathwork</Link>
+            <Link href="/help" className="font-baskerville font-semibold">Help</Link>
         </div>
         <InteractiveButton 
           variant="transparent" 
           text="Book an event" 
           className="btn w-52 py-3"
           textClassName="hover:text-primary"
+          href="/book-appointment"
         />
       </div>
 
@@ -158,37 +159,47 @@ const Navbar = () => {
                 
                 <div className="flex flex-col py-8 px-6 gap-6 overflow-y-auto flex-grow">
                   {/* Menu links with staggered animations */}
-                  {["Home", "About", "Live Better", "Breathwork", "Help"].map((item, index) => (
+                  {[
+                    { name: "Home", href: "/" },
+                    { name: "About", href: "/about" },
+                    { name: "Live Better", href: "/coaching" },
+                    { name: "Breathwork", href: "/breathwork" },
+                    { name: "Help", href: "/help" }
+                  ].map((item, index) => (
                     <motion.div
-                      key={item}
+                      key={item.name}
                       custom={index}
                       variants={menuItemVariants}
                       initial="hidden"
                       animate="visible"
                     >
                       <Link 
-                        href="/" 
+                        href={item.href}
                         className="font-baskerville font-semibold text-lg py-3 border-b border-secondary/30 block w-full"
                         onClick={toggleMenu}
                       >
-                        {item}
+                        {item.name}
                       </Link>
                     </motion.div>
                   ))}
                 </div>
                 
+                {/* Book an event button - positioned at bottom for easy thumb access on mobile */}
                 <motion.div 
                   className="p-6 border-t border-secondary/30"
                   variants={buttonVariants}
                   initial="hidden"
                   animate="visible"
                 >
-                  <InteractiveButton 
-                    variant="transparent" 
-                    text="Book an event" 
-                    className="btn w-full py-3"
-                    textClassName="hover:text-primary"
-                  />
+                  {/* Wrap button with Link instead of using href prop */}
+                  <Link href="/book-appointment">
+                    <InteractiveButton 
+                      variant="transparent" 
+                      text="Book an event" 
+                      className="btn w-full py-3 z-999"
+                      textClassName="hover:text-primary"
+                    />
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>

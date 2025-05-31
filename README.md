@@ -50,15 +50,18 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ![alt text](image-10.png)
 ![alt text](image-11.png)
 fixes to do-
-coaching page mai vo image grid
+
+
+<!-- coaching page mai vo image grid
+coaching page hero bg position for mobile -->
 landing page content
-footer mobile
-coaching page hero bg position for mobile
-breathwork page ka hero for mobile thoda sa fix
-add links to every cta and nav
+<!-- footer mobile -->
+<!-- breathwork page ka hero for mobile thoda sa fix -->
+<!-- add links to every cta and nav -->
 do help page
-fix the blocking system on deployed version
-add animations
-meet-conor.tsx mai list structure thik karo
-whatsetsmeapart mai h4 mai h5 daal rkha
-book-appointment mai calender ke neeche jo do shabd h unka contrast thik karna h
+<!-- fix the blocking system on deployed version -->
+<!-- add animations -->
+<!-- meet-conor.tsx mai list structure thik karo -->
+<!-- whatsetsmeapart mai h4 mai h5 daal rkha -->
+<!-- book-appointment mai calender ke neeche jo do shabd h unka contrast thik karna h -->
+mobile navbar cta fix i deployed

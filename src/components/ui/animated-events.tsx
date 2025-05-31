@@ -168,7 +168,7 @@ export const AnimatedEvents = ({
               <InteractiveButton
                 variant="filled"
                 text="Book a talk with me"
-                className="md:w-64 w-full z-99 py-3 sm:py-4 text-primary transition-all ease-in duration-100 bg-accent-1"
+                className="md:w-64 w-full z-99 py-3 sm:py-4 border-0 hover:border-0 text-primary transition-all ease-in duration-100 bg-accent-1"
                 ballClassName="lg:left-[7%] left-[15%]"
               />
             </div>

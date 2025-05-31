@@ -4,6 +4,7 @@ import BenefitCard from "@/components/breathwork/benefit-card";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
 import { testimonialData } from "@/lib/constants";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 const Page = () => {
@@ -105,39 +106,140 @@ const Page = () => {
     },
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: "100%" },
+    visible: {
+      y: 0,
+      transition: {
+        duration: 0.75,
+        ease: [0.33, 1, 0.68, 1],
+      },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0.5, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        delay: i * 0.1,
+      },
+    }),
+  };
+
+  const circleVariants = {
+    hidden: { scale: 0 },
+    visible: {
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.33, 1, 0.68, 1],
+        delay: 0.2,
+      },
+    },
+  };
+
+  // Add specific arrow animation variant with longer duration
+  const arrowVariants = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1.2,
+        ease: "easeOut",
+        delay: i * 0.3 + 0.2, // More delay between arrows
+      },
+    }),
+  };
+
   return (
     <>
       <section className="bg-primary border-b-4 border-b-secondary h-full lg:min-h-[calc(100vh-6rem)] w-screen bg-[url('/breathwork-bg.svg')] bg-no-repeat relative">
         <div className="lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
           <div className="w-full min-h-full lg:flex lg:flex-row flex flex-col justify-between items-center pt-10 pb-10 relative">
-            <div className="flex flex-col md:w-[50%] w-full min-h-full bg-transparent items-start lg:justify-between gap-8">
-              <h1 className="h1 font-fraunces font-bold text-foreground">
-                Transform your wellbeing with Breathwork
-              </h1>
-
-              <div className="flex flex-col items-start gap-6">
-                <div className="flex flex-col items-start gap-4">
-                  <div className="flex items-start justify-start gap-3 w-full md:w-[60%]">
-                    <p className="lg:text-xl md:text-lg text-[16px] font-nunito">
-                      Unlock inner peace, reduce stress, and reconnect with
-                      yourself through guided breathwork sessions.
-                    </p>
-                  </div>
-                </div>
+            <motion.div
+              className="flex flex-col md:w-[50%] w-full min-h-full bg-transparent items-start lg:justify-between gap-8"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="overflow-hidden">
+                <motion.h1
+                  className="h1 font-fraunces font-bold text-foreground"
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{
+                    duration: 0.75,
+                    ease: [0.33, 1, 0.68, 1],
+                    delay: 0.1,
+                  }}
+                >
+                  Transform your wellbeing with Breathwork
+                </motion.h1>
               </div>
 
-              <InteractiveButton
-                variant="filled"
-                text="Breathwork"
-                className="md:w-56 w-44 py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
-                ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-              />
-            </div>
+              <motion.div
+                className="flex flex-col items-start gap-6"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <div className="flex flex-col items-start gap-4">
+                  <div className="flex items-start justify-start gap-3 w-full md:w-[60%] overflow-hidden">
+                    <motion.p
+                      className="lg:text-xl md:text-lg text-[16px] font-nunito"
+                      variants={itemVariants}
+                    >
+                      Unlock inner peace, reduce stress, and reconnect with
+                      yourself through guided breathwork sessions.
+                    </motion.p>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
 
             {/* Right image section - aligned with buttons */}
-            <div className="relative lg:w-[35%] md:w-[70%] w-full flex justify-center lg:mt-0 mt-8 md:mr-[21px]">
+            <motion.div
+              className="relative lg:w-[35%] md:w-[70%] w-full flex justify-center lg:mt-0 mt-8 md:mr-[21px]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
               {/* Main portrait image - using aspect-square to ensure perfect circle */}
-              <div className="aspect-square w-full relative lg:shadow-right md:shadow-left shadow-right rounded-full z-20 border border-primary-light overflow-hidden">
+              <motion.div
+                className="aspect-square w-full relative lg:shadow-right md:shadow-left shadow-right rounded-full z-20 border border-primary-light overflow-hidden"
+                variants={imageVariants}
+                initial="hidden"
+                animate="visible"
+              >
                 <Image
                   src="/breathwork-hero-1.png"
                   alt="Portrait"
@@ -145,10 +247,16 @@ const Page = () => {
                   style={{ objectFit: "cover" }}
                   className="rounded-full"
                 />
-              </div>
+              </motion.div>
 
               {/* Presentation image - using aspect-square to ensure perfect circle */}
-              <div className="absolute aspect-square md:w-[65%] md:shadow-right lg:shadow-left md:-right-[25%] lg:-left-[40%] bottom-[5%] rounded-full overflow-hidden z-30 hidden md:block border border-primary-light">
+              <motion.div
+                className="absolute aspect-square md:w-[65%] md:shadow-right lg:shadow-left md:-right-[25%] lg:-left-[40%] bottom-[5%] rounded-full overflow-hidden z-30 hidden md:block border border-primary-light"
+                variants={imageVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.8 }}
+              >
                 <Image
                   src="/breathwork-hero-2.png"
                   alt="Presentation"
@@ -156,26 +264,38 @@ const Page = () => {
                   style={{ objectFit: "cover" }}
                   className="rounded-full"
                 />
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
 
         {/* What Is Breathwork section - within the same main section for scroll reveal */}
-        <div className="w-full bg-transparent py-16 lg:py-20 lg:px-[2vw] md:px-[2.5vw] px-[3.5vw] mt-10 ">
+        <motion.div
+          className="w-full bg-transparent py-16 lg:py-20 lg:px-[2vw] md:px-[2.5vw] px-[3.5vw] mt-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row lg:justify-between items-start gap-8 lg:gap-0">
               {/* Left column with heading and icon */}
               <div className="w-full lg:w-[45%] flex justify-between items-start lg:items-start">
-                <div className="lg:flex-1">
-                  <h2 className="h2 font-fraunces font-bold text-foreground mb-6 lg:mb-0">
+                <div className="lg:flex-1 overflow-hidden">
+                  <motion.h2
+                    className="h2 font-fraunces font-bold text-foreground mb-6 lg:mb-0"
+                    variants={itemVariants}
+                  >
                     What Is
                     <br />
                     Breathwork ?
-                  </h2>
+                  </motion.h2>
                 </div>
 
-                <div className="flex-shrink-0 w-[100px] h-[100px] lg:w-[160px] lg:h-[160px]">
+                <motion.div
+                  className="flex-shrink-0 w-[100px] h-[100px] lg:w-[160px] lg:h-[160px]"
+                  variants={imageVariants}
+                >
                   <Image
                     src="/face-icon.svg"
                     alt="Breathwork Face Icon"
@@ -183,51 +303,85 @@ const Page = () => {
                     height={160}
                     className="object-contain"
                   />
-                </div>
+                </motion.div>
               </div>
 
               {/* Border separation - only visible on lg screens and up */}
-              <div className="hidden lg:block w-px bg-secondary shadow-[-6px_-6px_0px_#003049]/70 self-stretch mx-8"></div>
+              <motion.div
+                className="hidden lg:block w-px bg-secondary shadow-[-6px_-6px_0px_#003049]/70 self-stretch mx-8"
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              ></motion.div>
 
               {/* Right column with description - aligned to top */}
-              <div className="w-full lg:w-[45%] mt-6 lg:mt-0">
-                <p className="lg:text-lg text-md font-nunito leading-relaxed font-semibold text-foreground">
+              <div className="w-full lg:w-[45%] mt-6 lg:mt-0 overflow-hidden">
+                <motion.p
+                  className="lg:text-lg text-md font-nunito leading-relaxed font-semibold text-foreground"
+                  variants={itemVariants}
+                >
                   Breathwork encompasses a variety of conscious breathing
                   techniques practiced to improve mental, emotional, and
                   physical wellbeing. By changing the rhythm, depth, and pace of
                   your breath, you can tap into your body&apos;s natural healing
                   abilities, reduce stress, increase energy, and gain deeper
                   self-awareness.
-                </p>
+                </motion.p>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <div className="relative w-full bg-transparent lg:px-[2vw] md:px-[2.5vw] px-[3.5vw] py-16 lg:py-24 overflow-hidden">
           {/* Background circular decoration */}
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-accent-2/70 -translate-x-1/2 translate-y-1/2 z-0"></div>
+          <motion.div
+            className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-accent-2/70 -translate-x-1/2 translate-y-1/2 z-0"
+            variants={circleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          ></motion.div>
 
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
             {/* Section title */}
-            <h2 className="h2 font-fraunces font-bold text-foreground text-center mb-12">
-              Benefits of breathwork
-            </h2>
+            <div className="overflow-hidden mb-12">
+              <motion.h2
+                className="h2 font-fraunces font-bold text-foreground text-center"
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.75, ease: [0.33, 1, 0.68, 1] }}
+              >
+                Benefits of breathwork
+              </motion.h2>
+            </div>
 
             {/* Cards grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-7xl mx-auto">
-              {benefitCards.map((card) => (
-                <BenefitCard
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-7xl mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+            >
+              {benefitCards.map((card, index) => (
+                <motion.div
                   key={card.id}
-                  id={card.id}
-                  title={card.title}
-                  description={card.description}
-                  icon={card.icon}
-                  shadowDirection={card.shadowDirection}
-                  expandedContent={card.expandedContent}
-                />
+                  custom={index}
+                  variants={cardVariants}
+                >
+                  <BenefitCard
+                    id={card.id}
+                    title={card.title}
+                    description={card.description}
+                    icon={card.icon}
+                    shadowDirection={card.shadowDirection}
+                    expandedContent={card.expandedContent}
+                  />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -235,28 +389,58 @@ const Page = () => {
       <section className="w-screen bg-primary-light py-16 lg:pt-24">
         <div className="mx-auto lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
           {/* Session Types Section */}
-          <div className="max-w-5xl mx-auto">
+          <motion.div
+            className="max-w-5xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             {/* Section Title */}
-            <h2 className="h2 font-fraunces font-bold text-foreground text-center mb-12">
-              Session Types
-            </h2>
+            <div className="overflow-hidden mb-12">
+              <motion.h2
+                className="h2 font-fraunces font-bold text-foreground text-center"
+                variants={itemVariants}
+              >
+                Session Types
+              </motion.h2>
+            </div>
 
             {/* Session Types Container */}
-            <div className="bg-[#F9EFC7] rounded-3xl p-6 md:p-12 border border-secondary/50 shadow-left">
+            <motion.div
+              className="bg-[#F9EFC7] rounded-3xl p-6 md:p-12 border border-secondary/50 shadow-left"
+              variants={imageVariants}
+            >
               {/* Cards Container */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-3 gap-10"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 {/* Card 1: 1 to 1 in person */}
-                <div className="bg-accent-2/90 text-secondary shadow-right p-6 rounded-2xl flex flex-col justify-between h-full relative overflow-hidden border-2 border-accent-1">
+                <motion.div
+                  className="bg-accent-2/90 text-secondary shadow-right p-6 rounded-2xl flex flex-col justify-between h-full relative overflow-hidden border-2 border-accent-1"
+                  variants={cardVariants}
+                  custom={0}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
                   <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center mb-6">
                     1 to 1 in person
                   </h3>
                   <p className="font-nunito text-secondary italic text-center">
                     Details about in person Breathwork sessions
                   </p>
-                </div>
+                </motion.div>
 
                 {/* Card 2: Group Session Online */}
-                <div className="bg-accent-1 text-primary p-6 rounded-2xl shadow-right flex flex-col justify-between h-full relative overflow-hidden border-2 border-primary">
+                <motion.div
+                  className="bg-accent-1 text-primary p-6 rounded-2xl shadow-right flex flex-col justify-between h-full relative overflow-hidden border-2 border-primary"
+                  variants={cardVariants}
+                  custom={1}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
                   <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center mb-6">
                     Group Session
                     <br />
@@ -265,44 +449,70 @@ const Page = () => {
                   <p className="font-nunito italic text-center">
                     Details about online group breathwork sessions
                   </p>
-                </div>
+                </motion.div>
 
                 {/* Card 3: 1 to 1 online */}
-                <div className="bg-primary-light text-secondary p-6 rounded-2xl shadow-right flex flex-col justify-between h-full relative overflow-hidden border-2 border-secondary">
+                <motion.div
+                  className="bg-primary-light text-secondary p-6 rounded-2xl shadow-right flex flex-col justify-between h-full relative overflow-hidden border-2 border-secondary"
+                  variants={cardVariants}
+                  custom={2}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
                   <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center mb-6">
                     1 to 1 online
                   </h3>
                   <p className="font-nunito text-secondary italic text-center">
                     Details about online breathwork sessions
                   </p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
 
               {/* Book a Call Button */}
-              <div className="mt-10 flex justify-center">
+              <motion.div
+                className="mt-10 flex justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+              >
                 <InteractiveButton
                   variant="transparent"
                   text="Book a free discovery call"
                   className="md:w-80 w-full py-4 hover:text-primary transition-all ease-in duration-100"
                   ballClassName="md:left-[8%] md:top-[35%] left-[7%] top-[35%]"
                 />
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Process Flow Diagram */}
-        <div className="mt-24 mb-8 md:max-w-2xl w-full mx-auto">
+        <motion.div
+          className="mt-24 mb-8 md:max-w-2xl w-full mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <div className="flex flex-col gap-6 lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
             {/* Step 1 */}
-            <div className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full">
+            <motion.div
+              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              variants={cardVariants}
+              custom={0}
+              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+            >
               <p className="font-nunito text-secondary text-lg">
                 Book a free discovery call with me
               </p>
-            </div>
+            </motion.div>
 
             {/* Arrow 1 */}
-            <div className="flex justify-center my-2">
+            <motion.div
+              className="flex justify-center my-2"
+              variants={arrowVariants}
+              custom={0}
+            >
               <Image
                 src="/icons/dotted-arrow.svg"
                 alt="Down arrow"
@@ -310,17 +520,26 @@ const Page = () => {
                 height={20}
                 className="rotate-90"
               />
-            </div>
+            </motion.div>
 
             {/* Step 2 */}
-            <div className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full">
+            <motion.div
+              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              variants={cardVariants}
+              custom={1}
+              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+            >
               <p className="font-nunito text-secondary text-lg">
                 Find out what&apos;s the best plan for you
               </p>
-            </div>
+            </motion.div>
 
             {/* Arrow 2 */}
-            <div className="flex justify-center my-2">
+            <motion.div
+              className="flex justify-center my-2"
+              variants={arrowVariants}
+              custom={1}
+            >
               <Image
                 src="/icons/dotted-arrow.svg"
                 alt="Down arrow"
@@ -328,17 +547,26 @@ const Page = () => {
                 height={20}
                 className="rotate-90"
               />
-            </div>
+            </motion.div>
 
             {/* Step 3 */}
-            <div className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full">
+            <motion.div
+              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              variants={cardVariants}
+              custom={2}
+              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+            >
               <p className="font-nunito text-secondary text-lg">
                 We&apos;ll develop an individualised plan tailored to you
               </p>
-            </div>
+            </motion.div>
 
             {/* Arrow 3 */}
-            <div className="flex justify-center my-2">
+            <motion.div
+              className="flex justify-center my-2"
+              variants={arrowVariants}
+              custom={2}
+            >
               <Image
                 src="/icons/dotted-arrow.svg"
                 alt="Down arrow"
@@ -346,20 +574,25 @@ const Page = () => {
                 height={20}
                 className="rotate-90 "
               />
-            </div>
+            </motion.div>
 
             {/* Step 4 */}
-            <div className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full">
+            <motion.div
+              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              variants={cardVariants}
+              custom={3}
+              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+            >
               <p className="font-nunito text-secondary text-lg">
                 Decide if you want to work with me
               </p>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
-       <div className="pt-24">
-         <Testimonials testimonialData={testimonialData} />
-       </div>
+        <div className="pt-24">
+          <Testimonials testimonialData={testimonialData} />
+        </div>
       </section>
     </>
   );

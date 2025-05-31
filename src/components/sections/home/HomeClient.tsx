@@ -1,21 +1,19 @@
 "use client";
 
-import { useRef } from "react";
-import { useScroll } from "motion/react";
 
 // Components
 import { Container } from "@/components/ui/Container";
 import { ContentWrapper } from "@/components/ui/ContentWrapper";
 
 // Section components
-import { Hero } from "@/components/sections/home/Hero";
-import { StatsMarquee } from "@/components/sections/home/StatsMarquee";
-import { WhyChooseMe } from "@/components/sections/home/WhyChooseMe";
-import { WhatSetsMeApart } from "@/components/sections/home/WhatSetsMeApart";
-import { Testimonials } from "@/components/sections/home/Testimonials";
-import { PastEvents } from "@/components/sections/home/PastEvents";
 import { CTA } from "@/components/sections/home/CTA";
+import { Hero } from "@/components/sections/home/Hero";
 import { MeetConor } from "@/components/sections/home/meet-conor";
+import { PastEvents } from "@/components/sections/home/PastEvents";
+import { StatsMarquee } from "@/components/sections/home/StatsMarquee";
+import { Testimonials } from "@/components/sections/home/Testimonials";
+import { WhatSetsMeApart } from "@/components/sections/home/WhatSetsMeApart";
+import { WhyChooseMe } from "@/components/sections/home/WhyChooseMe";
 
 interface HomeClientProps {
   hero1: string;
@@ -36,12 +34,7 @@ export function HomeClient({
   testimonialData,
   events
 }: HomeClientProps) {
-  const stickyscroll = useRef(null);
-  const { scrollYProgress: stickyscrollYProgress } = useScroll({
-    target: stickyscroll,
-    offset: ["start start", "end end"],
-  });
-
+ 
   return (
     <>
       {/* Hero Section */}
@@ -60,12 +53,12 @@ export function HomeClient({
         
         className="min-h-screen relative w-full mt-[7px] py-20 bg-[url('/wave-icon.svg')] bg-repeat bg-cover bg-right md:bg-cover md:bg-top"
       >
-        <Container ref={stickyscroll} className="relative">
+        <Container className="relative">
           {/* Meet Conor Harris Section */}
           <MeetConor />
 
           {/* Why Choose Me Section */}
-          <WhyChooseMe scrollYProgress={stickyscrollYProgress} />
+          <WhyChooseMe />
 
           {/* What Sets Me Apart Section */}
           <WhatSetsMeApart />

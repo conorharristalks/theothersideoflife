@@ -166,14 +166,14 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ onDateSelect, selecte
         </div>
       )}
       
-      <div className="mt-6 text-sm text-gray-500 flex gap-8">
+      <div className="mt-6 text-sm flex gap-8">
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 bg-red-100 rounded-full"></div>
-          <span>Already Booked</span>
+          <div className="w-4 h-4 bg-red-500 rounded-full"></div>
+          <span className='text-secondary/90'>Already Booked</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-          <span>Selected Date</span>
+          <span className='text-secondary/90'>Selected Date</span>
         </div>
       </div>
     </div>

@@ -30,15 +30,6 @@ export function Testimonials({ testimonialData }: TestimonialsProps) {
           className="w-full max-w-7xl"
         />
       </div>
-
-      <div className="text-center mt-10 md:mt-16">
-        <InteractiveButton
-          variant="transparent"
-          text="Read More Testimonials"
-          className="md:w-72 w-full py-4 hover:text-primary transition-all ease-in duration-100"
-          ballClassName="lg:left-[7%] left-[15%]"
-        />
-      </div>
     </section>
   );
 }

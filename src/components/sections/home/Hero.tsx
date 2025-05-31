@@ -54,14 +54,16 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
               <InteractiveButton
                 variant="filled"
                 text="Breathwork"
-                className="md:w-56 w-44 py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
+                className="md:w-56 w-44 py-4 border-0 hover:border-0 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+                href="/breathwork"
               />
               <InteractiveButton
                 variant="transparent"
                 text="Book a talk"
                 className="md:w-56 w-44 py-4 hover:text-primary transition-all ease-in duration-100"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+                href="/book-appointment"
               />
             </div>
           </div>
