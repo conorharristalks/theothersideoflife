@@ -30,12 +30,15 @@ export async function POST(request: NextRequest) {
 
     await dbConnect();
 
+    // Fix: Parse the date as UTC and use UTC methods to standardize
     const blockDate = new Date(date);
+    
+    // This is the key fix - use UTC methods to get year, month, day
     const standardizedDate = new Date(
       Date.UTC(
-        blockDate.getFullYear(),
-        blockDate.getMonth(),
-        blockDate.getDate(),
+        blockDate.getUTCFullYear(),
+        blockDate.getUTCMonth(),
+        blockDate.getUTCDate(),
         12, 0, 0
       )
     );

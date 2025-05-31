@@ -4,11 +4,12 @@ import { TIME_SETTINGS } from './constants';
  * Standardizes a date to noon UTC to avoid timezone issues
  */
 export function standardizeDate(date: Date): Date {
+  // Use UTC methods to ensure consistent date handling regardless of timezone
   return new Date(
     Date.UTC(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
+      date.getUTCFullYear(),
+      date.getUTCMonth(),
+      date.getUTCDate(),
       TIME_SETTINGS.STANDARDIZED_HOUR,
       0,
       0

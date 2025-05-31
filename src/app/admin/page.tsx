@@ -57,6 +57,15 @@ export default function AdminPage() {
 
     setIsLoading(true);
     try {
+      // Fix: Make sure we're sending the date in a timezone-safe format
+      // Add time component and ensure we're using UTC
+      const utcDate = new Date(Date.UTC(
+        selectedDate.getFullYear(),
+        selectedDate.getMonth(),
+        selectedDate.getDate(),
+        12, 0, 0
+      ));
+      
       const response = await fetch('/api/admin/blocked-dates', {
         method: 'POST',
         headers: {
@@ -64,7 +73,7 @@ export default function AdminPage() {
           'Authorization': `Bearer ${password}`
         },
         body: JSON.stringify({
-          date: selectedDate.toISOString()
+          date: utcDate.toISOString()
         })
       });
 
