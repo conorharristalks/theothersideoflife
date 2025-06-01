@@ -47,19 +47,6 @@ const Navbar = () => {
     })
   };
 
-  const buttonVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { 
-        delay: 0.5,
-        duration: 0.5,
-        ease: "easeOut"
-      } 
-    }
-  };
-
   return (
     <nav className="w-full px-[2vw] flex justify-between items-center border-b-1 border-secondary h-24 bg-primary">
       <div className="-ml-[1.4vw] mt-4 flex items-center">
