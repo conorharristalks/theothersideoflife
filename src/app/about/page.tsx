@@ -12,8 +12,8 @@ const Page = () => {
   // Image sources
   const images = [
     "/conor-selfie.jpeg",
-    "/conor-public-speaking-1.png",
-    "/conor-football.png",
+    "/conor-selfie-2.jpeg",
+    "/conor-meditate.jpeg",
   ];
 
   // Auto-change images on a timer
@@ -165,13 +165,13 @@ const Page = () => {
             >
               {/* Main portrait image - using aspect-square to ensure perfect circle */}
               <motion.div
-                className="aspect-square w-full relative lg:shadow-right md:shadow-left shadow-right rounded-full z-20 border border-primary-light overflow-hidden"
+                className="aspect-square w-full relative lg:shadow-right md:shadow-left shadow-right rounded-full z-20 border border-accent-1 overflow-hidden"
                 variants={imageVariants}
                 initial="hidden"
                 animate="visible"
               >
                 <Image
-                  src="/conor-selfie.jpeg"
+                  src="/conor-jersey.jpeg"
                   alt="Portrait"
                   fill
                   style={{ objectFit: "cover" }}
@@ -188,7 +188,7 @@ const Page = () => {
                 transition={{ delay: 0.4 }}
               >
                 <Image
-                  src="/conor-football.png"
+                  src="/conor-breathwork-2.jpeg"
                   alt="Presentation"
                   fill
                   style={{ objectFit: "cover" }}

@@ -28,32 +28,31 @@ export default async function Home() {
   ];
 
   // Testimonial data for the infinite moving cards
- 
 
   // Past events data
   const Events = [
     {
       quote:
-        "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-      name: "Sarah Chen",
+        "Spoke to junior and senior cycle students across two schools in Tipperary. The schools’ link with local youth services, offering on-site social care support, was inspiring. A one-on-one chat with a student after the talk led to a powerful moment of self-awareness around “the missing piece”—a concept many facing addiction or emotional struggle can relate to. Grateful for the trust and impact. ❤️",
+      name: "SCOIL RUAIN TIPPERARY",
       src: "/event-3.jpg",
     },
     {
       quote:
-        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
-      name: "Michael Rodriguez",
+        "Invited to speak to the entire school for Wellbeing Day. After the talk, spent time with 6th years discussing life and mental health. One student said, “Sometimes you just need a hug or someone to understand”—a reminder that seeking support is human, and we all need it at times. ❤️",
+      name: "KNOCKBEG COLLEGE",
       src: "/event-2.jpg",
     },
     {
       quote:
-        "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
-      name: "Emily Watson",
-      src: "/event-1.jpg",
+        "Wrapped up the week speaking to TY and 5th year students in Bray. After the talk, a student opened up about a friend struggling with grief and asked how she could help. While I avoid giving direct advice, we spoke about the power of simply showing up. Sometimes, creating a safe space is enough—people open up when they feel supported. Healing begins with connection. 🙌🏻❤️",
+      name: "ST GERARDS BRAY",
+      src: "/event-3.jpeg",
     },
   ];
 
   return (
-    <HomeClient 
+    <HomeClient
       hero1={hero1}
       hero2={hero2}
       base64={base64}

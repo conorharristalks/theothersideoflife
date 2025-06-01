@@ -28,7 +28,7 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
                     <div className="rounded-full w-2.5 h-2.5 bg-accent-2 animate-pulse"></div>
                   </div>
                   <p className="lg:text-lg md:text-[16px] text-sm font-nunito font-semibold">
-                    Offering Individual, Group & Online Breathwork Sessions.
+                    Offering Personalised Coaching and Breathwork Sessions.
                   </p>
                 </div>
               </div>

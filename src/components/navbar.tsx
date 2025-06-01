@@ -63,7 +63,7 @@ const Navbar = () => {
         <div className="flex items-center gap-10 justify-start pr-10 border-r-2 border-foreground h-12 ">
             <Link href="/" className="font-baskerville font-semibold">Home</Link>
             <Link href="/about" className="font-baskerville font-semibold">About</Link>
-            <Link href="/coaching" className="font-baskerville font-semibold">Live Better</Link>
+            <Link href="/coaching" className="font-baskerville font-semibold">Coaching</Link>
             <Link href="/breathwork" className="font-baskerville font-semibold">Breathwork</Link>
             <Link href="/help" className="font-baskerville font-semibold">Help</Link>
         </div>
@@ -149,7 +149,7 @@ const Navbar = () => {
                   {[
                     { name: "Home", href: "/" },
                     { name: "About", href: "/about" },
-                    { name: "Live Better", href: "/coaching" },
+                    { name: "Coaching", href: "/coaching" },
                     { name: "Breathwork", href: "/breathwork" },
                     { name: "Help", href: "/help" }
                   ].map((item, index) => (

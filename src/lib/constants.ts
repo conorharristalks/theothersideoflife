@@ -46,37 +46,30 @@ export const DEFAULTS = {
 export const testimonialData = [
   {
     quote:
-      "Conor's breathwork sessions have completely transformed how I handle stress. I've gained tools I use every day to center myself and stay calm.",
-    name: "Sarah L.",
-    title: "Marketing Executive",
+      "Conor’s talk was powerful, heartfelt, and deeply inspiring. He connected with students on a personal level, creating a safe space for open conversation and reflection. His story of resilience and recovery left a lasting impact—highly recommended for senior cycle students. Students were fully engaged, asked meaningful questions, and some even stayed back to speak with him one-on-one. Conor speaks from the heart, making his message truly unforgettable.",
+    name: "Jessica Lynch",
+    title: "RE Teacher - Holy Family Secondary School Newbridge", 
     stars: 5,
   },
   {
     quote:
-      "Having Conor speak at our school was eye-opening for our students. His personal story and honesty about addiction created a lasting impact.",
-    name: "Michael T.",
-    title: "School Principal",
+      "Conor has delivered over 18 talks across Kilkenny GAA clubs over the past two years. He’s always punctual, respectful, and incredibly engaging. His open, relatable story resonates strongly—especially with young players—and the feedback has been overwhelmingly positive. Conor’s continued support and willingness to connect after talks make a real difference. We look forward to working with him further on this important topic.",
+    name: "Carmel Kenny",
+    title: "Chair Kilkenny GAA Health & Wellbeing Committee",
     stars: 5,
   },
   {
     quote:
-      "The group breathwork session Conor led for our team was profound. It brought us closer together and improved our overall workplace wellbeing.",
-    name: "Jessica M.",
-    title: "Team Lead, Tech Company",
+      "Conor’s talk was powerful, heartfelt, and deeply inspiring. He connected with students on a personal level, creating a safe space for open conversation and reflection. His story of resilience and recovery left a lasting impact—highly recommended for senior cycle students. Students were fully engaged, asked meaningful questions, and some even stayed back to speak with him one-on-one. Conor speaks from the heart, making his message truly unforgettable.",
+    name: "Jessica Lynch",
+    title: "RE Teacher - Holy Family Secondary School Newbridge", 
     stars: 5,
   },
-  {
+   {
     quote:
-      "Working with Conor has given me practical tools to manage my anxiety. His approach is both gentle and effective.",
-    name: "David R.",
-    title: "Software Engineer",
-    stars: 5,
-  },
-  {
-    quote:
-      "As someone who struggled with addiction, Conor's story resonated deeply with me. His guidance has been instrumental in my recovery journey.",
-    name: "Emma P.",
-    title: "Healthcare Professional",
+      "Conor has delivered over 18 talks across Kilkenny GAA clubs over the past two years. He’s always punctual, respectful, and incredibly engaging. His open, relatable story resonates strongly—especially with young players—and the feedback has been overwhelmingly positive. Conor’s continued support and willingness to connect after talks make a real difference. We look forward to working with him further on this important topic.",
+    name: "Carmel Kenny",
+    title: "Chair Kilkenny GAA Health & Wellbeing Committee",
     stars: 5,
   },
 ];

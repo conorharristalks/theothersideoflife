@@ -241,7 +241,7 @@ const Page = () => {
                 animate="visible"
               >
                 <Image
-                  src="/breathwork-hero-1.png"
+                  src="/conor-breathwork-1.jpeg"
                   alt="Portrait"
                   fill
                   style={{ objectFit: "cover" }}
@@ -251,14 +251,14 @@ const Page = () => {
 
               {/* Presentation image - using aspect-square to ensure perfect circle */}
               <motion.div
-                className="absolute aspect-square md:w-[65%] md:shadow-right lg:shadow-left md:-right-[25%] lg:-left-[40%] bottom-[5%] rounded-full overflow-hidden z-30 hidden md:block border border-primary-light"
+                className="absolute aspect-square md:w-[65%] md:shadow-right lg:shadow-left md:-right-[25%] lg:-left-[50%] bottom-[5%] rounded-full overflow-hidden z-10 hidden md:block border border-primary-light"
                 variants={imageVariants}
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.8 }}
               >
                 <Image
-                  src="/breathwork-hero-2.png"
+                  src="/conor-meditate.jpeg"
                   alt="Presentation"
                   fill
                   style={{ objectFit: "cover" }}

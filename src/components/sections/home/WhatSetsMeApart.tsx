@@ -55,7 +55,7 @@ export function WhatSetsMeApart() {
         transition={{ duration: 0.8 }}
       >
         <Image
-          src="/conor-selfie.jpeg"
+          src="/event-1.jpg"
           alt="Services"
           fill
           style={{ objectFit: "cover" }}
@@ -134,14 +134,14 @@ export function WhatSetsMeApart() {
             text="Explore Coaching"
             className="md:w-64 w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 hover:border-0"
             ballClassName="lg:left-[7%] left-[15%] top-[35%] bg-accent-2"
-            href="/breathwork"
+            href="/coaching"
           />
           <InteractiveButton
             variant="transparent"
             text="Explore Breathwork"
             className="md:w-70 w-full py-4 hover:text-primary transition-all ease-in duration-100"
             ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%]"
-            href="/coaching"
+            href="/breathwork"
           />
         </motion.div>
       </motion.div>

@@ -23,12 +23,44 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [start, setStart] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Check if the viewport is mobile-sized
+  const checkIfMobile = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
 
   useEffect(() => {
+    // Initial check on mount
+    checkIfMobile();
+    
+    // Add window resize listener
+    window.addEventListener("resize", checkIfMobile);
+    
+    // Initialize animations
     addAnimation();
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
   }, []);
-  
-  const [start, setStart] = useState(false);
+
+  // Touch handlers for mobile pause
+  const handleTouchStart = () => {
+    setIsPaused(true);
+  };
+
+  const handleTouchEnd = () => {
+    setIsPaused(false);
+  };
+
+  // Re-apply speed when mobile state changes
+  useEffect(() => {
+    getSpeed();
+  }, [isMobile]);
   
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
@@ -65,12 +97,25 @@ export const InfiniteMovingCards = ({
   
   const getSpeed = () => {
     if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
+      // Faster speed on mobile, slower on desktop
+      if (isMobile) {
+        // Mobile speeds
+        if (speed === "fast") {
+          containerRef.current.style.setProperty("--animation-duration", "15s");
+        } else if (speed === "normal") {
+          containerRef.current.style.setProperty("--animation-duration", "25s");
+        } else {
+          containerRef.current.style.setProperty("--animation-duration", "40s");
+        }
       } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
+        // Desktop speeds
+        if (speed === "fast") {
+          containerRef.current.style.setProperty("--animation-duration", "25s");
+        } else if (speed === "normal") {
+          containerRef.current.style.setProperty("--animation-duration", "40s");
+        } else {
+          containerRef.current.style.setProperty("--animation-duration", "80s");
+        }
       }
     }
   };
@@ -89,7 +134,10 @@ export const InfiniteMovingCards = ({
           "flex w-max min-w-full shrink-0 flex-nowrap gap-8 py-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
+          isPaused && "[animation-play-state:paused]"
         )}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         {items.map((item, idx) => (
           <li

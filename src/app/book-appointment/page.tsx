@@ -353,7 +353,7 @@ const Page: React.FC = () => {
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Only one school can book per day</li>
                 <li>
-                  • You can request between 1-5 wellbeing talks for your school
+                  • You can request between 1-3 wellbeing talks for your school
                 </li>
                 <li>
                   • After submitting, you&apos;ll receive a confirmation email with
