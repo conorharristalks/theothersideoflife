@@ -41,7 +41,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/live-better"
+                  href="/coaching"
                   className="hover:text-[#B3DBEE] transition-colors text-primary-light"
                 >
                   • Live Better

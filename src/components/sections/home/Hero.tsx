@@ -21,7 +21,7 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
             <div className="flex flex-col items-start gap-6">
               <div className="flex flex-col items-start gap-4">
                 <p className="font-fraunces lg:text-2xl md:text-xl text-[16px] font-semibold text-foreground">
-                  Breathwork Coaching: Transform your wellbeing
+                  Integrative Wellness Coach: Transform your wellbeing
                 </p>
                 <div className="flex items-center justify-start gap-3">
                   <div className="flex items-center justify-center rounded-full w-6 h-6 bg-accent-1">
@@ -53,7 +53,7 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
             <div className="flex flex-wrap items-center w-full lg:gap-12 md:gap-8 gap-6">
               <InteractiveButton
                 variant="filled"
-                text="Breathwork"
+                text="Coaching"
                 className="md:w-56 w-44 py-4 border-0 hover:border-0 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
                 href="/breathwork"

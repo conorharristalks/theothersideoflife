@@ -38,7 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ![alt text](image.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
-<video src="images/1_99/fetch.mp4" title="Video that shows using the fetch tool to fetch the model context protocol documentation." autoplay loop controls muted></video>
+
 ![alt text](image-3.png)
 ![alt text](image-4.png)
 ![alt text](image-5.png)
@@ -54,14 +54,14 @@ fixes to do-
 
 <!-- coaching page mai vo image grid
 coaching page hero bg position for mobile -->
-landing page content
+<!-- landing page content -->
 <!-- footer mobile -->
 <!-- breathwork page ka hero for mobile thoda sa fix -->
 <!-- add links to every cta and nav -->
-do help page
+<!-- do help page -->
 <!-- fix the blocking system on deployed version -->
 <!-- add animations -->
 <!-- meet-conor.tsx mai list structure thik karo -->
 <!-- whatsetsmeapart mai h4 mai h5 daal rkha -->
 <!-- book-appointment mai calender ke neeche jo do shabd h unka contrast thik karna h -->
-mobile navbar cta fix i deployed
+<!-- mobile navbar cta fix i deployed -->

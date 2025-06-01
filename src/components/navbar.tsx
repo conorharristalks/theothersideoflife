@@ -182,25 +182,25 @@ const Navbar = () => {
                       </Link>
                     </motion.div>
                   ))}
+                  
+                  {/* Book an event button - moved up to be with the navigation links */}
+                  <motion.div 
+                    className="mt-4"
+                    custom={5} // Position it after the 5 navigation items
+                    variants={menuItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    <Link href="/book-appointment" onClick={toggleMenu}>
+                      <InteractiveButton 
+                        variant="filled" 
+                        text="Book an event" 
+                        className="btn w-full py-3 bg-accent-1 text-primary hover:text-secondary"
+                        ballClassName="bg-accent-2"
+                      />
+                    </Link>
+                  </motion.div>
                 </div>
-                
-                {/* Book an event button - positioned at bottom for easy thumb access on mobile */}
-                <motion.div 
-                  className="p-6 border-t border-secondary/30"
-                  variants={buttonVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {/* Wrap button with Link instead of using href prop */}
-                  <Link href="/book-appointment">
-                    <InteractiveButton 
-                      variant="transparent" 
-                      text="Book an event" 
-                      className="btn w-full py-3 z-999"
-                      textClassName="hover:text-primary"
-                    />
-                  </Link>
-                </motion.div>
               </div>
             </motion.div>
           </motion.div>

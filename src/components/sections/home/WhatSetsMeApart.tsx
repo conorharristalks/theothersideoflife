@@ -87,8 +87,8 @@ export function WhatSetsMeApart() {
           >
             <h5 className="h5 mb-3">Real Experience</h5>
             <p className="body-text font-semibold">
-              I&apos;ve overcome addiction and mental health issues myself. I
-              have the ability to connect with people on a deeper level.
+              Having overcome addiction and mental health issues, I have the
+              ability to connect with people on a deeper level.
             </p>
           </motion.div>
 
@@ -106,11 +106,10 @@ export function WhatSetsMeApart() {
             variants={gridItemVariants}
             className="bg-primary-light p-6 rounded-xl border border-secondary shadow-md"
           >
-            <h5 className="h5 mb-3">Breathwork Expertise</h5>
+            <h5 className="h5 mb-3">Qualifications</h5>
             <p className="body-text font-semibold">
-              As a certified coach with over 300 hours of training, I&apos;m
-              here to guide you through your personal journey - whatever stage
-              you&apos;re at - via 1:1, group, and online sessions.
+              Certified Breathwork Coach with over 300 hours of training,
+              alongside a level 7 in addiction studies.
             </p>
           </motion.div>
 
@@ -121,8 +120,7 @@ export function WhatSetsMeApart() {
             <h5 className="h5 mb-3">My Mission</h5>
             <p className="body-text font-semibold">
               Supporting you towards greater wellbeing, whether you&apos;re
-              seeking healing, direction, stress management, or support with
-              addiction.
+              seeking stress management, healing, or direction.
             </p>
           </motion.div>
         </motion.div>
@@ -132,18 +130,18 @@ export function WhatSetsMeApart() {
           className="flex lg:gap-10 gap-4 flex-wrap"
         >
           <InteractiveButton
-            variant="transparent"
-            text="View All Services"
-            className="md:w-64 w-full py-4 hover:text-primary transition-all ease-in duration-100"
-            ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%]"
-            href="/coaching"
-          />
-          <InteractiveButton
             variant="filled"
-            text="Explore Breathwork"
+            text="Explore Coaching"
             className="md:w-64 w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 hover:border-0"
             ballClassName="lg:left-[7%] left-[15%] top-[35%] bg-accent-2"
             href="/breathwork"
+          />
+          <InteractiveButton
+            variant="transparent"
+            text="Explore Breathwork"
+            className="md:w-70 w-full py-4 hover:text-primary transition-all ease-in duration-100"
+            ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%]"
+            href="/coaching"
           />
         </motion.div>
       </motion.div>

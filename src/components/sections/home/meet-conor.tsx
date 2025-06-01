@@ -110,10 +110,8 @@ export function MeetConor() {
                     animate={isInView ? "enter" : "hidden"}
                     className="body-text font-semibold"
                   >
-                    Here at &quot;The Other Side of Life&quot; my main aim is
-                    speaking in schools to help young people learn the realities
-                    of drug misuse, and promoting a balanced lifestyle without
-                    them.
+                    Inspiring young people in schools to live a balanced
+                    lifestyle without using drugs.
                   </motion.div>
                 </div>
               </li>
@@ -128,9 +126,21 @@ export function MeetConor() {
                     animate={isInView ? "enter" : "hidden"}
                     className="body-text font-semibold"
                   >
-                    I also guide individuals through transformative breathwork
-                    sessions to explore parts of themselves they never knew
-                    existed, and guide them to rediscover themselves.
+                    Supporting you with your overall wellbeing to explore parts
+                    of yourself and create real change.
+                  </motion.div>
+                </div>
+              </li>
+              <li>
+                <div className="overflow-y-hidden overflow-x-visible">
+                  <motion.div
+                    variants={itemVariants}
+                    custom={4}
+                    initial="hidden"
+                    animate={isInView ? "enter" : "hidden"}
+                    className="body-text font-semibold"
+                  >
+                    Guiding you through 1 to 1 and group breathwork sessions
                   </motion.div>
                 </div>
               </li>
