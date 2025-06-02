@@ -10,7 +10,7 @@ import { testimonialData } from "@/lib/constants";
 
 export default async function Home() {
   // Image processing - this stays in server component
-  const hero1 = "/conor-selfie.jpeg";
+  const hero1 = "/conor-selfie-3.jpeg";
   const hero2 = "/conor-public-speaking-1.png";
 
   const buffer = await fs.readFile(`./public${hero1}`);
@@ -35,13 +35,13 @@ export default async function Home() {
       quote:
         "Spoke to junior and senior cycle students across two schools in Tipperary. The schools’ link with local youth services, offering on-site social care support, was inspiring. A one-on-one chat with a student after the talk led to a powerful moment of self-awareness around “the missing piece”—a concept many facing addiction or emotional struggle can relate to. Grateful for the trust and impact. ❤️",
       name: "SCOIL RUAIN TIPPERARY",
-      src: "/event-3.jpg",
+      src: "/event-1.jpeg",
     },
     {
       quote:
         "Invited to speak to the entire school for Wellbeing Day. After the talk, spent time with 6th years discussing life and mental health. One student said, “Sometimes you just need a hug or someone to understand”—a reminder that seeking support is human, and we all need it at times. ❤️",
       name: "KNOCKBEG COLLEGE",
-      src: "/event-2.jpg",
+      src: "/event-2.jpeg",
     },
     {
       quote:

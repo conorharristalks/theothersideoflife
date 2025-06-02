@@ -142,7 +142,7 @@ const Page = () => {
               {/* Main portrait image - using aspect-square to ensure perfect circle */}
               <div className="aspect-square w-full relative lg:shadow-right md:shadow-left shadow-right rounded-full z-20 border border-primary-light overflow-hidden">
                 <Image
-                  src="/conor-meditate-2.jpeg"
+                  src="/breathwork-hero-1.png"
                   alt="Portrait"
                   fill
                   style={{ objectFit: "cover" }}

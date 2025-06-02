@@ -80,7 +80,7 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
                 priority
                 placeholder="blur"
                 blurDataURL={base64}
-                className="rounded-3xl lg:rounded-bl-none md:rounded-br-none lg:rounded-br-3xl"
+                className="rounded-3xl lg:rounded-bl-none md:rounded-br-none lg:rounded-br-3xl border border-secondary"
               />
             </div>
 
@@ -93,7 +93,7 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
                 style={{ objectFit: "cover" }}
                 placeholder="blur"
                 blurDataURL={base64Hero2}
-                className="rounded-2xl lg:rounded-br-none lg:rounded-tr-none md:rounded-tl-none md:rounded-bl-none lg:rounded-tl-2xl lg:rounded-bl-2xl"
+                className="rounded-2xl lg:rounded-br-none lg:rounded-tr-none md:rounded-tl-none md:rounded-bl-none lg:rounded-tl-2xl lg:rounded-bl-2xl border border-secondary"
               />
             </div>
           </div>

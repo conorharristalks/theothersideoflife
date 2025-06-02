@@ -50,7 +50,7 @@ export const AnimatedEvents = ({
     }
     return 0; // Use a consistent initial value
   };
-  
+
   return (
     <div className="w-full font-nunito antialiased">
       <div className="relative grid grid-cols-1 gap-10 sm:gap-16 md:gap-20 lg:gap-36 lg:grid-cols-2">
@@ -71,9 +71,7 @@ export const AnimatedEvents = ({
                     scale: isActive(index) ? 1 : 0.95,
                     z: isActive(index) ? 0 : -100,
                     rotate: isActive(index) ? 0 : randomRotateY(),
-                    zIndex: isActive(index)
-                      ? 40
-                      : events.length + 2 - index,
+                    zIndex: isActive(index) ? 40 : events.length + 2 - index,
                     y: isActive(index) ? [0, -30, 0] : 0,
                   }}
                   exit={{
@@ -89,6 +87,7 @@ export const AnimatedEvents = ({
                   className="absolute inset-0 origin-bottom rounded-2xl border-2 border-secondary"
                 >
                   <img
+                    loading="lazy"
                     src={event.src}
                     alt={event.name}
                     width={500}
@@ -122,7 +121,9 @@ export const AnimatedEvents = ({
             }}
             className="mb-6 sm:mb-8"
           >
-            <h3 className="h3 mb-3 sm:mb-4 font-fraunces">{events[active].name}</h3>
+            <h3 className="h3 mb-3 sm:mb-4 font-fraunces">
+              {events[active].name}
+            </h3>
             <motion.p className="body-text font-semibold">
               {events[active].quote.split(" ").map((word, index) => (
                 <motion.span
