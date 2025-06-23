@@ -122,7 +122,7 @@ const Page = () => {
             <section>
               <h2 className="h3 font-fraunces font-bold text-secondary mb-4">Data Sharing</h2>
               <ul className="list-disc pl-6 font-nunito text-secondary space-y-3">
-                <li><strong>Discovery Call Bookings:</strong> Your information provided through Calendly is subject to Calendly's privacy practices. We do not share, sell, or rent any information accessed from Calendly to third parties beyond what is necessary to facilitate the discovery call.</li>
+                <li><strong>Discovery Call Bookings:</strong> Your information provided through Calendly is subject to Calendly&apos;s privacy practices. We do not share, sell, or rent any information accessed from Calendly to third parties beyond what is necessary to facilitate the discovery call.</li>
                 <li><strong>Talk Bookings:</strong> We do not share, sell, or rent your personal information collected through our booking system to any third parties. Your information is kept confidential and used solely for the purpose of event booking as outlined above.</li>
               </ul>
               <p className="font-nunito text-secondary leading-relaxed mt-4">

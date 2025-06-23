@@ -252,8 +252,8 @@ const Page: React.FC = () => {
             As a recovered drug user, I share my powerful story and insights through
             engaging talks with <strong>schools, GAA clubs, youth centres, and
             corporations</strong>. Featured on RTE and Virgin Media, I aim to inspire, educate,
-            and bring a fresh perspective to your audience. Whether you're looking to
-            empower young minds or create positive change in your organisation, I'd
+            and bring a fresh perspective to your audience. Whether you&apos;re looking to
+            empower young minds or create positive change in your organisation, I&apos;d
             love to be part of it.
           </p>
         </div>

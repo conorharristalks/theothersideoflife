@@ -75,7 +75,7 @@ const Page = () => {
               <div>
                 <h3 className="text-xl font-fraunces font-semibold text-secondary mb-3">Prohibited Actions</h3>
                 <p className="font-nunito text-secondary leading-relaxed">
-                  You agree not to engage in any of the following prohibited activities: (a) using the website for any unlawful purpose; (b) attempting to interfere with the website's operation or security; (c) accessing the website using automated means such as bots; (d) using the website in a way that disrupts its normal functioning.
+                  You agree not to engage in any of the following prohibited activities: (a) using the website for any unlawful purpose; (b) attempting to interfere with the website&apos;s operation or security; (c) accessing the website using automated means such as bots; (d) using the website in a way that disrupts its normal functioning.
                 </p>
               </div>
             </section>
