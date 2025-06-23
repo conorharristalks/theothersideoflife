@@ -44,7 +44,7 @@ const Footer = () => {
                   href="/coaching"
                   className="hover:text-[#B3DBEE] transition-colors text-primary-light"
                 >
-                  • Live Better
+                  • Coaching
                 </Link>
               </li>
               <li>
