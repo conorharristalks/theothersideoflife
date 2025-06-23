@@ -128,6 +128,7 @@ const Page = () => {
                   text="Book a free discovery call"
                   className="md:w-[50%] w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
                   ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+                  href="https://calendly.com/conorharris-talks/30min"
                 />
               </motion.div>
             </motion.div>
@@ -142,10 +143,10 @@ const Page = () => {
               {/* Main portrait image - using aspect-square to ensure perfect circle */}
               <div className="aspect-square w-full relative lg:shadow-right md:shadow-left shadow-right rounded-full z-20 border border-primary-light overflow-hidden">
                 <Image
-                  src="/breathwork-hero-1.png"
+                  src="/conor-selfie-4.jpeg"
                   alt="Portrait"
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", transform: "scaleX(-1)" }}
                   className="rounded-full"
                 />
               </div>
@@ -266,7 +267,7 @@ const Page = () => {
                   text="Book a free discovery call"
                   className="w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
                   ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-                  href="/book-appointment"
+                  href="https://calendly.com/conorharris-talks/30min"
                 />
 
                 </motion.div>
@@ -681,6 +682,7 @@ const Page = () => {
                 text="Book a discovery call"
                 className="md:w-[60%] w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+                href="https://calendly.com/conorharris-talks/30min"
               />
             </motion.div>
           </div>

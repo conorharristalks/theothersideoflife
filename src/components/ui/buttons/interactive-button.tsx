@@ -41,9 +41,9 @@ const InteractiveButton = React.forwardRef<
   // Define styling based on variant
   const isTransparent = variant === "transparent";
   
-  // Common styles and content for both button and link
-  const commonClasses = cn(
-    "group relative w-48 cursor-pointer overflow-hidden rounded-xl border-2 border-accent-1 text-center button-blue-shadow transition-all active:scale-97",
+  // Common classes for the actual interactive element
+  const interactiveClasses = cn(
+    "group relative w-48 cursor-pointer overflow-hidden rounded-xl border-2 border-accent-1 text-center button-blue-shadow transition-all active:scale-97 block",
     isTransparent ? "bg-transparent button-shadow hover:border-2" : "hover:border-2",
     className,
   );
@@ -79,12 +79,12 @@ const InteractiveButton = React.forwardRef<
     </>
   );
   
-  // Render as Link if href is provided, otherwise as button
+  // Render as Link if href is provided
   if (href) {
     return (
       <Link 
         href={href} 
-        className={commonClasses}
+        className={interactiveClasses}
         {...props as AnchorProps}
       >
         {content}
@@ -96,7 +96,7 @@ const InteractiveButton = React.forwardRef<
   return (
     <button
       ref={ref as React.Ref<HTMLButtonElement>}
-      className={commonClasses}
+      className={interactiveClasses}
       {...props as ButtonProps}
     >
       {content}

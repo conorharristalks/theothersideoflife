@@ -47,6 +47,14 @@ const Footer = () => {
                   • Live Better
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/help"
+                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
+                >
+                  • Help
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -58,20 +66,15 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/contact"
+                  href="mailto:Conorharris.talks@gmail.com"
                   className="hover:text-[#B3DBEE] transition-colors text-primary-light"
                 >
                   • Contact me
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/help"
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
-                >
-                  • Help
-                </Link>
-              </li>
+
+             
+
               <li>
                 <Link
                   href="/book-appointment"
@@ -79,6 +82,15 @@ const Footer = () => {
                 >
                   • Book an Event
                 </Link>
+              </li>
+
+               <li>
+                <p
+                 
+                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
+                >
+                  • conorharris.talks@gmail.com
+                </p>
               </li>
             </ul>
           </div>
@@ -99,7 +111,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/terms"
+                  href="/terms-and-conditions"
                   className="hover:text-[#B3DBEE] transition-colors text-primary-light "
                 >
                   • Terms & Conditions
@@ -125,7 +137,7 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex space-x-6 mb-4 md:mb-0">
             <Link
-              href="https://instagram.com"
+              href="https://www.instagram.com/conorswellnesspath/"
               aria-label="Instagram"
               className="text-primary hover:text-[#8ECAE6] transition-colors"
             >
@@ -170,8 +182,8 @@ const Footer = () => {
 
           {/* Copyright section */}
           <div className="text-sm text-center md:text-right flex flex-col gap-2">
-            <p>© 2024 Conor Harris. All Rights Reserved.</p>
-            <p className="md:text-right">Website by Allen Zhao</p>
+            <p>© 2025 Conor Harris. All Rights Reserved.</p>
+            <p className="md:text-right">Website by Allen & Prem</p>
           </div>
         </div>
 

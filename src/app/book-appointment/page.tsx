@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 import TimeSlotSelector from "@/components/booking/time-slot-selector";
 import BookingForm, {
@@ -245,11 +246,96 @@ const Page: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-10">
           <h1 className="h2 mb-2">
-            Book a Wellbeing Session
+            The Other Side Of Life Talk
           </h1>
-          <p className="mt-2 max-w-2xl mx-auto text-base sm:text-xl text-secondary/90">
-            Select a date to book your wellbeing session with Conor.
+          <p className="mt-2 max-w-4xl mx-auto text-base sm:text-xl text-secondary/90">
+            As a recovered drug user, I share my powerful story and insights through
+            engaging talks with <strong>schools, GAA clubs, youth centres, and
+            corporations</strong>. Featured on RTE and Virgin Media, I aim to inspire, educate,
+            and bring a fresh perspective to your audience. Whether you're looking to
+            empower young minds or create positive change in your organisation, I'd
+            love to be part of it.
           </p>
+        </div>
+
+        {/* Speaking Services Information Section */}
+        <div className="mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Single Talk Card */}
+            <div className="bg-primary-light border border-accent-1/50 rounded-3xl p-6 lg:p-8 shadow-left">
+              <div className="mb-6">
+                <h3 className="h3 font-fraunces font-bold text-secondary mb-4">
+                  Single Talk - 1 hour
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <span className="text-accent-1 text-xl mt-1">•</span>
+                    <p className="font-nunito text-secondary font-semibold">
+                      <strong>Customised Content:</strong> Expect a talk crafted for your audience, ensuring maximum impact
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-accent-1 text-xl mt-1">•</span>
+                    <p className="font-nunito text-secondary font-semibold">
+                      <strong>Interactive Elements:</strong> Engaging Q&A session, small group discussions, and 1-on-1 chats after the talk
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-accent-1 text-xl mt-1">•</span>
+                    <p className="font-nunito text-secondary font-semibold">
+                      <strong>Authentic Story:</strong> Hear a powerful and relatable personal journey shared with honesty and vulnerability
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-6 text-secondary/80 font-nunito">
+                  Whether I&apos;m addressing students, colleagues, or community members,
+                  the core message is tailored to connect with everyone in the room.
+                </p>
+              </div>
+            </div>
+
+            {/* Talk + Workshop Package Card - Recommended */}
+            <div className="bg-primary-light border border-accent-1/50 rounded-3xl p-6 lg:p-8 shadow-right relative">
+              {/* Recommended Badge */}
+              <div className="absolute -top-3 right-6">
+                <span className="bg-accent-1 text-primary px-4 py-1 rounded-full text-sm font-bold font-nunito">
+                  Recommended
+                </span>
+              </div>
+              
+              <div className="mb-6">
+                <h3 className="h3 font-fraunces font-bold text-secondary mb-4">
+                  Talk + Workshop Package - 2 hours
+                </h3>
+                <p className="mb-6 text-secondary font-nunito font-semibold">
+                  For a deeper dive and a more hands-on experience, this 2-hour session{" "}
+                  <strong>combines the talk (as described previously) with a practical workshop</strong>{" "}
+                  designed specifically for students to apply its core messages and
+                  explore them in greater detail, helping them integrate these lessons into their everyday lives:
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <span className="text-accent-1 text-xl mt-1">•</span>
+                    <p className="font-nunito text-secondary font-semibold">
+                      Understanding and applying your core values, and learning how they shape decisions
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-accent-1 text-xl mt-1">•</span>
+                    <p className="font-nunito text-secondary font-semibold">
+                      Gain insights into your &quot;shadow&quot; and &quot;persona&quot; to foster self-awareness and personal growth
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-accent-1 text-xl mt-1">•</span>
+                    <p className="font-nunito text-secondary font-semibold">
+                      Engage in practical exercises that delve deeper into themes explored in the talk
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {renderProgressSteps()}
@@ -347,9 +433,17 @@ const Page: React.FC = () => {
             
             {/* Information card - always show */}
             <div className="bg-primary-light p-4 rounded-lg shadow-sm border border-accent-2/30">
-              <h3 className="font-semibold text-lg mb-2 text-secondary">
-                Booking Information
-              </h3>
+              <div className="flex items-center gap-2 mb-2">
+                <h3 className="font-semibold text-lg text-secondary">
+                  Booking Information
+                </h3>
+                <Link
+                  href="https://docs.google.com/document/d/1fimZyxR1sk852o0_KmXEYQA26kS_2_ib/edit?usp=drivesdk&ouid=101349312426059065008&rtpof=true&sd=true"
+                  className="text-sm text-accent-1 hover:text-accent-1/80 font-medium transition-colors cursor-pointer underline"
+                >
+                  Check out my leaflet for more information about the talk
+                </Link>
+              </div>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Only one school can book per day</li>
                 <li>
@@ -409,13 +503,21 @@ const Page: React.FC = () => {
               }
 
               <div className="mt-6 bg-primary-light p-4 rounded-lg shadow-sm border border-accent-2/30">
-                <h3 className="font-semibold text-lg mb-2 text-secondary">
-                  Booking Information
-                </h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="font-semibold text-lg text-secondary">
+                    Booking Information
+                  </h3>
+                  <Link
+                    href="/"
+                    className="text-sm text-accent-1 hover:text-accent-1/80 font-medium transition-colors cursor-pointer underline"
+                  >
+                    Check out my leaflet for more information about the talk
+                  </Link>
+                </div>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li>• Only one school can book per day</li>
                   <li>
-                    • You can request between 1-5 wellbeing talks for your school
+                    • You can request between 1 or 2 recovery talks for your school
                   </li>
                   <li>
                     • After submitting, you&apos;ll receive a confirmation email with

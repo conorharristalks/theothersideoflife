@@ -224,6 +224,21 @@ const Page = () => {
                   </div>
                 </div>
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="w-full"
+              >
+                <InteractiveButton
+                  variant="filled"
+                  text="Book a free discovery call"
+                  className="md:w-[50%] w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
+                  ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+                  href="https://calendly.com/conorharris-talks/1-1-breathwork-discovery"
+                />
+              </motion.div>
             </motion.div>
 
             {/* Right image section - aligned with buttons */}
@@ -480,6 +495,7 @@ const Page = () => {
                   text="Book a free discovery call"
                   className="md:w-80 w-full py-4 hover:text-primary transition-all ease-in duration-100"
                   ballClassName="md:left-[8%] md:top-[35%] left-[7%] top-[35%]"
+                  href="https://calendly.com/conorharris-talks/1-1-breathwork-discovery"
                 />
               </motion.div>
             </motion.div>

@@ -3,6 +3,8 @@ import { Fraunces, Nunito_Sans, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Configure fonts with display=swap for better performance
 const fraunces = Fraunces({
@@ -26,11 +28,12 @@ const libreBaskerville = Libre_Baskerville({
 
 export const metadata: Metadata = {
   title: "Conor Harris | The Other Side of Life",
-  description: "Breathwork coaching and addiction recovery talks by Conor Harris",
+  description:
+    "Breathwork coaching and addiction recovery talks by Conor Harris",
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
 };
 
@@ -40,11 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html 
-      lang="en" 
-      suppressHydrationWarning={true} 
-      className="scroll-smooth"
-    >
+    <html lang="en" suppressHydrationWarning={true} className="scroll-smooth">
       <head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       </head>
@@ -52,7 +51,11 @@ export default function RootLayout({
         className={`${fraunces.variable} ${nunitoSans.variable} ${libreBaskerville.variable}`}
       >
         <Navbar />
-        <main className="overflow-hidden">{children}</main>
+        <main className="overflow-hidden">
+          {children}
+          <Analytics />
+          <SpeedInsights />
+        </main>
         <Footer />
       </body>
     </html>

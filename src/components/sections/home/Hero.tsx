@@ -56,7 +56,7 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
                 text="Coaching"
                 className="md:w-56 w-44 py-4 border-0 hover:border-0 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-                href="/breathwork"
+                href="/coaching"
               />
               <InteractiveButton
                 variant="transparent"
