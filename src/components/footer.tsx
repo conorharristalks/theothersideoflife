@@ -66,7 +66,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="mailto:Conorharris.talks@gmail.com"
+                  href="mailto:conorharris.talks@gmail.com"
                   className="hover:text-[#B3DBEE] transition-colors text-primary-light"
                 >
                   • Contact me
