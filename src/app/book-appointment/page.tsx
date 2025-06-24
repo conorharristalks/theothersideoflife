@@ -1,15 +1,14 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
-import TimeSlotSelector from "@/components/booking/time-slot-selector";
+import BookingCalendar from "@/components/booking/booking-calendar";
 import BookingForm, {
   BookingFormData,
 } from "@/components/booking/booking-form";
+import TimeSlotSelector from "@/components/booking/time-slot-selector";
 import { format } from "date-fns";
-import BookingCalendar from "@/components/booking/booking-calendar";
 
 // Define booking steps
 type BookingStep = "select-date" | "select-time" | "fill-form";
