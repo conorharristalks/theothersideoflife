@@ -437,12 +437,14 @@ const Page: React.FC = () => {
                 <h3 className="font-semibold text-lg text-secondary">
                   Booking Information
                 </h3>
-                <Link
+                <a
                   href="https://docs.google.com/document/d/1fimZyxR1sk852o0_KmXEYQA26kS_2_ib/edit?usp=drivesdk&ouid=101349312426059065008&rtpof=true&sd=true"
                   className="text-sm text-accent-1 hover:text-accent-1/80 font-medium transition-colors cursor-pointer underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Check out my leaflet for more information about the talk
-                </Link>
+                </a>
               </div>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Only one school can book per day</li>
@@ -507,12 +509,14 @@ const Page: React.FC = () => {
                   <h3 className="font-semibold text-lg text-secondary">
                     Booking Information
                   </h3>
-                  <Link
-                    href="/"
+                  <a
+                    href="https://docs.google.com/document/d/1fimZyxR1sk852o0_KmXEYQA26kS_2_ib/edit?usp=drivesdk&ouid=101349312426059065008&rtpof=true&sd=true"
                     className="text-sm text-accent-1 hover:text-accent-1/80 font-medium transition-colors cursor-pointer underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Check out my leaflet for more information about the talk
-                  </Link>
+                  </a>
                 </div>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li>• Only one school can book per day</li>

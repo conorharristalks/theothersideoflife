@@ -65,15 +65,13 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link
+                <a
                   href="mailto:conorharris.talks@gmail.com"
                   className="hover:text-[#B3DBEE] transition-colors text-primary-light"
                 >
                   • Contact me
-                </Link>
+                </a>
               </li>
-
-             
 
               <li>
                 <Link
@@ -84,11 +82,8 @@ const Footer = () => {
                 </Link>
               </li>
 
-               <li>
-                <p
-                 
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
-                >
+              <li>
+                <p className="hover:text-[#B3DBEE] transition-colors text-primary-light">
                   • conorharris.talks@gmail.com
                 </p>
               </li>
