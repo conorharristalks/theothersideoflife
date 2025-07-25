@@ -45,7 +45,7 @@ const Page = () => {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (i:number) => ({
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
@@ -180,11 +180,12 @@ const Page = () => {
                     className="lg:text-lg text-md font-nunito leading-relaxed font-semibold text-foreground"
                     variants={itemVariants}
                   >
-                    My coaching approach is built on a unique foundation. I coach
-                    from a place of personal experience partnered with education.
-                    I&apos;ve navigated the downfalls, challenges, and dark places
-                    that many struggle with. As I guide you through this healing
-                    journey, know that I&apos;ve walked this road myself
+                    My coaching approach is built on a unique foundation. I
+                    coach from a place of personal experience partnered with
+                    education. I&apos;ve navigated the downfalls, challenges,
+                    and dark places that many struggle with. As I guide you
+                    through this healing journey, know that I&apos;ve walked
+                    this road myself
                   </motion.p>
                 </div>
               </div>
@@ -260,18 +261,19 @@ const Page = () => {
               </div>
 
               {/* CTA directly after text - FIXED BUTTON */}
-             
-                <motion.div className="w-full flex justify-center items-center" variants={fadeInVariants}>
-                  <InteractiveButton
+
+              <motion.div
+                className="w-full flex justify-center items-center"
+                variants={fadeInVariants}
+              >
+                <InteractiveButton
                   variant="filled"
                   text="Book a free discovery call"
                   className="w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
                   ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
                   href="https://calendly.com/conorharris-talks/30min"
                 />
-
-                </motion.div>
-              
+              </motion.div>
             </div>
 
             {/* Right column - 2x2 cards grid */}
@@ -291,8 +293,8 @@ const Page = () => {
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <p className="font-nunito text-secondary text-lg mb-6 flex-grow">
-                    Discover your purpose and find a sense of direction -
-                    being guided when you feel lost, through ongoing support.
+                    Discover your purpose and find a sense of direction - being
+                    guided when you feel lost, through ongoing support.
                   </p>
                   <div className="flex justify-center mt-auto py-4">
                     <Image
@@ -405,10 +407,10 @@ const Page = () => {
                     variants={itemVariants}
                   >
                     Your coaching journey with me is designed around you.
-                    We&apos;ll focus on your unique goals, navigate your specific
-                    challenges, and actively work towards creating the life you
-                    genuinely desire. While every path is personal, all my clients
-                    benefit from:
+                    We&apos;ll focus on your unique goals, navigate your
+                    specific challenges, and actively work towards creating the
+                    life you genuinely desire. While every path is personal, all
+                    my clients benefit from:
                   </motion.p>
                 </div>
 
@@ -422,10 +424,10 @@ const Page = () => {
                     </span>
                     <div className="flex flex-col">
                       <span className="font-bold text-secondary mb-1">
-                        Consistent Weekly Check-ins:
+                        Consistent Bi-Weekly Check-ins:
                       </span>
                       <span className="text-secondary">
-                        We&apos;ll have a dedicated weekly touchpoint to
+                        We&apos;ll have a dedicated call every 2 weeks to
                         celebrate your successes, track your progress, and
                         address any challenges, ensuring you stay accountable
                         and motivated.
@@ -480,11 +482,12 @@ const Page = () => {
                     </span>
                     <div className="flex flex-col">
                       <span className="font-bold text-secondary mb-1">
-                        1-1 Monthly Breathwork Sessions:
+                        Bi-weekly Breathwork Sessions:
                       </span>
                       <span className="text-secondary">
-                        Each month, you&apos;ll receive 1-1 breathwork sessions.
-                        Find out more about breathwork and its benefits{" "}
+                        Every 2 weeks, you&apos;ll receive 1-1 breathwork
+                        sessions. Find out more about breathwork and its
+                        benefits{" "}
                         <a
                           href="/breathwork"
                           className="text-accent-1 underline hover:text-accent-2"
@@ -511,25 +514,6 @@ const Page = () => {
                         Together, we&apos;ll build a custom roadmap designed
                         around you, ensuring you achieve your goals and grow as
                         a person.
-                      </span>
-                    </div>
-                  </motion.li>
-
-                  <motion.li
-                    className="flex items-start"
-                    variants={fadeInVariants}
-                  >
-                    <span className="text-secondary text-xl mr-3 leading-6">
-                      •
-                    </span>
-                    <div className="flex flex-col">
-                      <span className="font-bold text-secondary mb-1">
-                        Monthly Review Zoom Calls:
-                      </span>
-                      <span className="text-secondary">
-                        Once a month, we&apos;ll connect via zoom to reassess
-                        your journey, re-evaluate your goals, and fine-tune your
-                        program.
                       </span>
                     </div>
                   </motion.li>
