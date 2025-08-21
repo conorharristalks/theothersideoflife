@@ -191,7 +191,7 @@ export function MeetConor() {
         viewport={{ once: true, amount: 0.3 }}
       >
         <Image
-          src="/conor-selfie-3.jpeg"
+          src="/conor-selfie.jpeg"
           alt="Portrait"
           fill
           style={{ objectFit: "cover" }}

@@ -10,7 +10,7 @@ import { testimonialData } from "@/lib/constants";
 
 export default async function Home() {
   // Image processing - this stays in server component
-  const hero1 = "/conor-selfie.jpeg";
+  const hero1 = "/conor-selfie-3.jpeg";
   const hero2 = "/conor-public-speaking-1.png";
 
   const buffer = await fs.readFile(`./public${hero1}`);
