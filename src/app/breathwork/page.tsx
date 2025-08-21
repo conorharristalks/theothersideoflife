@@ -256,7 +256,7 @@ const Page = () => {
                 animate="visible"
               >
                 <Image
-                  src="/conor-breathwork-1.jpeg"
+                  src="/conor-meditate.jpeg"
                   alt="Portrait"
                   fill
                   style={{ objectFit: "cover" }}
@@ -273,7 +273,7 @@ const Page = () => {
                 transition={{ delay: 0.8 }}
               >
                 <Image
-                  src="/conor-meditate.jpeg"
+                  src="/conor-breathwork-1.jpg"
                   alt="Presentation"
                   fill
                   style={{ objectFit: "cover" }}
@@ -436,49 +436,42 @@ const Page = () => {
               >
                 {/* Card 1: 1 to 1 in person */}
                 <motion.div
-                  className="bg-accent-2/90 text-secondary shadow-right p-6 rounded-2xl flex flex-col justify-between h-full relative overflow-hidden border-2 border-accent-1"
+                  className="bg-accent-2/90 text-secondary shadow-right p-6 rounded-2xl flex flex-col justify-center h-full relative overflow-hidden border-2 border-accent-1"
                   variants={cardVariants}
                   custom={0}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center mb-6">
+                  <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center ">
                     1 to 1 in person
                   </h3>
-                  <p className="font-nunito text-secondary italic text-center">
-                    Details about in person Breathwork sessions
-                  </p>
+                  
                 </motion.div>
 
                 {/* Card 2: Group Session Online */}
                 <motion.div
-                  className="bg-accent-1 text-primary p-6 rounded-2xl shadow-right flex flex-col justify-between h-full relative overflow-hidden border-2 border-primary"
+                  className="bg-accent-1 text-primary p-6 rounded-2xl shadow-right flex flex-col justify-center h-full relative overflow-hidden border-2 border-primary"
                   variants={cardVariants}
                   custom={1}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center mb-6">
+                  <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center ">
                     Group Session
                     <br />
                     Online
                   </h3>
-                  <p className="font-nunito italic text-center">
-                    Details about online group breathwork sessions
-                  </p>
+                 
                 </motion.div>
 
                 {/* Card 3: 1 to 1 online */}
                 <motion.div
-                  className="bg-primary-light text-secondary p-6 rounded-2xl shadow-right flex flex-col justify-between h-full relative overflow-hidden border-2 border-secondary"
+                  className="bg-primary-light text-secondary p-6 rounded-2xl shadow-right flex flex-col justify-center h-full relative overflow-hidden border-2 border-secondary"
                   variants={cardVariants}
                   custom={2}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center mb-6">
+                  <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center ">
                     1 to 1 online
                   </h3>
-                  <p className="font-nunito text-secondary italic text-center">
-                    Details about online breathwork sessions
-                  </p>
                 </motion.div>
               </motion.div>
 
