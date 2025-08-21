@@ -188,7 +188,7 @@ const Page = () => {
                 transition={{ delay: 0.4 }}
               >
                 <Image
-                  src="/conor-breathwork-2.jpeg"
+                  src="/conor-about-2.jpeg"
                   alt="Presentation"
                   fill
                   style={{ objectFit: "cover" }}
