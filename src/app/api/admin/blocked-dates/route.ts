@@ -2,23 +2,53 @@ import dbConnect from '@/lib/mongodb';
 import Booking from '@/models/booking';
 import { NextRequest, NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
+import { adminRateLimiter } from '@/lib/rate-limiter';
+import { getClientIP, formatDuration } from '@/lib/utils';
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'wellbeing2024';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
-function validatePassword(request: NextRequest): boolean {
+function validatePassword(request: NextRequest): { valid: boolean; clientIP: string } {
+  const clientIP = getClientIP(request);
+  
+  // Check if IP is currently blocked
+  if (adminRateLimiter.isBlocked(clientIP)) {
+    return { valid: false, clientIP };
+  }
+
   const authHeader = request.headers.get('authorization');
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return false;
+    return { valid: false, clientIP };
   }
   
   const password = authHeader.substring(7);
-  return password === ADMIN_PASSWORD;
+  const isValid = password === ADMIN_PASSWORD;
+  
+  // Record the attempt
+  adminRateLimiter.recordAttempt(clientIP, isValid);
+  
+  return { valid: isValid, clientIP };
 }
 
 // Block a date
 export async function POST(request: NextRequest) {
-  if (!validatePassword(request)) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { valid: isAuthenticated, clientIP } = validatePassword(request);
+  
+  if (!isAuthenticated) {
+    const status = adminRateLimiter.getStatus(clientIP);
+    
+    if (status.blocked) {
+      const remainingTime = formatDuration(status.remainingBlockTime);
+      return NextResponse.json({ 
+        error: `Too many failed attempts. IP blocked for ${remainingTime}. Please try again later.`,
+        blocked: true,
+        remainingBlockTime: status.remainingBlockTime
+      }, { status: 429 });
+    }
+    
+    return NextResponse.json({ 
+      error: 'Unauthorized',
+      remainingAttempts: status.remainingAttempts 
+    }, { status: 401 });
   }
 
   try {
@@ -30,10 +60,8 @@ export async function POST(request: NextRequest) {
 
     await dbConnect();
 
-    // Fix: Parse the date as UTC and use UTC methods to standardize
     const blockDate = new Date(date);
     
-    // This is the key fix - use UTC methods to get year, month, day
     const standardizedDate = new Date(
       Date.UTC(
         blockDate.getUTCFullYear(),
@@ -43,27 +71,12 @@ export async function POST(request: NextRequest) {
       )
     );
 
-    console.log('Blocking date:', {
-      originalDate: date,
-      parsedDate: blockDate.toISOString(),
-      standardizedDate: standardizedDate.toISOString(),
-      day: standardizedDate.getUTCDate(),
-      month: standardizedDate.getUTCMonth() + 1,
-      year: standardizedDate.getUTCFullYear()
-    });
-
-    // Check if date is already booked/blocked using proper date range
     const year = standardizedDate.getUTCFullYear();
     const month = standardizedDate.getUTCMonth();
     const day = standardizedDate.getUTCDate();
     
     const startOfDay = new Date(Date.UTC(year, month, day, 0, 0, 0));
     const endOfDay = new Date(Date.UTC(year, month, day, 23, 59, 59, 999));
-
-    console.log('Checking for existing bookings in range:', {
-      startOfDay: startOfDay.toISOString(),
-      endOfDay: endOfDay.toISOString()
-    });
 
     const existingBooking = await Booking.findOne({
       date: {
@@ -73,13 +86,6 @@ export async function POST(request: NextRequest) {
     });
 
     if (existingBooking) {
-      console.log('Found existing booking:', {
-        id: existingBooking._id,
-        date: existingBooking.date.toISOString(),
-        isBlocked: existingBooking.isBlocked,
-        schoolName: existingBooking.schoolName
-      });
-      
       if (existingBooking.isBlocked) {
         return NextResponse.json({ error: 'Date is already blocked' }, { status: 409 });
       } else {
@@ -87,7 +93,6 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Create blocked date directly instead of using the helper method
     const blockedBooking = new Booking({
       date: standardizedDate,
       timeSlot: 'BLOCKED',
@@ -104,12 +109,6 @@ export async function POST(request: NextRequest) {
     });
 
     const savedBooking = await blockedBooking.save();
-    
-    console.log('Successfully blocked date:', {
-      id: savedBooking._id,
-      date: savedBooking.date.toISOString(),
-      day: savedBooking.date.getUTCDate()
-    });
 
     return NextResponse.json({ 
       success: true, 
@@ -123,7 +122,6 @@ export async function POST(request: NextRequest) {
   } catch (error: unknown) {
     console.error('Error blocking date:', error);
     
-    // Handle validation errors specifically
     if (error && typeof error === 'object' && 'name' in error && error.name === 'ValidationError' && 'errors' in error) {
       const validationError = error as { errors: Record<string, { message: string }> };
       const errorMessages = Object.values(validationError.errors).map((err) => err.message);
@@ -132,7 +130,6 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
     
-    // Handle duplicate key error
     if (error && typeof error === 'object' && 'code' in error && error.code === 11000) {
       return NextResponse.json({ 
         error: 'Date is already booked or blocked' 
@@ -148,8 +145,24 @@ export async function POST(request: NextRequest) {
 
 // Unblock a date
 export async function DELETE(request: NextRequest) {
-  if (!validatePassword(request)) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { valid: isAuthenticated, clientIP } = validatePassword(request);
+  
+  if (!isAuthenticated) {
+    const status = adminRateLimiter.getStatus(clientIP);
+    
+    if (status.blocked) {
+      const remainingTime = formatDuration(status.remainingBlockTime);
+      return NextResponse.json({ 
+        error: `Too many failed attempts. IP blocked for ${remainingTime}. Please try again later.`,
+        blocked: true,
+        remainingBlockTime: status.remainingBlockTime
+      }, { status: 429 });
+    }
+    
+    return NextResponse.json({ 
+      error: 'Unauthorized',
+      remainingAttempts: status.remainingAttempts 
+    }, { status: 401 });
   }
 
   try {
@@ -170,7 +183,6 @@ export async function DELETE(request: NextRequest) {
     const startOfDay = new Date(Date.UTC(year, month, day, 0, 0, 0));
     const endOfDay = new Date(Date.UTC(year, month, day, 23, 59, 59, 999));
 
-    // Delete only blocked dates (not regular bookings)
     const result = await Booking.findOneAndDelete({
       isBlocked: true,
       date: {
@@ -196,8 +208,24 @@ export async function DELETE(request: NextRequest) {
 
 // Get all blocked dates
 export async function GET(request: NextRequest) {
-  if (!validatePassword(request)) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { valid: isAuthenticated, clientIP } = validatePassword(request);
+  
+  if (!isAuthenticated) {
+    const status = adminRateLimiter.getStatus(clientIP);
+    
+    if (status.blocked) {
+      const remainingTime = formatDuration(status.remainingBlockTime);
+      return NextResponse.json({ 
+        error: `Too many failed attempts. IP blocked for ${remainingTime}. Please try again later.`,
+        blocked: true,
+        remainingBlockTime: status.remainingBlockTime
+      }, { status: 429 });
+    }
+    
+    return NextResponse.json({ 
+      error: 'Unauthorized',
+      remainingAttempts: status.remainingAttempts 
+    }, { status: 401 });
   }
 
   try {

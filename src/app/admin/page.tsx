@@ -3,18 +3,26 @@
 import { addDays, eachDayOfInterval, endOfWeek, format, isSameDay, startOfWeek } from 'date-fns';
 import { useState } from 'react';
 
-interface BlockedDate {
+
+interface BookingInfo {
   date: string;
+  schoolName: string;
+  contactName: string;
+  isBlocked: boolean;
+  blockReason?: string;
 }
 
 export default function AdminPage() {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [blockedDates, setBlockedDates] = useState<BlockedDate[]>([]);
+  
+  const [allBookings, setAllBookings] = useState<BookingInfo[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [currentWeek, setCurrentWeek] = useState(new Date());
+  const [isBlocked, setIsBlocked] = useState(false);
+  const [remainingAttempts, setRemainingAttempts] = useState<number | null>(null);
 
   const authenticate = async () => {
     try {
@@ -24,20 +32,37 @@ export default function AdminPage() {
         }
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         setIsAuthenticated(true);
-        await fetchBlockedDates();
+        setMessage('');
+        setIsBlocked(false);
+        setRemainingAttempts(null);
+        
+        await fetchAllBookings();
       } else {
-        setMessage('Invalid password');
+        if (response.status === 429) {
+          setIsBlocked(true);
+          setMessage(data.error);
+        } else {
+          setIsBlocked(false);
+          setMessage(data.error || 'Authentication failed');
+          if (data.remainingAttempts !== undefined) {
+            setRemainingAttempts(data.remainingAttempts);
+          }
+        }
       }
     } catch {
       setMessage('Authentication failed');
     }
   };
 
-  const fetchBlockedDates = async () => {
+
+
+  const fetchAllBookings = async () => {
     try {
-      const response = await fetch('/api/admin/blocked-dates', {
+      const response = await fetch('/api/admin/bookings', {
         headers: {
           'Authorization': `Bearer ${password}`
         }
@@ -45,10 +70,10 @@ export default function AdminPage() {
 
       if (response.ok) {
         const data = await response.json();
-        setBlockedDates(data.blockedDates);
+        setAllBookings(data.bookings);
       }
     } catch {
-      console.error('Error fetching blocked dates');
+      console.error('Error fetching all bookings');
     }
   };
 
@@ -57,8 +82,6 @@ export default function AdminPage() {
 
     setIsLoading(true);
     try {
-      // Fix: Make sure we're sending the date in a timezone-safe format
-      // Add time component and ensure we're using UTC
       const utcDate = new Date(Date.UTC(
         selectedDate.getFullYear(),
         selectedDate.getMonth(),
@@ -82,7 +105,8 @@ export default function AdminPage() {
       if (response.ok) {
         setMessage('Date blocked successfully');
         setSelectedDate(null);
-        await fetchBlockedDates();
+        
+        await fetchAllBookings();
       } else {
         setMessage(data.error || 'Failed to block date');
       }
@@ -107,7 +131,8 @@ export default function AdminPage() {
       
       if (response.ok) {
         setMessage('Date unblocked successfully');
-        await fetchBlockedDates();
+        
+        await fetchAllBookings();
       } else {
         setMessage(data.error || 'Failed to unblock date');
       }
@@ -118,10 +143,26 @@ export default function AdminPage() {
     }
   };
 
-  const isDateBlocked = (date: Date) => {
-    return blockedDates.some(blocked => 
-      isSameDay(new Date(blocked.date), date)
+  const getDateStatus = (date: Date) => {
+    const booking = allBookings.find(booking => 
+      isSameDay(new Date(booking.date), date)
     );
+    
+    if (booking) {
+      return {
+        isBooked: true,
+        isBlocked: booking.isBlocked,
+        schoolName: booking.schoolName,
+        contactName: booking.contactName
+      };
+    }
+    
+    return {
+      isBooked: false,
+      isBlocked: false,
+      schoolName: null,
+      contactName: null
+    };
   };
 
   const getWeekDays = (weekStart: Date) => {
@@ -142,17 +183,36 @@ export default function AdminPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
-              onKeyPress={(e) => e.key === 'Enter' && authenticate()}
+              onKeyPress={(e) => e.key === 'Enter' && !isBlocked && authenticate()}
+              disabled={isBlocked}
             />
             <button
               onClick={authenticate}
-              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+              disabled={isBlocked}
+              className={`w-full py-2 rounded-md ${
+                isBlocked 
+                  ? 'bg-gray-400 text-white cursor-not-allowed'
+                  : 'bg-blue-600 text-white hover:bg-blue-700'
+              }`}
             >
-              Login
+              {isBlocked ? 'Blocked' : 'Login'}
             </button>
           </div>
           {message && (
-            <p className="mt-4 text-center text-red-600">{message}</p>
+            <div className={`mt-4 text-center ${isBlocked ? 'text-red-600' : 'text-red-600'}`}>
+              <p>{message}</p>
+              {remainingAttempts !== null && remainingAttempts > 0 && !isBlocked && (
+                <p className="text-sm text-yellow-600 mt-2">
+                  {remainingAttempts} attempt{remainingAttempts !== 1 ? 's' : ''} remaining
+                </p>
+              )}
+            </div>
+          )}
+          {!isBlocked && (
+            <div className="mt-4 text-xs text-gray-500 text-center">
+              <p>Rate limiting: 5 attempts per 15 minutes</p>
+              <p>Temporary block: 30 minutes after 5 failed attempts</p>
+            </div>
           )}
         </div>
       </div>
@@ -162,13 +222,36 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-8">Block Dates</h1>
+        <h1 className="text-3xl font-bold text-center mb-8">Admin Panel - Manage Dates</h1>
         
         {message && (
           <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 text-blue-700">
             {message}
           </div>
         )}
+
+        {/* Legend */}
+        <div className="bg-white p-4 rounded-lg shadow-md mb-6">
+          <h3 className="text-lg font-semibold mb-3">Calendar Legend</h3>
+          <div className="flex flex-wrap gap-4">
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-green-100 border border-green-300 rounded mr-2"></div>
+              <span className="text-sm">Available</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-blue-100 border border-blue-300 rounded mr-2"></div>
+              <span className="text-sm">Booked by School</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-red-100 border border-red-300 rounded mr-2"></div>
+              <span className="text-sm">Blocked (Admin)</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-gray-100 border border-gray-300 rounded mr-2"></div>
+              <span className="text-sm">Past Date</span>
+            </div>
+          </div>
+        </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md">
           <div className="flex justify-between items-center mb-4">
@@ -199,25 +282,54 @@ export default function AdminPage() {
 
           <div className="grid grid-cols-7 gap-1 mb-6">
             {getWeekDays(currentWeek).map(date => {
-              const isBlocked = isDateBlocked(date);
+              const dateStatus = getDateStatus(date);
               const isSelected = selectedDate && isSameDay(date, selectedDate);
               const isPast = date < new Date();
+
+              let bgColor = 'bg-green-50 border-green-200'; // Available
+              let textColor = 'text-gray-900';
+              let label = '';
+
+              if (isPast) {
+                bgColor = 'bg-gray-100 border-gray-300';
+                textColor = 'text-gray-400';
+              } else if (dateStatus.isBooked) {
+                if (dateStatus.isBlocked) {
+                  bgColor = 'bg-red-100 border-red-300';
+                  textColor = 'text-red-700';
+                  label = 'BLOCKED';
+                } else {
+                  bgColor = 'bg-blue-100 border-blue-300';
+                  textColor = 'text-blue-700';
+                  label = 'BOOKED';
+                }
+              }
+
+              if (isSelected) {
+                bgColor = 'bg-yellow-100 border-yellow-500';
+              }
 
               return (
                 <button
                   key={date.toISOString()}
-                  onClick={() => !isPast && setSelectedDate(date)}
-                  disabled={isPast}
+                  onClick={() => !isPast && !dateStatus.isBooked && setSelectedDate(date)}
+                  disabled={isPast || dateStatus.isBooked}
                   className={`
-                    p-3 text-sm border rounded
-                    ${isSelected ? 'bg-blue-100 border-blue-500' : ''}
-                    ${isBlocked ? 'bg-red-100 border-red-300 text-red-700' : ''}
-                    ${isPast ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'hover:bg-gray-50'}
-                    ${!isBlocked && !isPast && !isSelected ? 'border-gray-200' : ''}
+                    p-3 text-sm border rounded min-h-[80px] flex flex-col justify-between
+                    ${bgColor} ${textColor}
+                    ${isPast || dateStatus.isBooked ? 'cursor-not-allowed' : 'hover:bg-yellow-50'}
                   `}
+                  title={
+                    dateStatus.isBooked 
+                      ? `${dateStatus.isBlocked ? 'Blocked by admin' : `Booked by ${dateStatus.schoolName}`}`
+                      : 'Available'
+                  }
                 >
-                  {format(date, 'd')}
-                  {isBlocked && <div className="text-xs mt-1">BLOCKED</div>}
+                  <div className="font-medium">{format(date, 'd')}</div>
+                  {label && <div className="text-xs font-bold">{label}</div>}
+                  {dateStatus.isBooked && !dateStatus.isBlocked && (
+                    <div className="text-xs truncate">{dateStatus.schoolName}</div>
+                  )}
                 </button>
               );
             })}
@@ -238,26 +350,46 @@ export default function AdminPage() {
             </div>
           )}
 
-          {/* Blocked Dates List */}
+          {/* All Bookings List */}
           <div className="border-t pt-4">
-            <h3 className="text-lg font-semibold mb-4">Currently Blocked Dates</h3>
+            <h3 className="text-lg font-semibold mb-4">All Bookings & Blocked Dates</h3>
             
-            {blockedDates.length === 0 ? (
-              <p className="text-gray-500">No dates blocked</p>
+            {allBookings.length === 0 ? (
+              <p className="text-gray-500">No bookings or blocked dates</p>
             ) : (
               <div className="space-y-2">
-                {blockedDates.map(blocked => (
-                  <div key={blocked.date} className="flex justify-between items-center p-3 bg-red-50 rounded">
-                    <div className="font-medium">
-                      {format(new Date(blocked.date), 'EEEE, MMMM d, yyyy')}
+                {allBookings.map((booking, index) => (
+                  <div 
+                    key={`${booking.date}-${index}`} 
+                    className={`flex justify-between items-center p-3 rounded ${
+                      booking.isBlocked ? 'bg-red-50' : 'bg-blue-50'
+                    }`}
+                  >
+                    <div className="flex-1">
+                      <div className="font-medium">
+                        {format(new Date(booking.date), 'EEEE, MMMM d, yyyy')}
+                      </div>
+                      {booking.isBlocked ? (
+                        <div className="text-sm text-red-600">
+                          <span className="font-medium">BLOCKED</span>
+                          {booking.blockReason && ` - ${booking.blockReason}`}
+                        </div>
+                      ) : (
+                        <div className="text-sm text-blue-600">
+                          <span className="font-medium">{booking.schoolName}</span>
+                          <span className="text-gray-600"> - Contact: {booking.contactName}</span>
+                        </div>
+                      )}
                     </div>
-                    <button
-                      onClick={() => unblockDate(blocked.date)}
-                      disabled={isLoading}
-                      className="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700 disabled:opacity-50"
-                    >
-                      Unblock
-                    </button>
+                    {booking.isBlocked && (
+                      <button
+                        onClick={() => unblockDate(booking.date)}
+                        disabled={isLoading}
+                        className="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700 disabled:opacity-50"
+                      >
+                        Unblock
+                      </button>
+                    )}
                   </div>
                 ))}
               </div>
