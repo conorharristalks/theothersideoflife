@@ -178,7 +178,7 @@ const Footer = () => {
           {/* Copyright section */}
           <div className="text-sm text-center md:text-right flex flex-col gap-2">
             <p>© 2025 Conor Harris. All Rights Reserved.</p>
-            <p className="md:text-right">Website by Allen & Prem</p>
+            <p className="md:text-right">Website by Dyo Digitals</p>
           </div>
         </div>
 
