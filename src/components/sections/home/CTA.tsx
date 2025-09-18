@@ -27,7 +27,7 @@ export function CTA() {
               className="md:w-56 w-full py-4 border hover:border border-primary hover:bg-primary transition-all ease-in duration-100"
               ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%] bg-primary"
               textClassName="text-primary hover:text-accent-1"
-              href="/help"
+              href="/book-appointment"
             />
           </div>
         </div>
