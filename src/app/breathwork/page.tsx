@@ -256,7 +256,7 @@ const Page = () => {
                 animate="visible"
               >
                 <Image
-                  src="/conor-meditate.jpeg"
+                  src="/conor-group-breathwork.png"
                   alt="Portrait"
                   fill
                   style={{ objectFit: "cover" }}
