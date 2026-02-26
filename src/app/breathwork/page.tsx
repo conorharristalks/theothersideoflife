@@ -3,7 +3,7 @@
 import BenefitCard from "@/components/breathwork/benefit-card";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
-import { testimonialData } from "@/lib/constants";
+import { testimonialData, testimonialDataBreathwork } from "@/lib/constants";
 import { motion } from "motion/react";
 import Image from "next/image";
 
@@ -600,7 +600,7 @@ const Page = () => {
         </motion.div>
 
         <div className="pt-24">
-          <Testimonials testimonialData={testimonialData} />
+          <Testimonials testimonialData={testimonialDataBreathwork} />
         </div>
       </section>
     </>

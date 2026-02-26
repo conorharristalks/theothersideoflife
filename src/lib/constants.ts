@@ -73,3 +73,27 @@ export const testimonialData = [
     stars: 5,
   },
 ];
+
+export const testimonialDataBreathwork = [
+  {
+    quote:
+      "I feel very fortunate to have had four breathwork sessions with Conor. Although I had years of personal development experience, breathwork was completely new to me. The emotional release and relief I experienced were incredibly real, and with Conor’s guidance I was able to access trauma and feelings I had never reached before. He led me to a deeper understanding of myself and helped me release a lifetime of pent-up anger and hurt. By creating a safe, supportive space, he enabled me to go inward and come away feeling lighter, more aligned, and true to myself. I am forever grateful and would wholeheartedly recommend him to anyone seeking a powerful and transformative experience.",
+    name: "Mark H",
+    title: "", 
+    stars: 5,
+  },
+  {
+    quote:
+      "Conor the breathwork session was honestly great - I went in with the intention of developing self love and it has helped me a lot in that regard, especially seeing as I recently went through a breakup. I think the main thing was letting go of feelings and thoughts that \"I'm not good enough\" and it's allowed me to stop needing validation from others - because I know my own worth and I can love myself. A lot of it was physical and deep rooted in my body and not just mental, and breathwork has made me let go of that. I'm very thankful for this breathwork session",
+    name: "Allen Z",
+    title: "",
+    stars: 5,
+  },
+  {
+    quote:
+      "I just wanted to send a little message to say thanks for everything through my breathwork sessions! You made me feel so comfortable & relaxed going into every session, and so supported at the end of them! Breathwork has taught me so much about myself already, and is helping me heal and grow in ways I couldn't have imagined. Im so grateful to have this new tool to support me on my journey, and even more grateful to have been guided by such a genuine & lovely soul! Thanks so much again for everything, I hope everything works out for you, and hopefully our paths will cross again!",
+    name: "Alex F",
+    title: "", 
+    stars: 5,
+  },
+];
