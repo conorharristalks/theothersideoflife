@@ -244,7 +244,7 @@ const Page = () => {
                     >
                       Here at the other side of life, my mission is to both
                       inspire and transform others, as a public speaker and
-                      Integrative Wellness Coach.
+                      Nervous System and Leadership Coach.
                     </motion.p>
                   </div>
 
@@ -265,11 +265,11 @@ const Page = () => {
                       className="lg:text-xl md:text-lg text-[16px] font-nunito font-medium"
                       variants={itemVariants}
                     >
-                      I also help others transform their lives and reclaim their
-                      purpose - just as I did - through a journey of self
-                      discovery. My coaching integrates techniques like
-                      breathwork, a powerful tool to guide you towards inner
-                      clarity and meaningful change.
+                      I help people transform their lives and start living with 
+                      integrity and purpose. Just as I do, through a journey of 
+                      self discovery. My coaching takes a pyschosomatic approach 
+                      working through a compassionate lens and working with techniques 
+                      like breathwork and movement.
                     </motion.p>
                   </div>
                 </div>
@@ -389,7 +389,7 @@ const Page = () => {
                       className="font-nunito lg:text-lg"
                       variants={itemVariants}
                     >
-                      As an Integrative Wellness Coach, I support individuals in
+                      As a Nervous System & Leadership Coach, I support individuals in
                       transforming their lives and reclaiming their purpose
                       through a journey of self-discovery. My coaching integrates
                       techniques like breathwork - I use to reduce stress and
@@ -432,10 +432,8 @@ const Page = () => {
                       className="font-nunito lg:text-lg"
                       variants={itemVariants}
                     >
-                      My mission is for anyone ready to embrace a more balanced
-                      and fulfilled life. Whether you&apos;re looking to redefine your
-                      relationship with yourself, find clarity, or cultivate
-                      healthier habits, I&apos;m here to support your journey.
+                      I work with men and women who are ready to live 
+                      with leadership and purpose creating real change.
                     </motion.p>
                   </div>
                 </motion.div>

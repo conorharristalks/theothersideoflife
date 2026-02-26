@@ -90,8 +90,8 @@ const Page = () => {
                     delay: 0.1,
                   }}
                 >
-                  1:1 Coaching for When You&apos;re Ready to Rebuild from the
-                  Inside Out
+                  1:1 coaching designed to help you lead with integrity 
+                  and find your purpose
                 </motion.h1>
               </div>
 
@@ -107,11 +107,10 @@ const Page = () => {
                       className="lg:text-xl md:text-lg text-[16px] font-nunito"
                       variants={itemVariants}
                     >
-                      This is a space for honest conversations, healing, and
-                      real change. Whether you&apos;re feeling stuck, burned
-                      out, or just know there&apos;s more to life — this
-                      coaching helps you reconnect, reframe, and move forward
-                      with clarity and confidence.
+                      This is a container for deep change, and honest conversations. 
+                      Whether you’re feeling burnt out, tired of the same loop, or know
+                      you&apos;re worth more - my coaching will help you lead with clarity 
+                      and purpose.
                     </motion.p>
                   </div>
                 </div>
@@ -128,7 +127,7 @@ const Page = () => {
                   text="Book a free discovery call"
                   className="md:w-[50%] w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
                   ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-                  href="https://calendly.com/conorharris-talks/30min"
+                  href="https://calendly.com/conorharris-talks/discovery-call"
                 />
               </motion.div>
             </motion.div>
@@ -271,7 +270,7 @@ const Page = () => {
                   text="Book a free discovery call"
                   className="w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
                   ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-                  href="https://calendly.com/conorharris-talks/30min"
+                  href="https://calendly.com/conorharris-talks/discovery-call"
                 />
               </motion.div>
             </div>
@@ -315,8 +314,7 @@ const Page = () => {
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <p className="font-nunito text-secondary text-lg mb-6 flex-grow">
-                    Align with your authentic self and make more intentional
-                    decisions.
+                    Align with integrity and begin to lead your life your way.
                   </p>
                   <div className="flex justify-center mt-auto py-4">
                     <Image
@@ -359,8 +357,8 @@ const Page = () => {
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <p className="font-nunito text-secondary text-lg mb-6 flex-grow">
-                    Learn about yourself in deeper ways, what truly drives you
-                    and where your strengths lie.
+                    Understand who you are beneath the noise and step
+                    into your power.
                   </p>
                   <div className="flex justify-center mt-auto py-4">
                     <Image
@@ -666,7 +664,7 @@ const Page = () => {
                 text="Book a discovery call"
                 className="md:w-[60%] w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-                href="https://calendly.com/conorharris-talks/30min"
+                href="https://calendly.com/conorharris-talks/discovery-call"
               />
             </motion.div>
           </div>

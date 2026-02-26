@@ -15,13 +15,13 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
         <div className="w-full min-h-full lg:flex lg:flex-row flex flex-col justify-between items-center pt-10 pb-10 relative">
           <div className="flex flex-col w-full min-h-full items-start lg:justify-between gap-8">
             <h1 className="h1 font-fraunces font-bold text-foreground">
-              Helping you become the best <br></br> version of yourself
+              Helping you live with <br></br> integrity & leadership
             </h1>
 
             <div className="flex flex-col items-start gap-6">
               <div className="flex flex-col items-start gap-4">
                 <p className="font-fraunces lg:text-2xl md:text-xl text-[16px] font-semibold text-foreground">
-                  Integrative Wellness Coach: Transform your wellbeing
+                  Nervous System & Leadership Coach: Transform your life
                 </p>
                 <div className="flex items-center justify-start gap-3">
                   <div className="flex items-center justify-center rounded-full w-6 h-6 bg-accent-1">

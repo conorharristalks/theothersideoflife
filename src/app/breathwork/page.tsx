@@ -3,7 +3,7 @@
 import BenefitCard from "@/components/breathwork/benefit-card";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
-import { testimonialData, testimonialDataBreathwork } from "@/lib/constants";
+import { testimonialDataBreathwork } from "@/lib/constants";
 import { motion } from "motion/react";
 import Image from "next/image";
 
@@ -236,7 +236,7 @@ const Page = () => {
                   text="Book a free discovery call"
                   className="md:w-[50%] w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
                   ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-                  href="https://calendly.com/conorharris-talks/1-1-breathwork-discovery"
+                  href="https://calendly.com/conorharris-talks/discovery-call"
                 />
               </motion.div>
             </motion.div>
@@ -488,7 +488,7 @@ const Page = () => {
                   text="Book a free discovery call"
                   className="md:w-80 w-full py-4 hover:text-primary transition-all ease-in duration-100"
                   ballClassName="md:left-[8%] md:top-[35%] left-[7%] top-[35%]"
-                  href="https://calendly.com/conorharris-talks/1-1-breathwork-discovery"
+                  href="https://calendly.com/conorharris-talks/discovery-call"
                 />
               </motion.div>
             </motion.div>

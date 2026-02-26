@@ -126,8 +126,8 @@ export function MeetConor() {
                     animate={isInView ? "enter" : "hidden"}
                     className="body-text font-semibold"
                   >
-                    Supporting you with your overall wellbeing to explore parts
-                    of yourself and create real change.
+                    Supporting you to live your life with integrity so you
+                    can live with leadership and purpose.
                   </motion.div>
                 </div>
               </li>
@@ -156,9 +156,8 @@ export function MeetConor() {
               initial="hidden"
               animate={isInView ? "enter" : "hidden"}
             >
-              I believe everyone deserves a happier, healthier life. True change
-              that starts from within - so join me on this journey of
-              transformation!
+              Is this your time to step into your power and create something new? 
+              If so join me on this journey of transformation
             </motion.p>
           </div>
         </div>
