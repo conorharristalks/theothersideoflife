@@ -21,7 +21,10 @@ function validatePassword(request: NextRequest): { valid: boolean; clientIP: str
   const password = authHeader.substring(7);
   const isValid = password === ADMIN_PASSWORD;
   
-  adminRateLimiter.recordAttempt(clientIP, isValid);
+  // Only record failed attempts, not successful ones after initial login
+  if (!isValid) {
+    adminRateLimiter.recordAttempt(clientIP, false);
+  }
   
   return { valid: isValid, clientIP };
 }

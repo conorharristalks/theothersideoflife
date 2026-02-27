@@ -1,6 +1,6 @@
 'use client';
 
-import { addDays, eachDayOfInterval, endOfWeek, format, isSameDay, startOfWeek } from 'date-fns';
+import { addMonths, eachDayOfInterval, endOfMonth, format, isSameDay, isSameMonth, isBefore, startOfDay, startOfMonth, startOfWeek, endOfWeek, subMonths } from 'date-fns';
 import { useState } from 'react';
 
 
@@ -20,9 +20,12 @@ export default function AdminPage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
-  const [currentWeek, setCurrentWeek] = useState(new Date());
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const [isBlocked, setIsBlocked] = useState(false);
   const [remainingAttempts, setRemainingAttempts] = useState<number | null>(null);
+  const [showPastBookings, setShowPastBookings] = useState(false);
+
+  const today = startOfDay(new Date());
 
   const authenticate = async () => {
     try {
@@ -165,11 +168,18 @@ export default function AdminPage() {
     };
   };
 
-  const getWeekDays = (weekStart: Date) => {
-    const start = startOfWeek(weekStart, { weekStartsOn: 1 }); // Monday
-    const end = endOfWeek(weekStart, { weekStartsOn: 1 });
-    return eachDayOfInterval({ start, end });
+  // Build full calendar grid for the month (Mon–Sun rows)
+  const getCalendarDays = (month: Date) => {
+    const monthStart = startOfMonth(month);
+    const monthEnd = endOfMonth(month);
+    const calStart = startOfWeek(monthStart, { weekStartsOn: 1 });
+    const calEnd = endOfWeek(monthEnd, { weekStartsOn: 1 });
+    return eachDayOfInterval({ start: calStart, end: calEnd });
   };
+
+  const filteredBookings = showPastBookings
+    ? allBookings
+    : allBookings.filter(b => !isBefore(startOfDay(new Date(b.date)), today));
 
   if (!isAuthenticated) {
     return (
@@ -199,7 +209,7 @@ export default function AdminPage() {
             </button>
           </div>
           {message && (
-            <div className={`mt-4 text-center ${isBlocked ? 'text-red-600' : 'text-red-600'}`}>
+            <div className="mt-4 text-center text-red-600">
               <p>{message}</p>
               {remainingAttempts !== null && remainingAttempts > 0 && !isBlocked && (
                 <p className="text-sm text-yellow-600 mt-2">
@@ -248,50 +258,64 @@ export default function AdminPage() {
             </div>
             <div className="flex items-center">
               <div className="w-4 h-4 bg-gray-100 border border-gray-300 rounded mr-2"></div>
-              <span className="text-sm">Past Date</span>
+              <span className="text-sm">Past Date / Other Month</span>
             </div>
           </div>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md">
+          {/* Month navigation with clear month/year label */}
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">Calendar</h2>
-            <div className="flex space-x-2">
-              <button
-                onClick={() => setCurrentWeek(addDays(currentWeek, -7))}
-                className="px-3 py-1 bg-gray-200 rounded"
-              >
-                ← Previous Week
-              </button>
-              <button
-                onClick={() => setCurrentWeek(addDays(currentWeek, 7))}
-                className="px-3 py-1 bg-gray-200 rounded"
-              >
-                Next Week →
-              </button>
-            </div>
+            <button
+              onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
+              className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 font-medium"
+            >
+              ← Prev
+            </button>
+            <h2 className="text-2xl font-bold text-gray-800">
+              {format(currentMonth, 'MMMM yyyy')}
+            </h2>
+            <button
+              onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
+              className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 font-medium"
+            >
+              Next →
+            </button>
           </div>
 
-          <div className="grid grid-cols-7 gap-1 mb-4">
+          {/* Jump to today */}
+          <div className="flex justify-center mb-4">
+            <button
+              onClick={() => setCurrentMonth(new Date())}
+              className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded hover:bg-blue-200"
+            >
+              Today ({format(new Date(), 'dd MMM yyyy')})
+            </button>
+          </div>
+
+          {/* Day headers */}
+          <div className="grid grid-cols-7 gap-1 mb-1">
             {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
-              <div key={day} className="text-center font-medium text-gray-600 py-2">
+              <div key={day} className="text-center font-medium text-gray-600 py-2 text-sm">
                 {day}
               </div>
             ))}
           </div>
 
+          {/* Calendar grid */}
           <div className="grid grid-cols-7 gap-1 mb-6">
-            {getWeekDays(currentWeek).map(date => {
+            {getCalendarDays(currentMonth).map(date => {
               const dateStatus = getDateStatus(date);
               const isSelected = selectedDate && isSameDay(date, selectedDate);
-              const isPast = date < new Date();
+              const isPast = isBefore(date, today);
+              const isCurrentMonth = isSameMonth(date, currentMonth);
 
-              let bgColor = 'bg-green-50 border-green-200'; // Available
+              let bgColor = 'bg-green-50 border-green-200';
               let textColor = 'text-gray-900';
               let label = '';
 
-              if (isPast) {
-                bgColor = 'bg-gray-100 border-gray-300';
+              if (!isCurrentMonth || isPast) {
+                bgColor = 'bg-gray-100 border-gray-200';
                 textColor = 'text-gray-400';
               } else if (dateStatus.isBooked) {
                 if (dateStatus.isBlocked) {
@@ -307,27 +331,35 @@ export default function AdminPage() {
 
               if (isSelected) {
                 bgColor = 'bg-yellow-100 border-yellow-500';
+                textColor = 'text-gray-900';
               }
+
+              const isDisabled = isPast || !isCurrentMonth || dateStatus.isBooked;
 
               return (
                 <button
                   key={date.toISOString()}
-                  onClick={() => !isPast && !dateStatus.isBooked && setSelectedDate(date)}
-                  disabled={isPast || dateStatus.isBooked}
+                  onClick={() => !isDisabled && setSelectedDate(date)}
+                  disabled={isDisabled}
                   className={`
-                    p-3 text-sm border rounded min-h-[80px] flex flex-col justify-between
+                    p-2 text-sm border rounded min-h-[70px] flex flex-col justify-between
                     ${bgColor} ${textColor}
-                    ${isPast || dateStatus.isBooked ? 'cursor-not-allowed' : 'hover:bg-yellow-50'}
+                    ${isDisabled ? 'cursor-not-allowed' : 'hover:bg-yellow-50 cursor-pointer'}
                   `}
                   title={
-                    dateStatus.isBooked 
+                    !isCurrentMonth ? 'Different month' :
+                    dateStatus.isBooked
                       ? `${dateStatus.isBlocked ? 'Blocked by admin' : `Booked by ${dateStatus.schoolName}`}`
-                      : 'Available'
+                      : isPast ? 'Past date' : 'Click to select'
                   }
                 >
-                  <div className="font-medium">{format(date, 'd')}</div>
-                  {label && <div className="text-xs font-bold">{label}</div>}
-                  {dateStatus.isBooked && !dateStatus.isBlocked && (
+                  <div className="font-semibold text-base leading-none">
+                    {format(date, 'd')}
+                  </div>
+                  {isCurrentMonth && label && (
+                    <div className="text-xs font-bold mt-1">{label}</div>
+                  )}
+                  {isCurrentMonth && dateStatus.isBooked && !dateStatus.isBlocked && (
                     <div className="text-xs truncate">{dateStatus.schoolName}</div>
                   )}
                 </button>
@@ -336,34 +368,53 @@ export default function AdminPage() {
           </div>
 
           {selectedDate && (
-            <div className="p-4 bg-gray-50 rounded mb-4">
+            <div className="p-4 bg-yellow-50 border border-yellow-300 rounded mb-4">
               <h3 className="font-medium mb-2">
-                Selected: {format(selectedDate, 'EEEE, MMMM d, yyyy')}
+                Selected: <span className="text-yellow-800 font-bold">{format(selectedDate, 'EEEE, MMMM d, yyyy')}</span>
               </h3>
-              <button
-                onClick={blockDate}
-                disabled={isLoading}
-                className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 disabled:opacity-50"
-              >
-                {isLoading ? 'Blocking...' : 'Block This Date'}
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={blockDate}
+                  disabled={isLoading}
+                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 disabled:opacity-50"
+                >
+                  {isLoading ? 'Blocking...' : 'Block This Date'}
+                </button>
+                <button
+                  onClick={() => setSelectedDate(null)}
+                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           )}
 
-          {/* All Bookings List */}
+          {/* Bookings list */}
           <div className="border-t pt-4">
-            <h3 className="text-lg font-semibold mb-4">All Bookings & Blocked Dates</h3>
-            
-            {allBookings.length === 0 ? (
-              <p className="text-gray-500">No bookings or blocked dates</p>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold">All Bookings & Blocked Dates</h3>
+              <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={showPastBookings}
+                  onChange={(e) => setShowPastBookings(e.target.checked)}
+                  className="rounded"
+                />
+                Show past dates
+              </label>
+            </div>
+
+            {filteredBookings.length === 0 ? (
+              <p className="text-gray-500">
+                {showPastBookings ? 'No bookings or blocked dates' : 'No upcoming bookings or blocked dates'}
+              </p>
             ) : (
               <div className="space-y-2">
-                {allBookings.map((booking, index) => (
-                  <div 
-                    key={`${booking.date}-${index}`} 
-                    className={`flex justify-between items-center p-3 rounded ${
-                      booking.isBlocked ? 'bg-red-50' : 'bg-blue-50'
-                    }`}
+                {filteredBookings.map((booking, index) => (
+                  <div
+                    key={`${booking.date}-${index}`}
+                    className={`flex justify-between items-center p-3 rounded ${booking.isBlocked ? 'bg-red-50' : 'bg-blue-50'}`}
                   >
                     <div className="flex-1">
                       <div className="font-medium">

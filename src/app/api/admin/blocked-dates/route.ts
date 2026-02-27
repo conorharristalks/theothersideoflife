@@ -10,7 +10,6 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 function validatePassword(request: NextRequest): { valid: boolean; clientIP: string } {
   const clientIP = getClientIP(request);
   
-  // Check if IP is currently blocked
   if (adminRateLimiter.isBlocked(clientIP)) {
     return { valid: false, clientIP };
   }
@@ -23,8 +22,10 @@ function validatePassword(request: NextRequest): { valid: boolean; clientIP: str
   const password = authHeader.substring(7);
   const isValid = password === ADMIN_PASSWORD;
   
-  // Record the attempt
-  adminRateLimiter.recordAttempt(clientIP, isValid);
+  // Only record failed attempts, not successful ones after initial login
+  if (!isValid) {
+    adminRateLimiter.recordAttempt(clientIP, false);
+  }
   
   return { valid: isValid, clientIP };
 }
