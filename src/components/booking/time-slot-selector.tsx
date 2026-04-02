@@ -24,20 +24,20 @@ const TimeSlotSelector: React.FC<TimeSlotSelectorProps> = ({
   }).format(date);
   
   return (
-    <div className="time-slot-selector p-4 border rounded-lg shadow-sm bg-white">
-      <h2 className="text-xl font-semibold mb-4">Select Time for {formattedDate}</h2>
+    <div className="time-slot-selector w-full">
+      <h2 className="text-2xl font-fraunces font-bold mb-8 text-accent-1">Select Time for {formattedDate}</h2>
       
-      <div className="mb-6">
-        <h3 className="font-medium text-gray-700 mb-2">Morning</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+      <div className="mb-8">
+        <h3 className="font-medium text-foreground/80 mb-3">Morning</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {morningSlots.map((time) => (
             <button
               key={time}
               type="button"
-              className={`p-2 text-sm border rounded-md transition-colors cursor-pointer ${
+              className={`p-3 text-sm font-medium border rounded-md transition-colors cursor-pointer ${
                 selectedTimeSlot === time
-                  ? 'bg-blue-500 text-white border-blue-500'
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                  ? 'bg-accent-1 text-primary border-accent-1 shadow-md'
+                  : 'bg-primary text-foreground border-white/20 hover:bg-primary-light hover:border-accent-1/50'
               }`}
               onClick={() => onSelectTimeSlot(time)}
             >
@@ -48,16 +48,16 @@ const TimeSlotSelector: React.FC<TimeSlotSelectorProps> = ({
       </div>
       
       <div>
-        <h3 className="font-medium text-gray-700 mb-2">Afternoon</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <h3 className="font-medium text-foreground/80 mb-3">Afternoon</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {afternoonSlots.map((time) => (
             <button
               key={time}
               type="button"
-              className={`p-2 text-sm border rounded-md transition-colors cursor-pointer ${
+              className={`p-3 text-sm font-medium border rounded-md transition-colors cursor-pointer ${
                 selectedTimeSlot === time
-                  ? 'bg-blue-500 text-white border-blue-500'
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                  ? 'bg-accent-1 text-primary border-accent-1 shadow-md'
+                  : 'bg-primary text-foreground border-white/20 hover:bg-primary-light hover:border-accent-1/50'
               }`}
               onClick={() => onSelectTimeSlot(time)}
             >
@@ -68,9 +68,9 @@ const TimeSlotSelector: React.FC<TimeSlotSelectorProps> = ({
       </div>
       
       {selectedTimeSlot && (
-        <div className="mt-4 p-3 bg-blue-50 text-blue-800 rounded-md">
-          <p className="font-medium">Selected Time: {selectedTimeSlot}</p>
-          <p className="text-sm">Click &quot;Continue&quot; below to complete your booking details</p>
+        <div className="mt-8 p-5 bg-accent-1/10 border border-accent-1/20 rounded-xl">
+          <p className="font-medium text-foreground text-lg mb-1">Selected Time: <span className="text-accent-1 font-bold">{selectedTimeSlot}</span></p>
+          <p className="text-sm text-foreground/70">Click &quot;Continue&quot; below to complete your booking details</p>
         </div>
       )}
     </div>

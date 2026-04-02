@@ -6,7 +6,7 @@ const Page = () => {
   return (
     <section className="w-screen min-h-screen bg-primary py-16 px-4 md:px-8 flex items-center justify-center">
       <div className="max-w-7xl w-full rounded-3xl bg-primary-light shadow-right border border-accent-1 p-8 md:p-12">
-        <h1 className="h1 text-secondary mb-8 font-fraunces font-bold">
+        <h1 className="h1 text-foreground mb-8 font-fraunces font-bold">
           Professional Support
         </h1>
 
@@ -33,7 +33,7 @@ const Page = () => {
         </div>
 
         <div className="mt-10">
-          <h2 className="text-3xl font-bold font-fraunces text-secondary mb-8">
+          <h2 className="text-3xl font-bold font-fraunces text-foreground  mb-8">
             HELPLINES
           </h2>
 
@@ -97,8 +97,8 @@ const Page = () => {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-secondary/20 pt-6">
-          <p className="text-center text-secondary/70 text-sm">
+        <div className="mt-12 border-t border-foreground/20 pt-6">
+          <p className="text-center text-foreground/70 text-sm">
             If you are experiencing an emergency, please call 999 or 112
             immediately.
           </p>

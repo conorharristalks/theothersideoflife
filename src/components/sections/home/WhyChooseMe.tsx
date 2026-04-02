@@ -42,7 +42,7 @@ export function WhyChooseMe() {
   return (
     <motion.section className="z-30 flex flex-col lg:flex-row w-full mb-20 md:mb-32 px-[7px] gap-10 lg:justify-between items-center relative">
       <motion.div
-        className="relative w-full lg:w-[30%] aspect-square shadow-left rounded-full overflow-hidden border-4 border-primary"
+        className="relative w-full lg:w-[30%] aspect-square shadow-left rounded-full overflow-hidden border border-background"
         variants={imageVariants}
         initial="hidden"
         whileInView="visible"
@@ -58,7 +58,7 @@ export function WhyChooseMe() {
       </motion.div>
 
       <motion.div
-        className="w-full overflow-hidden lg:w-[63%] shadow-right md:p-8 lg:p-10 px-4 py-8 flex flex-col justify-center items-start gap-6 md:gap-8 bg-primary border-secondary border rounded-3xl"
+        className="w-full overflow-hidden lg:w-[63%] shadow-right-orange md:p-8 lg:p-10 px-4 py-8 flex flex-col justify-center items-start gap-6 md:gap-8 bg-box-bg text-[#353535] rounded-3xl"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

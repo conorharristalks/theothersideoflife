@@ -13,7 +13,6 @@ const Page = () => {
   const images = [
     "/conor-selfie.jpeg",
     "/conor-selfie-2.jpeg",
-    "/conor-meditate.jpeg",
   ];
 
   // Auto-change images on a timer
@@ -117,11 +116,11 @@ const Page = () => {
                       height="32"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      className="opacity-80"
+                      className="opacity-100"
                     >
                       <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
                     </svg>
-                    <p className="text-lg font-fraunces italic text-secondary">
+                    <p className="text-lg font-fraunces italic text-stone-400">
                       From darkness to purpose
                     </p>
                   </motion.div>
@@ -165,7 +164,7 @@ const Page = () => {
             >
               {/* Main portrait image - using aspect-square to ensure perfect circle */}
               <motion.div
-                className="aspect-square w-full relative lg:shadow-right md:shadow-left shadow-right rounded-full z-20 border border-accent-1 overflow-hidden"
+                className="aspect-square w-full relative lg:shadow-right-yellow md:shadow-left-yellow shadow-right-yellow rounded-full z-20 overflow-hidden"
                 variants={imageVariants}
                 initial="hidden"
                 animate="visible"
@@ -181,7 +180,7 @@ const Page = () => {
 
               {/* Presentation image - using aspect-square to ensure perfect circle */}
               <motion.div
-                className="absolute aspect-square md:w-[55%] md:shadow-right lg:shadow-left md:-right-[25%] lg:-left-[30%] bottom-[5%] rounded-full overflow-hidden z-30 hidden md:block border border-primary-light"
+                className="absolute aspect-square md:w-[55%] md:shadow-right-yellow lg:shadow-left-yellow md:-right-[25%] lg:-left-[30%] bottom-[5%] rounded-full overflow-hidden z-30 hidden md:block border border-primary-light"
                 variants={imageVariants}
                 initial="hidden"
                 animate="visible"
@@ -265,10 +264,10 @@ const Page = () => {
                       className="lg:text-xl md:text-lg text-[16px] font-nunito font-medium"
                       variants={itemVariants}
                     >
-                      I help people transform their lives and start living with 
-                      integrity and purpose. Just as I do, through a journey of 
-                      self discovery. My coaching takes a pyschosomatic approach 
-                      working through a compassionate lens and working with techniques 
+                      I help people transform their lives and start living with
+                      integrity and purpose. Just as I do, through a journey of
+                      self discovery. My coaching takes a pyschosomatic approach
+                      working through a compassionate lens and working with techniques
                       like breathwork and movement.
                     </motion.p>
                   </div>
@@ -286,8 +285,8 @@ const Page = () => {
           >
             <InteractiveButton
               variant="filled"
-              text="1 to 1 Coaching"
-              className="w-62 py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 hover:border-0 border-0"
+              text="1-1 Coaching"
+              className="md:w-56 w-44 py-3 border-accent-1/0 transition-all ease-in duration-100"
               ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
               href="/coaching"
             />
@@ -432,7 +431,7 @@ const Page = () => {
                       className="font-nunito lg:text-lg"
                       variants={itemVariants}
                     >
-                      I work with men and women who are ready to live 
+                      I work with men and women who are ready to live
                       with leadership and purpose creating real change.
                     </motion.p>
                   </div>
@@ -449,9 +448,10 @@ const Page = () => {
                   <InteractiveButton
                     variant="transparent"
                     text="Breathwork"
-                    className="md:w-56 w-full py-4 hover:text-primary transition-all ease-in duration-100"
+                    className="md:w-56 w-44 py-3 transition-all ease-in duration-100"
                     ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-                    href="/breathwork"
+                    textClassName="text-foreground"
+                    href="/book-appointment"
                   />
 
                   {/* Button divider */}
@@ -459,8 +459,8 @@ const Page = () => {
 
                   <InteractiveButton
                     variant="filled"
-                    text="Coaching"
-                    className="md:w-56 w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 hover:border-0 border-0"
+                    text="1-1 Coaching"
+                    className="md:w-56 w-44 py-3 border-accent-1/0 transition-all ease-in duration-100"
                     ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
                     href="/coaching"
                   />

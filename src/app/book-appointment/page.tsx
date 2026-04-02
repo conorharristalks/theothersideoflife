@@ -9,6 +9,12 @@ import BookingForm, {
 } from "@/components/booking/booking-form";
 import TimeSlotSelector from "@/components/booking/time-slot-selector";
 import { format } from "date-fns";
+import Image from "next/image";
+import { StatsMarquee } from "@/components/sections/home/StatsMarquee";
+import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
+import { Testimonials } from "@/components/sections/home/Testimonials";
+import { PastEvents } from "@/components/sections/home/PastEvents";
+import { testimonialData } from "@/lib/constants";
 
 // Define booking steps
 type BookingStep = "select-date" | "select-time" | "fill-form";
@@ -133,16 +139,10 @@ const Page: React.FC = () => {
     if (currentStep === "fill-form") {
       // Go back to time slot selection
       setCurrentStep("select-time");
-      setTimeout(() => {
-        document
-          .getElementById("time-selection")
-          ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
     } else if (currentStep === "select-time") {
       // Go back to date selection
       setSelectedTimeSlot(null);
       setCurrentStep("select-date");
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
     setError(null);
   };
@@ -154,7 +154,7 @@ const Page: React.FC = () => {
         <ol className="flex items-center w-full">
           <li
             className={`flex items-center ${
-              currentStep === "select-date" ? "text-accent-1" : "text-secondary/75"
+              currentStep === "select-date" ? "text-accent-1" : "text-foreground/80"
             }`}
           >
             <span
@@ -173,7 +173,7 @@ const Page: React.FC = () => {
           </li>
           <li
             className={`flex items-center ${
-              currentStep === "select-time" ? "text-accent-1" : "text-secondary/75"
+              currentStep === "select-time" ? "text-accent-1" : "text-foreground/80"
             }`}
           >
             <span
@@ -192,7 +192,7 @@ const Page: React.FC = () => {
           </li>
           <li
             className={`flex items-center ${
-              currentStep === "fill-form" ? "text-accent-1" : "text-secondary/75"
+              currentStep === "fill-form" ? "text-accent-1" : "text-foreground/80"
             }`}
           >
             <span
@@ -215,24 +215,23 @@ const Page: React.FC = () => {
     if (!selectedDate) return null;
     
     return (
-      <div className="bg-primary-light p-4 rounded-lg shadow-sm border border-accent-2/30 mb-6 mt-6 cursor-default">
-        <h3 className="font-semibold text-lg mb-2 text-secondary">Selected Date</h3>
-        <p className="text-gray-700">
+      <div className="bg-primary-light p-6 rounded-3xl shadow-sm border border-white/10 mb-6 mt-6 cursor-default text-foreground">
+        <h3 className="font-fraunces font-bold text-xl mb-2 text-accent-1">Selected Date</h3>
+        <p className="font-nunito font-semibold">
           {format(selectedDate, "EEEE, MMMM d, yyyy")}
         </p>
 
         {selectedTimeSlot && (
-          <p className="text-gray-700 mt-1">
-            Time: <span className="font-medium">{selectedTimeSlot}</span>
+          <p className="mt-1 font-nunito font-semibold text-foreground/90">
+            Time: <span className="font-bold text-foreground">{selectedTimeSlot}</span>
           </p>
         )}
 
         <button
           onClick={() => {
             setCurrentStep("select-date");
-            window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="mt-3 text-sm text-accent-1 hover:text-accent-1/80 font-medium transition-colors cursor-pointer"
+          className="mt-3 text-sm text-accent-1 hover:text-accent-1/80 font-bold transition-colors cursor-pointer"
         >
           Change Date
         </button>
@@ -240,53 +239,110 @@ const Page: React.FC = () => {
     );
   };
 
+  const statsData = [
+    { number: "6+", text: "Years Sober" },
+    { number: "150+", text: "Schools Visited" },
+    { number: "10,000+", text: "Students Reached" },
+    { number: "300+", text: "Hours Breathwork" },
+  ];
+
+  // Mock data for the sections below
+  const eventsData = [
+    {
+      quote: "Conor's talk was exactly what our students needed to hear. Honest and impactful.",
+      name: "St. Mary's Secondary School",
+      src: "/conor-about-2.jpeg",
+    },
+    {
+      quote: "A powerful message delivered with incredible vulnerability.",
+      name: "Local GAA Club",
+      src: "/conor-public-speaking-1.png",
+    },
+    {
+      quote: "The students were engaged from start to finish. Highly recommend.",
+      name: "Youth Community Centre",
+      src: "/conor-group-breathwork.png",
+    },
+  ];
+
+ 
+
   return (
-    <div className="min-h-screen bg-primary py-8 sm:py-12 px-4 sm:px-6 lg:px-8 cursor-default">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-10">
-          <h1 className="h2 mb-2">
-            The Other Side Of Life Talk
-          </h1>
-          <p className="mt-2 max-w-4xl mx-auto text-base sm:text-xl text-secondary/90">
-            As a recovered drug user, I share my powerful story and insights through
-            engaging talks with <strong>schools, GAA clubs, youth centres, and
-            corporations</strong>. Featured on RTE and Virgin Media, I aim to inspire, educate,
-            and bring a fresh perspective to your audience. Whether you&apos;re looking to
-            empower young minds or create positive change in your organisation, I&apos;d
-            love to be part of it.
+    <div className="min-h-screen bg-primary cursor-default flex flex-col w-full overflow-x-hidden">
+      {/* New Hero Section */}
+      <section className="w-full bg-primary py-8 lg:py-12 border-b-4 border-b-secondary relative">
+        <div className="lg:px-[2vw] md:px-[2.5vw] px-[3.5vw] mx-auto max-w-7xl">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+              <div className="relative aspect-square w-full max-w-[400px] lg:max-w-[500px] rounded-full overflow-hidden">
+                <Image src="/talks-logo.svg" alt="The Other Side of Life Logo" fill className="object-cover" />
+              </div>
+            </div>
+            <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left gap-6 lg:pl-8">
+              <p className="text-accent-1 font-bold tracking-widest text-sm md:text-base uppercase font-nunito">The Other Side Of Life</p>
+              <h1 className="h1 text-foreground font-fraunces">Conor Harris</h1>
+              <p className="text-foreground/80 font-bold tracking-widest text-sm md:text-base font-nunito">SPEAKER &bull; EDUCATOR &bull; ADVOCATE</p>
+              <p className="text-foreground/90 font-nunito text-lg max-w-lg leading-relaxed font-semibold">
+                As a recovered drug user, I share my powerful story and insights through engaging talks with schools, GAA clubs, youth centres, and corporations. Featured on multiple TV media, I aim to inspire, educate, and bring a fresh perspective to your audience.
+              </p>
+              <div className="mt-4">
+                <InteractiveButton
+                  variant="transparent"
+                  text="Book a talk"
+                  className="md:w-56 w-44 py-3 transition-all ease-in duration-100"
+                  ballClassName="left-[13%] top-[35%]"
+                  textClassName="text-foreground"
+                  href="#booking-section"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* New Stats Marquee */}
+      <StatsMarquee statsData={statsData} />
+
+      <div id="booking-section" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="h2 mb-4 text-accent-1">
+            What I Offer
+          </h2>
+          <p className="mt-2 max-w-4xl mx-auto text-base sm:text-xl text-foreground/80 font-nunito font-semibold">
+            Whether you&apos;re looking to empower young minds or create positive change in your organisation, I&apos;d love to be part of it.
           </p>
         </div>
 
         {/* Speaking Services Information Section */}
-        <div className="mb-12">
+        <div className="mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {/* Single Talk Card */}
-            <div className="bg-primary-light border border-accent-1/50 rounded-3xl p-6 lg:p-8 shadow-left">
+            <div className="bg-primary-light text-foreground border border-white/10 rounded-3xl p-6 lg:p-8">
               <div className="mb-6">
-                <h3 className="h3 font-fraunces font-bold text-secondary mb-4">
+                <h3 className="h3 font-fraunces font-bold text-foreground mb-4">
                   Single Talk - 1 hour
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <span className="text-accent-1 text-xl mt-1">•</span>
-                    <p className="font-nunito text-secondary font-semibold">
-                      <strong>Customised Content:</strong> Expect a talk crafted for your audience, ensuring maximum impact
+                    <p className="font-nunito font-semibold text-foreground/80">
+                      <strong className="text-foreground">Customised Content:</strong> Expect a talk crafted for your audience, ensuring maximum impact
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-accent-1 text-xl mt-1">•</span>
-                    <p className="font-nunito text-secondary font-semibold">
-                      <strong>Interactive Elements:</strong> Engaging Q&A session, small group discussions, and 1-on-1 chats after the talk
+                    <p className="font-nunito font-semibold text-foreground/80">
+                      <strong className="text-foreground">Interactive Elements:</strong> Engaging Q&A session, small group discussions, and 1-on-1 chats after the talk
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-accent-1 text-xl mt-1">•</span>
-                    <p className="font-nunito text-secondary font-semibold">
-                      <strong>Authentic Story:</strong> Hear a powerful and relatable personal journey shared with honesty and vulnerability
+                    <p className="font-nunito font-semibold text-foreground/80">
+                      <strong className="text-foreground">Authentic Story:</strong> Hear a powerful and relatable personal journey shared with honesty and vulnerability
                     </p>
                   </div>
                 </div>
-                <p className="mt-6 text-secondary/80 font-nunito">
+                <p className="mt-6 font-nunito font-semibold text-foreground/70 text-sm">
                   Whether I&apos;m addressing students, colleagues, or community members,
                   the core message is tailored to connect with everyone in the room.
                 </p>
@@ -294,40 +350,40 @@ const Page: React.FC = () => {
             </div>
 
             {/* Talk + Workshop Package Card - Recommended */}
-            <div className="bg-primary-light border border-accent-1/50 rounded-3xl p-6 lg:p-8 shadow-right relative">
+            <div className="bg-primary-light text-foreground border border-accent-1 rounded-3xl p-6 lg:p-8 relative">
               {/* Recommended Badge */}
               <div className="absolute -top-3 right-6">
-                <span className="bg-accent-1 text-primary px-4 py-1 rounded-full text-sm font-bold font-nunito">
+                <span className="bg-accent-1 text-white px-4 py-1 rounded-full text-sm font-bold font-nunito shadow-sm">
                   Recommended
                 </span>
               </div>
               
               <div className="mb-6">
-                <h3 className="h3 font-fraunces font-bold text-secondary mb-4">
+                <h3 className="h3 font-fraunces font-bold text-foreground mb-4">
                   Talk + Workshop Package - 2 hours
                 </h3>
-                <p className="mb-6 text-secondary font-nunito font-semibold">
+                <p className="mb-6 font-nunito font-semibold text-foreground/80">
                   For a deeper dive and a more hands-on experience, this 2-hour session{" "}
-                  <strong>combines the talk (as described previously) with a practical workshop</strong>{" "}
+                  <strong className="text-foreground">combines the talk (as described previously) with a practical workshop</strong>{" "}
                   designed specifically for students to apply its core messages and
                   explore them in greater detail, helping them integrate these lessons into their everyday lives:
                 </p>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <span className="text-accent-1 text-xl mt-1">•</span>
-                    <p className="font-nunito text-secondary font-semibold">
+                    <p className="font-nunito font-semibold text-foreground/80">
                       Understanding and applying your core values, and learning how they shape decisions
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-accent-1 text-xl mt-1">•</span>
-                    <p className="font-nunito text-secondary font-semibold">
+                    <p className="font-nunito font-semibold text-foreground/80">
                       Gain insights into your &quot;shadow&quot; and &quot;persona&quot; to foster self-awareness and personal growth
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-accent-1 text-xl mt-1">•</span>
-                    <p className="font-nunito text-secondary font-semibold">
+                    <p className="font-nunito font-semibold text-foreground/80">
                       Engage in practical exercises that delve deeper into themes explored in the talk
                     </p>
                   </div>
@@ -360,7 +416,7 @@ const Page: React.FC = () => {
         {isMobile && (
           <div className="space-y-6">
             {/* Always show calendar on top for mobile */}
-            <div className="bg-primary-light p-4 rounded-lg shadow-sm border border-accent-2/30 calendar-container">
+            <div className="bg-primary-light p-6 rounded-3xl text-foreground shadow-sm border border-white/10 calendar-container">
               <BookingCalendar
                 selectedDate={selectedDate}
                 onDateSelect={handleDateSelect}
@@ -374,16 +430,16 @@ const Page: React.FC = () => {
             
             {/* Time selection step */}
             {currentStep === "select-time" && selectedDate && (
-              <div id="time-selection" className="bg-primary-light p-4 rounded-lg shadow-sm border border-accent-2/30">
+              <div id="time-selection" className="bg-primary-light p-6 rounded-3xl text-foreground shadow-sm border border-white/10">
                 <TimeSlotSelector
                   date={selectedDate}
                   selectedTimeSlot={selectedTimeSlot}
                   onSelectTimeSlot={handleTimeSlotSelect}
                 />
-                <div className="mt-4 flex justify-between">
+                <div className="mt-6 flex justify-between">
                   <button
                     onClick={handleCancel}
-                    className="px-4 py-2 text-sm font-medium text-secondary bg-primary-light border border-accent-2/50 rounded-md shadow-sm hover:bg-gray-50 transition-colors cursor-pointer"
+                    className="px-4 py-2 text-sm font-bold text-foreground bg-primary border border-white/20 rounded-md shadow-sm hover:bg-primary-light transition-colors cursor-pointer"
                   >
                     Back
                   </button>
@@ -404,15 +460,15 @@ const Page: React.FC = () => {
             
             {/* Form step */}
             {currentStep === "fill-form" && selectedDate && (
-              <div id="booking-form" className="bg-primary-light p-4 rounded-lg shadow-sm border border-accent-2/30">
+              <div id="booking-form" className="bg-primary-light p-6 rounded-3xl text-foreground shadow-sm border border-white/10">
                 <BookingForm
                   selectedDate={selectedDate}
                   onSubmit={handleSubmit}
                   onCancel={handleCancel}
                 />
-                <p className="mt-3 text-center text-sm text-gray-500">
+                <p className="mt-4 text-center text-sm font-semibold text-foreground/80">
                   Selected time:{" "}
-                  <span className="font-semibold">{selectedTimeSlot}</span> -
+                  <span className="font-bold text-accent-1">{selectedTimeSlot}</span> -
                   <button
                     onClick={() => {
                       setCurrentStep("select-time");
@@ -422,7 +478,7 @@ const Page: React.FC = () => {
                           ?.scrollIntoView({ behavior: "smooth", block: "start" });
                       }, 100);
                     }}
-                    className="ml-1 text-accent-1 hover:text-accent-1/80 transition-colors cursor-pointer"
+                    className="ml-1 text-accent-1 hover:text-accent-1/80 font-bold transition-colors cursor-pointer"
                   >
                     Change Time
                   </button>
@@ -431,21 +487,21 @@ const Page: React.FC = () => {
             )}
             
             {/* Information card - always show */}
-            <div className="bg-primary-light p-4 rounded-lg shadow-sm border border-accent-2/30">
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="font-semibold text-lg text-secondary">
+            <div className="bg-primary-light p-6 rounded-3xl text-foreground shadow-sm border border-white/10">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4">
+                <h3 className="font-fraunces font-bold text-xl text-accent-1">
                   Booking Information
                 </h3>
                 <a
                   href="https://docs.google.com/document/d/1fimZyxR1sk852o0_KmXEYQA26kS_2_ib/edit?usp=drivesdk&ouid=101349312426059065008&rtpof=true&sd=true"
-                  className="text-sm text-accent-1 hover:text-accent-1/80 font-medium transition-colors cursor-pointer underline"
+                  className="text-sm text-accent-1 hover:text-accent-1/80 font-bold transition-colors cursor-pointer underline sm:ml-2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Check out my leaflet for more information about the talk
                 </a>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <ul className="space-y-3 text-sm font-semibold text-foreground/80">
                 <li>• Only one school can book per day</li>
                 <li>
                   • You can request between 1-3 wellbeing talks for your school
@@ -463,10 +519,10 @@ const Page: React.FC = () => {
             
             {/* No date selected prompt */}
             {currentStep === "select-date" && !selectedDate && (
-              <div className="bg-primary-light p-6 rounded-lg shadow-sm border border-accent-2/30 flex flex-col items-center justify-center py-8">
+              <div className="bg-primary-light p-8 rounded-3xl text-foreground shadow-sm border border-white/10 flex flex-col items-center justify-center py-12">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12 text-accent-2 mb-4"
+                  className="h-14 w-14 text-accent-1 mb-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -478,7 +534,7 @@ const Page: React.FC = () => {
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
-                <p className="text-base sm:text-lg text-secondary/80 text-center">
+                <p className="text-base sm:text-lg font-semibold text-center">
                   Please select a date from the calendar above to continue
                 </p>
               </div>
@@ -491,7 +547,7 @@ const Page: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Left column - stays visible throughout */}
             <div>
-              <div className="bg-primary-light p-4 rounded-lg shadow-sm border border-accent-2/30 calendar-container mx-auto">
+              <div className="bg-primary-light p-6 rounded-3xl text-foreground shadow-sm border border-white/10 calendar-container mx-auto">
                 <BookingCalendar
                   selectedDate={selectedDate}
                   onDateSelect={handleDateSelect}
@@ -503,21 +559,21 @@ const Page: React.FC = () => {
                 renderSelectedDateCard()
               }
 
-              <div className="mt-6 bg-primary-light p-4 rounded-lg shadow-sm border border-accent-2/30">
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="font-semibold text-lg text-secondary">
+              <div className="mt-8 bg-primary-light p-6 rounded-3xl text-foreground shadow-sm border border-white/10">
+                <div className="flex flex-col gap-2 mb-4">
+                  <h3 className="font-fraunces font-bold text-xl text-accent-1">
                     Booking Information
                   </h3>
                   <a
                     href="https://docs.google.com/document/d/1fimZyxR1sk852o0_KmXEYQA26kS_2_ib/edit?usp=drivesdk&ouid=101349312426059065008&rtpof=true&sd=true"
-                    className="text-sm text-accent-1 hover:text-accent-1/80 font-medium transition-colors cursor-pointer underline"
+                    className="text-sm text-accent-1 hover:text-accent-1/80 font-bold transition-colors cursor-pointer underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Check out my leaflet for more information about the talk
                   </a>
                 </div>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <ul className="space-y-3 text-sm font-semibold text-foreground/80">
                   <li>• Only one school can book per day</li>
                   <li>
                     • You can request between 1 or 2 recovery talks for your school
@@ -538,22 +594,22 @@ const Page: React.FC = () => {
             <div>
               {/* Step 2: Time slot selection */}
               {currentStep === "select-time" && selectedDate && (
-                <div id="time-selection" className="bg-primary-light p-5 rounded-lg shadow-sm border border-accent-2/30">
+                <div id="time-selection" className="bg-primary-light p-8 rounded-3xl text-background shadow-sm border border-white/10">
                   <TimeSlotSelector
                     date={selectedDate}
                     selectedTimeSlot={selectedTimeSlot}
                     onSelectTimeSlot={handleTimeSlotSelect}
                   />
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-8 flex justify-between">
                     <button
                       onClick={handleCancel}
-                      className="px-4 py-2 text-sm font-medium text-secondary bg-primary-light border border-accent-2/50 rounded-md shadow-sm hover:bg-gray-50 transition-colors cursor-pointer"
+                      className="px-6 py-2.5 text-sm font-bold text-foreground bg-primary border border-white/20 rounded-md shadow-sm hover:bg-primary-light transition-colors cursor-pointer"
                     >
                       Back
                     </button>
                     <button
                       onClick={handleContinueToForm}
-                      className={`px-4 py-2 text-sm font-medium text-white rounded-md shadow-sm transition-colors cursor-pointer ${
+                      className={`px-6 py-2.5 text-sm font-medium text-white rounded-md shadow-sm transition-colors cursor-pointer ${
                         selectedTimeSlot
                           ? "bg-accent-1 hover:bg-accent-1/90"
                           : "bg-gray-400 cursor-not-allowed"
@@ -568,18 +624,18 @@ const Page: React.FC = () => {
 
               {/* Step 3: Booking form */}
               {currentStep === "fill-form" && selectedDate && (
-                <div id="booking-form" className="bg-primary-light p-5 rounded-lg shadow-sm border border-accent-2/30">
+                <div id="booking-form" className="bg-primary-light p-8 rounded-3xl text-foreground shadow-sm border border-white/10">
                   <BookingForm
                     selectedDate={selectedDate}
                     onSubmit={handleSubmit}
                     onCancel={handleCancel}
                   />
-                  <p className="mt-3 text-center text-sm text-gray-500">
+                  <p className="mt-6 text-center text-sm font-semibold text-foreground/80">
                     Selected time:{" "}
-                    <span className="font-semibold">{selectedTimeSlot}</span> -
+                    <span className="font-bold text-accent-1">{selectedTimeSlot}</span> -
                     <button
                       onClick={() => setCurrentStep("select-time")}
-                      className="ml-1 text-accent-1 hover:text-accent-1/80 transition-colors cursor-pointer"
+                      className="ml-1 text-accent-1 hover:text-accent-1/80 font-bold transition-colors cursor-pointer"
                     >
                       Change Time
                     </button>
@@ -589,10 +645,10 @@ const Page: React.FC = () => {
 
               {/* Initial state - No date selected yet */}
               {currentStep === "select-date" && !selectedDate && (
-                <div className="bg-primary-light p-6 rounded-lg shadow-sm border border-accent-2/30 flex flex-col items-center justify-center h-64">
+                <div className="bg-primary-light p-8 rounded-3xl text-foreground shadow-sm border border-white/10 flex flex-col items-center justify-center h-64">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-12 w-12 text-accent-2 mb-4"
+                    className="h-16 w-16 text-accent-1 mb-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -604,7 +660,7 @@ const Page: React.FC = () => {
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                     />
                   </svg>
-                  <p className="text-lg text-secondary/80 text-center">
+                  <p className="text-lg font-semibold text-center">
                     Please select a date from the calendar to continue
                   </p>
                 </div>
@@ -612,6 +668,17 @@ const Page: React.FC = () => {
             </div>
           </div>
         )}
+      </div>
+
+
+      <div className="mt-16">
+          <Testimonials testimonialData={testimonialData} />
+        </div>
+
+      {/* Past Events & Testimonials Section */}
+      <div className="w-[80%] mx-auto pt-12 pb-24 flex flex-col overflow-hidden">
+        <PastEvents events={eventsData} />
+        
       </div>
     </div>
   );

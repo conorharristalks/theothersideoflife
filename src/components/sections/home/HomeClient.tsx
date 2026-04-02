@@ -9,8 +9,7 @@ import { ContentWrapper } from "@/components/ui/ContentWrapper";
 import { CTA } from "@/components/sections/home/CTA";
 import { Hero } from "@/components/sections/home/Hero";
 import { MeetConor } from "@/components/sections/home/meet-conor";
-import { PastEvents } from "@/components/sections/home/PastEvents";
-import { StatsMarquee } from "@/components/sections/home/StatsMarquee";
+import { Marquee } from "@/components/ui/marquee";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { WhatSetsMeApart } from "@/components/sections/home/WhatSetsMeApart";
 import { WhyChooseMe } from "@/components/sections/home/WhyChooseMe";
@@ -35,6 +34,13 @@ export function HomeClient({
   events
 }: HomeClientProps) {
  
+  const logoImages = [
+    { src: "/rte-logo.svg", alt: "RTE logo" },
+    { src: "/virgin-media-logo.svg", alt: "Virgin Media logo" },
+    { src: "/ireland-am-logo.svg", alt: "Ireland AM logo" },
+    { src: "/davy-logo.svg", alt: "Davy's Toughest Team logo" },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -45,13 +51,17 @@ export function HomeClient({
         base64Hero2={base64Hero2}
       />
 
-      {/* Stats Marquee Section */}
-      <StatsMarquee statsData={statsData} />
+      {/* Logos Marquee Section */}
+      <section className="w-full overflow-hidden shadow-marquee">
+        <div className="w-full overflow-hidden z-10">
+          <Marquee images={logoImages} className="py-2 bg-primary" speed={1.5} />
+        </div>
+      </section>
 
       {/* Content Sections */}
       <ContentWrapper
         
-        className="min-h-screen relative w-full mt-[7px] py-20 bg-[url('/wave-icon.svg')] bg-repeat bg-cover bg-right md:bg-cover md:bg-top"
+        className="min-h-screen relative w-full mt-[7px] py-20"
       >
         <Container className="relative">
           {/* Meet Conor Harris Section */}
@@ -71,7 +81,7 @@ export function HomeClient({
           <Testimonials testimonialData={testimonialData} />
 
           {/* Past Events Section */}
-          <PastEvents events={events} />
+         
 
           {/* CTA Section */}
           <CTA />

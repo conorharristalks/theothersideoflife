@@ -118,20 +118,20 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ onDateSelect, selecte
   };
 
   return (
-    <div className="booking-calendar p-4 border rounded-lg shadow-sm bg-primary-light cursor-default">
-      <h2 className="text-xl font-semibold mb-4">Select a Date</h2>
+    <div className="booking-calendar flex flex-col items-center w-full cursor-default">
+      <h2 className="text-2xl w-full text-center font-fraunces font-bold text-accent-1 mb-8">Select a Date</h2>
       {fetchError && (
-        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm">
+        <div className="w-full max-w-[500px] mb-4 p-3 bg-red-900/20 border border-red-900/50 text-red-400 rounded-md text-sm">
           <p>Error loading availability data. Using local filtering only.</p>
         </div>
       )}
       
       {isLoading ? (
-        <div className="flex justify-center items-center p-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+        <div className="flex justify-center items-center p-12">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-1"></div>
         </div>
       ) : (
-        <div className="flex w-full">
+        <div className="flex justify-center w-full">
           <Calendar
             mode="single"
             selected={selectedDate ?? undefined}
@@ -139,7 +139,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ onDateSelect, selecte
             disabled={disabledDays}
             month={displayedMonth} // Control the displayed month
             onMonthChange={handleMonthChange} // Update displayedMonth and trigger fetch
-            className="w-full max-w-[400px]"
+            className="w-full max-w-[500px]"
             showOutsideDays={false} // Hide dates from other months
             fixedWeeks={false} // Allow natural week adjustment
             weekStartsOn={0} // Start week on Sunday for cleaner layout
@@ -154,26 +154,26 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({ onDateSelect, selecte
             modifiersStyles={{
               booked: { 
                 textDecoration: 'line-through',
-                backgroundColor: 'rgb(254, 226, 226)',
-                color: 'rgb(185, 28, 28)'
+                color: 'rgba(245, 245, 245, 0.3)',
+                pointerEvents: 'none'
               }
             }}
             // Add custom styles to ensure proper layout
             style={{
-              '--rdp-cell-size': '36px',
+              '--rdp-cell-size': '44px',
             } as React.CSSProperties}
           />
         </div>
       )}
       
-      <div className="mt-6 text-sm flex gap-8">
+      <div className="mt-10 text-sm flex gap-8 justify-center w-full">
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 bg-red-500 rounded-full"></div>
-          <span className='text-secondary/90'>Already Booked</span>
+          <div className="w-4 h-4 bg-secondary/50 rounded-md border border-white/10"></div>
+          <span className='text-foreground/80 font-medium'>Already Booked</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-          <span className='text-secondary/90'>Selected Date</span>
+          <div className="w-4 h-4 bg-accent-1 rounded-md"></div>
+          <span className='text-foreground/80 font-medium'>Selected Date</span>
         </div>
       </div>
     </div>

@@ -4,29 +4,29 @@ import Image from "next/image";
 export function CTA() {
   return (
     <section className="text-primary w-full px-[7px] mb-16 md:mb-24">
-      <div className="grid grid-cols-1 lg:grid-cols-2 shadow-right rounded-3xl bg-accent-1 overflow-hidden relative">
+      <div className="grid grid-cols-1 lg:grid-cols-2 shadow-right rounded-3xl bg-box-bg overflow-hidden relative border-background border">
         {/* Content side */}
         <div className="p-6 md:p-8 lg:p-16 flex flex-col gap-4 md:gap-6 lg:gap-8 z-10">
           <h2 className="h2">Ready to Begin Your Journey?</h2>
           <p className="body-text-lg font-bold">
-            Whether you&apos;re interested in breathwork, looking to book
-            a talk, or simply want to learn more, I&apos;m here to help
-            you take the next step.
+            Whether you&apos;re interested in breathwork, looking to book a
+            talk, or simply want to learn more, I&apos;m here to help you take
+            the next step.
           </p>
           <div className="flex flex-col md:flex-row gap-4 mt-2 md:mt-4">
-            <InteractiveButton
+            {/* <InteractiveButton
               variant="filled"
               text="1 to 1 Coaching"
-              className="md:w-60 w-full py-4 border-accent-2 border hover:border bg-primary text-accent-1 hover:text-secondary transition-all ease-in duration-100"
+              className="md:w-60 w-full py-3 border-accent-2 border hover:border bg-accent-2 transition-all ease-in duration-100"
+              textClassName="text-foreground"
               ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%]"
               href="/coaching"
-            />
+            /> */}
             <InteractiveButton
               variant="transparent"
-              text="Contact Me"
-              className="md:w-56 w-full py-4 border hover:border border-primary hover:bg-primary transition-all ease-in duration-100"
-              ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%] bg-primary"
-              textClassName="text-primary hover:text-accent-1"
+              text="Book A Talk"
+              className="md:w-64 w-full py-3 transition-all ease-in duration-100"
+              ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%]"
               href="/book-appointment"
             />
           </div>

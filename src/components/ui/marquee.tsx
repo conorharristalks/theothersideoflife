@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import Image from 'next/image';
 
 interface MarqueeItemProps {
   number: string;
@@ -10,7 +11,8 @@ interface MarqueeItemProps {
 }
 
 interface MarqueeProps {
-  items: Array<{ number: string; text: string }>;
+  items?: Array<{ number: string; text: string }>;
+  images?: Array<{ src: string; alt: string }>;
   className?: string;
   speed?: number;
 }
@@ -30,8 +32,22 @@ const MarqueeItem: React.FC<MarqueeItemProps> = ({
   );
 };
 
+const MarqueeImageItem: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
+  return (
+    <div className="flex items-center h-full relative flex-shrink-0">
+      <div className="flex items-center justify-center px-12 md:px-24 py-6 h-full">
+        <div className="relative w-[120px] h-[100px] md:w-[180px] md:h-[100px]">
+          <Image src={src} alt={alt} fill className="object-contain" />
+        </div>
+      </div>
+      <div className="h-[65%] w-[1px] absolute right-0 bg-secondary mx-0.5" />
+    </div>
+  );
+};
+
 export const Marquee: React.FC<MarqueeProps> = ({ 
-  items, 
+  items,
+  images, 
   className, 
   speed = 0.05
 }) => {
@@ -39,7 +55,8 @@ export const Marquee: React.FC<MarqueeProps> = ({
   const duration = 25 / speed;
   
   // Create enough duplicates to ensure seamless loop
-  const duplicatedItems = [...items, ...items, ...items];
+  const listToDuplicate = images || items || [];
+  const duplicatedList = [...listToDuplicate, ...listToDuplicate, ...listToDuplicate];
 
   return (
     <div className={cn(
@@ -63,12 +80,20 @@ export const Marquee: React.FC<MarqueeProps> = ({
           willChange: "transform", // Optimize for animations
         }}
       >
-        {duplicatedItems.map((item, index) => (
-          <MarqueeItem 
-            key={`marquee-item-${index}`} 
-            number={item.number} 
-            text={item.text} 
-          />
+        {duplicatedList.map((item, index) => (
+          images ? (
+            <MarqueeImageItem 
+              key={`marquee-item-${index}`} 
+              src={(item as any).src} 
+              alt={(item as any).alt} 
+            />
+          ) : (
+            <MarqueeItem 
+              key={`marquee-item-${index}`} 
+              number={(item as any).number} 
+              text={(item as any).text} 
+            />
+          )
         ))}
       </motion.div>
     </div>

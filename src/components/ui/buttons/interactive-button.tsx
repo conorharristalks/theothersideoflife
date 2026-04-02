@@ -43,23 +43,27 @@ const InteractiveButton = React.forwardRef<
   
   // Common classes for the actual interactive element
   const interactiveClasses = cn(
-    "group relative w-48 cursor-pointer overflow-hidden rounded-xl border-2 border-accent-1 text-center button-blue-shadow transition-all active:scale-97 block",
-    isTransparent ? "bg-transparent button-shadow hover:border-2" : "hover:border-2",
+    "group relative w-48 cursor-pointer overflow-hidden rounded-xl text-center button-shadow transition-all active:scale-97 block",
+    isTransparent ? "bg-transparent border-1 border-accent-1" : "bg-yellow-bg ",
     className,
   );
   
+  const defaultTextClass = isTransparent ? "text-accent-1" : "text-accent-1";
+  const hoverTextClass = "text-white";
+
   // The shared inner content of the button/link
   const content = (
     <>
       <span className={cn(
         "inline-block translate-x-1 transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0 font-semibold font-baskerville",
+        defaultTextClass,
         textClassName
       )}>
         {text}
       </span>
       <div className={cn(
         "absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100 font-semibold font-baskerville",
-        isTransparent ? "text-background" : "text-foreground",
+        hoverTextClass,
         textClassName
       )}>
         <span>{text}</span>
@@ -67,8 +71,8 @@ const InteractiveButton = React.forwardRef<
       </div>
       <div 
         className={cn(
-          "absolute h-4 w-4 scale-[1] rounded-lg transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] left-[13%] top-[35%]",
-          isTransparent ? "bg-accent-1" : "bg-accent-2",
+          "absolute h-4 w-4 scale-[1] rounded-lg transition-all duration-375 ease-out group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] left-[13%] top-[35%]",
+          isTransparent ? "bg-accent-1" : "bg-accent-1",
           ballClassName
         )}
         style={ballPosition ? {

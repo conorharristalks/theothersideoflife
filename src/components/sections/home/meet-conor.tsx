@@ -47,7 +47,7 @@ export function MeetConor() {
   return (
     <section className="z-20 grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20 md:mb-32 mx-[7px] sticky top-0">
       <motion.div
-        className="lg:col-span-2 shadow-left px-4 py-8 md:p-8 lg:p-10 flex flex-col gap-6 md:gap-8 bg-primary border-secondary border rounded-3xl overflow-hidden"
+        className="lg:col-span-2 shadow-left-orange px-4 py-8 md:p-8 lg:p-10 flex flex-col gap-6 md:gap-8 bg-box-bg text-[#353535] rounded-3xl overflow-hidden"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -58,7 +58,7 @@ export function MeetConor() {
           {/* Title with masked animation */}
           <div className="overflow-hidden">
             <motion.h2
-              className="h2"
+              className="h2 text-accent-1"
               variants={itemVariants}
               custom={0}
               initial="hidden"
@@ -71,7 +71,7 @@ export function MeetConor() {
           {/* Intro paragraph with masked animation */}
           <div className="overflow-hidden">
             <motion.p
-              className="body-text-lg font-bold italic"
+              className="body-text-lg font-bold italic text-accent-1"
               variants={itemVariants}
               custom={1}
               initial="hidden"
@@ -174,7 +174,7 @@ export function MeetConor() {
               <InteractiveButton
                 variant="transparent"
                 text="More About Me"
-                className="md:w-64 w-full py-4 hover:text-primary transition-all ease-in duration-100"
+                className="md:w-64 w-full py-3 transition-all ease-in duration-100"
                 ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%]"
               />
             </Link>

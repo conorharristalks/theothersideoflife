@@ -10,7 +10,7 @@ interface PastEventsProps {
 
 export function PastEvents({ events }: PastEventsProps) {
   return (
-    <section className="mb-20 md:mb-32 relative rounded-3xl flex flex-col justify-center items-center shadow-right bg-primary border border-secondary py-10 md:py-16 px-3 md:px-8 lg:px-12 overflow-hidden mx-[7px]">
+    <section className="mb-20 md:mb-32 relative rounded-3xl flex flex-col justify-center items-center shadow-right bg-box-bg text-[#353535] border-2 border-accent-1 py-10 md:py-16 px-3 md:px-8 lg:px-12 overflow-hidden mx-[7px]">
       <div className="text-center mb-8 md:mb-12">
         <h2 className="h2 mb-3 md:mb-4">Past Events</h2>
         <p className="body-text-lg font-bold italic max-w-2xl mx-auto px-2">

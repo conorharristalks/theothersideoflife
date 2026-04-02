@@ -141,7 +141,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="md:w-[450px] w-[350px] flex-shrink-0 flex-grow-0 bg-primary p-6 rounded-xl border border-secondary shadow-left"
+            className="md:w-[450px] w-[350px] flex-shrink-0 flex-grow-0 bg-primary p-6 rounded-xl shadow-left-orange"
             key={`${item.name}-${idx}`}
           >
             <div className="flex flex-col h-full justify-between gap-4">

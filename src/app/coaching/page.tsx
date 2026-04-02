@@ -70,7 +70,7 @@ const Page = () => {
 
   return (
     <>
-      <section className="bg-primary border-b-4 border-b-secondary h-full lg:min-h-[calc(100vh-6rem)] w-screen bg-[url('/wave-icon.svg')] bg-no-repeat bg-[position:0%] lg:bg-[position:135%_15%] relative">
+      <section className="bg-primary border-b-4 border-b-secondary h-full lg:min-h-[calc(100vh-6rem)] w-screen relative">
         <div className="lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
           <div className="w-full min-h-full lg:flex lg:flex-row flex flex-col justify-between items-center pt-10 pb-10 relative">
             <motion.div
@@ -81,7 +81,7 @@ const Page = () => {
             >
               <div className="overflow-hidden">
                 <motion.h1
-                  className="h1 font-fraunces font-bold text-foreground"
+                  className="h2 font-fraunces font-bold text-foreground"
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{
@@ -90,7 +90,7 @@ const Page = () => {
                     delay: 0.1,
                   }}
                 >
-                  1:1 coaching designed to help you lead with integrity 
+                  1:1 coaching designed to help you lead with integrity
                   and find your purpose
                 </motion.h1>
               </div>
@@ -107,9 +107,9 @@ const Page = () => {
                       className="lg:text-xl md:text-lg text-[16px] font-nunito"
                       variants={itemVariants}
                     >
-                      This is a container for deep change, and honest conversations. 
+                      This is a container for deep change, and honest conversations.
                       Whether you’re feeling burnt out, tired of the same loop, or know
-                      you&apos;re worth more - my coaching will help you lead with clarity 
+                      you&apos;re worth more - my coaching will help you lead with clarity
                       and purpose.
                     </motion.p>
                   </div>
@@ -124,8 +124,8 @@ const Page = () => {
               >
                 <InteractiveButton
                   variant="filled"
-                  text="Book a free discovery call"
-                  className="md:w-[50%] w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
+                  text="Book a discovery call"
+                  className="md:w-72 w-full py-3 border-accent-1/0 transition-all ease-in duration-100"
                   ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
                   href="https://calendly.com/conorharris-talks/discovery-call"
                 />
@@ -139,14 +139,14 @@ const Page = () => {
               initial="hidden"
               animate="visible"
             >
-              {/* Main portrait image - using aspect-square to ensure perfect circle */}
-              <div className="aspect-square w-full relative lg:shadow-right md:shadow-left shadow-right rounded-full z-20 border border-primary-light overflow-hidden">
+              {/* Main portrait image - perfectly containing the Figma export */}
+              <div className="w-full h-[350px] md:h-[500px] relative">
                 <Image
-                  src="/conor-selfie-4.jpeg"
+                  src="/coaching-hero-img.png"
                   alt="Portrait"
                   fill
-                  style={{ objectFit: "cover", transform: "scaleX(-1)" }}
-                  className="rounded-full"
+                  style={{ objectFit: "contain"}}
+                  priority
                 />
               </div>
             </motion.div>
@@ -168,7 +168,7 @@ const Page = () => {
               <div className="w-full lg:w-[45%] flex flex-col items-start lg:items-start">
                 <div className="overflow-hidden mb-6">
                   <motion.h2
-                    className="h2 font-fraunces font-bold text-foreground"
+                    className="h2 font-fraunces font-bold text-yellow-bg"
                     variants={itemVariants}
                   >
                     What Sets Me Apart?
@@ -191,7 +191,7 @@ const Page = () => {
 
               {/* Border separation - only visible on lg screens and up */}
               <motion.div
-                className="hidden lg:block w-px bg-secondary shadow-[-6px_-6px_0px_#003049]/70 self-stretch mx-8"
+                className="hidden lg:block w-px bg-accent-1 shadow-[-6px_-6px_0px_#F08044]/90 self-stretch mx-8"
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true }}
@@ -202,24 +202,30 @@ const Page = () => {
               <div className="w-full h-full flex flex-col justify-between lg:w-[50%] mt-6 lg:mt-0">
                 <div className="overflow-hidden mb-6">
                   <motion.h2
-                    className="h2 font-fraunces font-bold text-foreground"
+                    className="h2 font-fraunces font-bold text-yellow-bg"
                     variants={itemVariants}
                   >
                     What makes me qualified?
                   </motion.h2>
                 </div>
                 <motion.ul
-                  className="mt-4 h-full flex flex-col justify-between w-full list-disc pl-5 text-secondary font-nunito lg:text-lg text-md leading-relaxed font-semibold"
+                  className="mt-4 h-full flex flex-col justify-between w-full list-disc pl-5 text-foreground font-nunito lg:text-lg text-md leading-relaxed font-semibold"
                   variants={containerVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                 >
                   <motion.li variants={fadeInVariants}>
+                    300 Hour Trauma Informed Breathwork Certification
+                  </motion.li>
+                  <motion.li variants={fadeInVariants}>
                     Addiction Studies Level 7 Certification
                   </motion.li>
                   <motion.li variants={fadeInVariants}>
-                    300 Hour Trauma Informed Breathwork Certification
+                    Nervous System Training
+                  </motion.li>
+                  <motion.li variants={fadeInVariants}>
+                    Shadow Work Training
                   </motion.li>
                 </motion.ul>
               </div>
@@ -242,7 +248,7 @@ const Page = () => {
             <div className="w-full lg:w-[35%] flex flex-col items-start gap-8 justify-center">
               <div className="overflow-hidden">
                 <motion.h2
-                  className="h2 font-fraunces font-bold text-secondary"
+                  className="h2 font-fraunces font-bold text-accent-1"
                   variants={itemVariants}
                 >
                   How does this impact your journey?
@@ -250,7 +256,7 @@ const Page = () => {
               </div>
               <div className="overflow-hidden">
                 <motion.p
-                  className="lg:text-lg text-md font-nunito leading-relaxed text-secondary italic"
+                  className="lg:text-lg text-md font-nunito leading-relaxed text-foreground italic"
                   variants={itemVariants}
                 >
                   As you step into this space, you will have 1-1 support,
@@ -262,14 +268,15 @@ const Page = () => {
               {/* CTA directly after text - FIXED BUTTON */}
 
               <motion.div
-                className="w-full flex justify-center items-center"
+                className="w-full flex justify-start items-center"
                 variants={fadeInVariants}
               >
                 <InteractiveButton
-                  variant="filled"
-                  text="Book a free discovery call"
-                  className="w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
+                  variant="transparent"
+                  text="Book a discovery call"
+                  className="md:w-72 w-full py-3 transition-all ease-in duration-100"
                   ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+                  textClassName="text-foreground"
                   href="https://calendly.com/conorharris-talks/discovery-call"
                 />
               </motion.div>
@@ -286,12 +293,12 @@ const Page = () => {
               >
                 {/* Card 1 */}
                 <motion.div
-                  className="bg-primary-light shadow-right border border-secondary/80 rounded-3xl p-6 pt-8 pb-10 flex flex-col min-h-[320px]"
+                  className="bg-box-bg shadow-right border border-background rounded-3xl p-6 pt-8 pb-10 flex flex-col min-h-[320px]"
                   custom={0}
                   variants={cardVariants}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <p className="font-nunito text-secondary text-lg mb-6 flex-grow">
+                  <p className="font-nunito text-[#353535] font-semibold text-lg mb-6 flex-grow">
                     Discover your purpose and find a sense of direction - being
                     guided when you feel lost, through ongoing support.
                   </p>
@@ -308,12 +315,12 @@ const Page = () => {
 
                 {/* Card 2 */}
                 <motion.div
-                  className="bg-primary-light shadow-left border border-secondary/80 rounded-3xl p-6 pt-8 pb-10 flex flex-col min-h-[320px]"
+                  className="bg-box-bg border border-background shadow-left-orange rounded-3xl p-6 pt-8 pb-10 flex flex-col min-h-[320px]"
                   custom={1}
                   variants={cardVariants}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <p className="font-nunito text-secondary text-lg mb-6 flex-grow">
+                  <p className="font-nunito text-[#353535] font-semibold text-lg mb-6 flex-grow">
                     Align with integrity and begin to lead your life your way.
                   </p>
                   <div className="flex justify-center mt-auto py-4">
@@ -329,12 +336,12 @@ const Page = () => {
 
                 {/* Card 3 */}
                 <motion.div
-                  className="bg-primary-light shadow-right border border-secondary/80 rounded-3xl p-6 pt-8 pb-10 flex flex-col min-h-[320px]"
+                  className="bg-box-bg border border-background shadow-right-orange rounded-3xl p-6 pt-8 pb-10 flex flex-col min-h-[320px]"
                   custom={2}
                   variants={cardVariants}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <p className="font-nunito text-secondary text-lg mb-6 flex-grow">
+                  <p className="font-nunito text-[#353535] font-semibold text-lg mb-6 flex-grow">
                     Learn how to build stronger, healthier relationships with
                     others, and most importantly yourself.
                   </p>
@@ -351,12 +358,12 @@ const Page = () => {
 
                 {/* Card 4 */}
                 <motion.div
-                  className="bg-primary-light shadow-left border border-secondary/80 rounded-3xl p-6 pt-8 pb-10 flex flex-col min-h-[320px]"
+                  className="bg-box-bg border border-background shadow-left rounded-3xl p-6 pt-8 pb-10 flex flex-col min-h-[320px]"
                   custom={3}
                   variants={cardVariants}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <p className="font-nunito text-secondary text-lg mb-6 flex-grow">
+                  <p className="font-nunito text-[#353535] font-semibold text-lg mb-6 flex-grow">
                     Understand who you are beneath the noise and step
                     into your power.
                   </p>
@@ -388,7 +395,7 @@ const Page = () => {
             >
               <div className="overflow-hidden mb-12">
                 <motion.h2
-                  className="h2 font-fraunces font-bold text-secondary text-center"
+                  className="h2 font-fraunces font-bold text-accent-1 text-center"
                   variants={itemVariants}
                 >
                   What does your coaching journey look like?
@@ -396,12 +403,12 @@ const Page = () => {
               </div>
 
               <motion.div
-                className="w-full max-w-7xl bg-[#FFF4D6] border border-secondary/20 rounded-3xl p-8 md:p-10 shadow-lg"
+                className="w-full max-w-7xl bg-box-bg rounded-3xl p-8 md:p-10 shadow-right-orange text-[#353535]"
                 variants={imageVariants}
               >
                 <div className="overflow-hidden mb-8">
                   <motion.p
-                    className="font-nunito text-secondary lg:text-lg text-md"
+                    className="font-nunito font-semibold lg:text-lg text-md"
                     variants={itemVariants}
                   >
                     Your coaching journey with me is designed around you.
@@ -421,10 +428,10 @@ const Page = () => {
                       •
                     </span>
                     <div className="flex flex-col">
-                      <span className="font-bold text-secondary mb-1">
+                      <span className="font-bold font-fraunces text-accent-1 text-xl mb-1">
                         Consistent Bi-Weekly Check-ins:
                       </span>
-                      <span className="text-secondary">
+                      <span className="font-semibold">
                         We&apos;ll have a dedicated call every 2 weeks to
                         celebrate your successes, track your progress, and
                         address any challenges, ensuring you stay accountable
@@ -441,10 +448,10 @@ const Page = () => {
                       •
                     </span>
                     <div className="flex flex-col">
-                      <span className="font-bold text-secondary mb-1">
+                      <span className="font-bold font-fraunces text-accent-1 text-xl mb-1">
                         Weekday Direct Communication:
                       </span>
-                      <span className="text-secondary">
+                      <span className="font-semibold">
                         You&apos;ll have ongoing support available during the
                         week via WhatsApp. This means quick guidance and
                         encouragement whenever you need it the most.
@@ -460,10 +467,10 @@ const Page = () => {
                       •
                     </span>
                     <div className="flex flex-col">
-                      <span className="font-bold text-secondary mb-1">
+                      <span className="font-bold font-fraunces text-accent-1 text-xl mb-1">
                         Personalised Daily Wellbeing Practices:
                       </span>
-                      <span className="text-secondary">
+                      <span className="font-semibold">
                         I&apos;ll design practical exercises that you can easily
                         integrate into your routine to build positive habits and
                         improve your daily wellbeing.
@@ -479,10 +486,10 @@ const Page = () => {
                       •
                     </span>
                     <div className="flex flex-col">
-                      <span className="font-bold text-secondary mb-1">
+                      <span className="font-bold font-fraunces text-accent-1 text-xl mb-1">
                         Bi-weekly Breathwork Sessions:
                       </span>
-                      <span className="text-secondary">
+                      <span className="font-semibold">
                         Every 2 weeks, you&apos;ll receive 1-1 breathwork
                         sessions. Find out more about breathwork and its
                         benefits{" "}
@@ -505,10 +512,10 @@ const Page = () => {
                       •
                     </span>
                     <div className="flex flex-col">
-                      <span className="font-bold text-secondary mb-1">
+                      <span className="font-bold font-fraunces text-accent-1 text-xl mb-1">
                         Your Individualised Wellbeing Program:
                       </span>
-                      <span className="text-secondary">
+                      <span className="font-semibold">
                         Together, we&apos;ll build a custom roadmap designed
                         around you, ensuring you achieve your goals and grow as
                         a person.
@@ -532,14 +539,14 @@ const Page = () => {
           <div className="text-center mb-12">
             <div className="overflow-hidden mb-4">
               <motion.h3
-                className="font-fraunces text-2xl font-bold text-secondary"
+                className="font-fraunces text-2xl font-bold text-accent-1"
                 variants={itemVariants}
               >
                 Not sure if I&apos;m right for you?
               </motion.h3>
             </div>
             <motion.p
-              className="font-nunito text-lg text-secondary"
+              className="font-nunito text-lg text-foreground font-semibold"
               variants={fadeInVariants}
             >
               Book a free discovery call to find out!
@@ -549,12 +556,12 @@ const Page = () => {
           <div className="flex flex-col gap-6 lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
             {/* Step 1 */}
             <motion.div
-              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              className="px-6 py-4 rounded-3xl bg-box-bg text-center w-full"
               custom={0}
               variants={cardVariants}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
             >
-              <p className="font-nunito text-secondary text-lg">
+              <p className="font-nunito text-[#353535] font-bold text-lg">
                 Book a free discovery call with me
               </p>
             </motion.div>
@@ -569,18 +576,18 @@ const Page = () => {
                 alt="Down arrow"
                 width={50}
                 height={20}
-                className="rotate-90"
+                className="rotate-90 opacity-70 invert"
               />
             </motion.div>
 
             {/* Step 2 */}
             <motion.div
-              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              className="px-6 py-4 rounded-3xl bg-box-bg text-center w-full"
               custom={1}
               variants={cardVariants}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
             >
-              <p className="font-nunito text-secondary text-lg">
+              <p className="font-nunito text-[#353535] font-bold text-lg">
                 Find out what&apos;s the best plan for you
               </p>
             </motion.div>
@@ -595,18 +602,18 @@ const Page = () => {
                 alt="Down arrow"
                 width={50}
                 height={20}
-                className="rotate-90"
+                className="rotate-90 opacity-70 invert"
               />
             </motion.div>
 
             {/* Step 3 */}
             <motion.div
-              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              className="px-6 py-4 rounded-3xl bg-box-bg text-center w-full"
               custom={2}
               variants={cardVariants}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
             >
-              <p className="font-nunito text-secondary text-lg">
+              <p className="font-nunito text-[#353535] font-bold text-lg">
                 We&apos;ll develop an individualised plan tailored to you
               </p>
             </motion.div>
@@ -621,18 +628,18 @@ const Page = () => {
                 alt="Down arrow"
                 width={50}
                 height={20}
-                className="rotate-90 "
+                className="rotate-90 opacity-70 invert"
               />
             </motion.div>
 
             {/* Step 4 */}
             <motion.div
-              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              className="px-6 py-4 rounded-3xl bg-box-bg text-center w-full"
               custom={3}
               variants={cardVariants}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
             >
-              <p className="font-nunito text-secondary text-lg">
+              <p className="font-nunito text-[#353535] font-bold text-lg">
                 Decide if you want to work with me
               </p>
             </motion.div>
@@ -647,7 +654,7 @@ const Page = () => {
                 alt="Down arrow"
                 width={50}
                 height={20}
-                className="rotate-90"
+                className="rotate-90 opacity-70 invert"
               />
             </motion.div>
 
@@ -662,7 +669,7 @@ const Page = () => {
               <InteractiveButton
                 variant="filled"
                 text="Book a discovery call"
-                className="md:w-[60%] w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
+                className="md:w-72 w-full py-3 border-accent-1/0 transition-all ease-in duration-100"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
                 href="https://calendly.com/conorharris-talks/discovery-call"
               />

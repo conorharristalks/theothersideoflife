@@ -5,20 +5,20 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-accent-1 text-white py-10 lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
+    <footer className="bg-primary text-foreground py-10 lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
       <div className="container mx-auto">
         {/* Row 1: Navigation columns and logo */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Row 1: Info and Connect on mobile */}
           <div className="md:col-span-1 text-center md:text-left">
-            <h3 className="text-[28px] font-fraunces mb-4 text-primary">
+            <h3 className="text-[28px] font-fraunces mb-4 text-accent-1">
               Info
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               <li>
                 <Link
                   href="/"
-                  className="hover:text-[#B3DBEE] transition-colors  text-primary-light"
+                  className="hover:text-accent-1 transition-colors text-foreground"
                 >
                   • Home
                 </Link>
@@ -26,7 +26,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/about"
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
+                  className="hover:text-accent-1 transition-colors text-foreground"
                 >
                   • About
                 </Link>
@@ -34,7 +34,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/breathwork"
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
+                  className="hover:text-accent-1 transition-colors text-foreground"
                 >
                   • Breathwork
                 </Link>
@@ -42,17 +42,17 @@ const Footer = () => {
               <li>
                 <Link
                   href="/coaching"
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
+                  className="hover:text-accent-1 transition-colors text-foreground"
                 >
-                  • Coaching
+                  • Wellness Coaching
                 </Link>
               </li>
               <li>
                 <Link
                   href="/help"
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
+                  className="hover:text-accent-1 transition-colors text-foreground"
                 >
-                  • Help
+                  • Professional Support
                 </Link>
               </li>
             </ul>
@@ -60,14 +60,14 @@ const Footer = () => {
 
           {/* Connect Column */}
           <div className="md:col-span-1 text-center md:text-left">
-            <h3 className="text-[28px] font-fraunces mb-4 text-primary">
+            <h3 className="text-[28px] font-fraunces mb-4 text-accent-1">
               Connect
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               <li>
                 <a
                   href="mailto:conorharris.talks@gmail.com"
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
+                  className="hover:text-accent-1 transition-colors text-foreground"
                 >
                   • Contact me
                 </a>
@@ -76,14 +76,14 @@ const Footer = () => {
               <li>
                 <Link
                   href="/book-appointment"
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light"
+                  className="hover:text-accent-1 transition-colors text-foreground"
                 >
                   • Book an Event
                 </Link>
               </li>
 
               <li>
-                <p className="hover:text-[#B3DBEE] transition-colors text-primary-light">
+                <p className="hover:text-accent-1 transition-colors text-foreground">
                   • conorharris.talks@gmail.com
                 </p>
               </li>
@@ -92,14 +92,14 @@ const Footer = () => {
 
           {/* Row 2: Legal and Logo on mobile */}
           <div className="md:col-span-1 text-center md:text-left">
-            <h3 className="text-[28px] font-fraunces mb-4 text-primary">
+            <h3 className="text-[28px] font-fraunces mb-4 text-accent-1">
               Legal
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-4">
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light "
+                  className="hover:text-accent-1 transition-colors text-foreground"
                 >
                   • Privacy Policy
                 </Link>
@@ -107,7 +107,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/terms-and-conditions"
-                  className="hover:text-[#B3DBEE] transition-colors text-primary-light "
+                  className="hover:text-accent-1 transition-colors text-foreground"
                 >
                   • Terms & Conditions
                 </Link>
@@ -128,13 +128,13 @@ const Footer = () => {
         </div>
 
         {/* Row 2: Social media icons and copyright */}
-        <div className="mt-10 pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-14 flex flex-col md:flex-row justify-between items-center">
           {/* Social Media Icons */}
           <div className="flex space-x-6 mb-4 md:mb-0">
             <Link
               href="https://www.instagram.com/conorswellnesspath/"
               aria-label="Instagram"
-              className="text-primary hover:text-[#8ECAE6] transition-colors"
+              className="text-accent-1 hover:text-accent-2 transition-colors"
             >
               <svg
                 className="w-7 h-7"
@@ -148,7 +148,7 @@ const Footer = () => {
             <Link
               href="https://facebook.com"
               aria-label="Facebook"
-              className="text-primary hover:text-[#8ECAE6] transition-colors"
+              className="text-accent-1 hover:text-accent-2 transition-colors"
             >
               <svg
                 className="w-7 h-7"
@@ -162,7 +162,7 @@ const Footer = () => {
             <Link
               href="https://tiktok.com"
               aria-label="TikTok"
-              className="text-primary hover:text-[#8ECAE6] transition-colors"
+              className="text-accent-1 hover:text-accent-2 transition-colors"
             >
               <svg
                 className="w-7 h-7"
@@ -176,14 +176,14 @@ const Footer = () => {
           </div>
 
           {/* Copyright section */}
-          <div className="text-sm text-center md:text-right flex flex-col gap-2">
+          <div className="text-sm text-center md:text-right flex flex-col gap-2 text-foreground/80">
             <p>© 2025 Conor Harris. All Rights Reserved.</p>
-            <p className="md:text-right">Website by Dyo Digitals</p>
+            <p className="md:text-right">Website by AP Digitals</p>
           </div>
         </div>
 
         {/* Row 3: Disclaimer */}
-        <div className="mt-8 pt-4 border-t border-white/20 text-xs text-white/70 text-center">
+        <div className="mt-8 pt-4 border-t border-accent-1/40 text-xs text-foreground/70 text-center">
           <p>
             DISCLAIMER: The information provided on this website is for
             educational purposes only and is not intended as medical advice. If

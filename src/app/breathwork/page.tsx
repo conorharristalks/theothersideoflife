@@ -182,7 +182,7 @@ const Page = () => {
 
   return (
     <>
-      <section className="bg-primary border-b-4 border-b-secondary h-full lg:min-h-[calc(100vh-6rem)] w-screen bg-[url('/breathwork-bg.svg')] bg-no-repeat relative">
+      <section className="bg-primary border-b-4 border-b-secondary h-full lg:min-h-[calc(100vh-6rem)] w-screen relative">
         <div className="lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
           <div className="w-full min-h-full lg:flex lg:flex-row flex flex-col justify-between items-center pt-10 pb-10 relative">
             <motion.div
@@ -233,8 +233,8 @@ const Page = () => {
               >
                 <InteractiveButton
                   variant="filled"
-                  text="Book a free discovery call"
-                  className="md:w-[50%] w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
+                  text="Book a discovery call"
+                  className="md:w-72 w-full py-3 border-accent-1/0 transition-all ease-in duration-100"
                   ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
                   href="https://calendly.com/conorharris-talks/discovery-call"
                 />
@@ -312,7 +312,7 @@ const Page = () => {
                   variants={imageVariants}
                 >
                   <Image
-                    src="/face-icon.svg"
+                    src="/face-icon-orange.svg"
                     alt="Breathwork Face Icon"
                     width={160}
                     height={160}
@@ -323,7 +323,7 @@ const Page = () => {
 
               {/* Border separation - only visible on lg screens and up */}
               <motion.div
-                className="hidden lg:block w-px bg-secondary shadow-[-6px_-6px_0px_#003049]/70 self-stretch mx-8"
+                className="hidden lg:block w-px bg-accent-2 shadow-[-6px_-6px_0px_#F08044]/70 self-stretch mx-8"
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true }}
@@ -385,11 +385,13 @@ const Page = () => {
                   key={card.id}
                   custom={index}
                   variants={cardVariants}
+                  // Force exact home page styling down into the imported BenefitCard component
+                  className="[&>div]:!bg-box-bg [&>div]:!border-background [&>div]:text-[#353535] [&_h2]:!text-accent-1 [&_h3]:!text-accent-1 [&_p]:!text-[#353535] [&_li]:!text-[#353535] [&_p]:!font-semibold"
                 >
                   <BenefitCard
                     id={card.id}
                     title={card.title}
-                    description={card.description}
+                    description={card.description}  
                     icon={card.icon}
                     shadowDirection={card.shadowDirection}
                     expandedContent={card.expandedContent}
@@ -414,7 +416,7 @@ const Page = () => {
             {/* Section Title */}
             <div className="overflow-hidden mb-12">
               <motion.h2
-                className="h2 font-fraunces font-bold text-foreground text-center"
+                className="h2 font-fraunces font-bold text-yellow-bg text-center"
                 variants={itemVariants}
               >
                 Session Types
@@ -423,7 +425,7 @@ const Page = () => {
 
             {/* Session Types Container */}
             <motion.div
-              className="bg-[#F9EFC7] rounded-3xl p-6 md:p-12 border border-secondary/50 shadow-left"
+              className="bg-box-bg rounded-3xl p-6 md:p-12 shadow-right-orange"
               variants={imageVariants}
             >
               {/* Cards Container */}
@@ -436,12 +438,12 @@ const Page = () => {
               >
                 {/* Card 1: 1 to 1 in person */}
                 <motion.div
-                  className="bg-accent-2/90 text-secondary shadow-right p-6 rounded-2xl flex flex-col justify-center h-full relative overflow-hidden border-2 border-accent-1"
+                  className="bg-yellow-bg text-[#353535] shadow-right-orange p-6 rounded-2xl flex flex-col justify-center h-full relative overflow-hidden border border-background"
                   variants={cardVariants}
                   custom={0}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center ">
+                  <h3 className="text-xl lg:text-2xl font-fraunces font-bold text-center text-accent-1">
                     1 to 1 in person
                   </h3>
                   
@@ -449,12 +451,12 @@ const Page = () => {
 
                 {/* Card 2: Group Session Online */}
                 <motion.div
-                  className="bg-accent-1 text-primary p-6 rounded-2xl shadow-right flex flex-col justify-center h-full relative overflow-hidden border-2 border-primary"
+                  className="bg-accent-2-light text-[#353535] p-6 rounded-2xl shadow-right-orange flex flex-col justify-center h-full relative overflow-hidden border border-background"
                   variants={cardVariants}
                   custom={1}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center ">
+                  <h3 className="text-xl lg:text-2xl font-fraunces font-bold text-center text-background">
                     Group Session
                     <br />
                     Online
@@ -464,12 +466,12 @@ const Page = () => {
 
                 {/* Card 3: 1 to 1 online */}
                 <motion.div
-                  className="bg-primary-light text-secondary p-6 rounded-2xl shadow-right flex flex-col justify-center h-full relative overflow-hidden border-2 border-secondary"
+                  className="bg-box-bg text-[#353535] p-6 rounded-2xl shadow-right-orange flex flex-col justify-center h-full relative overflow-hidden border border-background"
                   variants={cardVariants}
                   custom={2}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-xl lg:text-2xl font-fraunces font-semibold text-center ">
+                  <h3 className="text-xl lg:text-2xl font-fraunces font-bold text-center text-accent-1">
                     1 to 1 online
                   </h3>
                 </motion.div>
@@ -485,9 +487,9 @@ const Page = () => {
               >
                 <InteractiveButton
                   variant="transparent"
-                  text="Book a free discovery call"
-                  className="md:w-80 w-full py-4 hover:text-primary transition-all ease-in duration-100"
-                  ballClassName="md:left-[8%] md:top-[35%] left-[7%] top-[35%]"
+                  text="Book a discovery call"
+                  className="md:w-72 w-full py-3 transition-all ease-in duration-100"
+                  ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
                   href="https://calendly.com/conorharris-talks/discovery-call"
                 />
               </motion.div>
@@ -503,15 +505,32 @@ const Page = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
+          <div className="text-center mb-12">
+            <div className="overflow-hidden mb-4">
+              <motion.h3
+                className="font-fraunces text-2xl font-bold text-accent-1"
+                variants={itemVariants}
+              >
+                Not sure what session is right for you?
+              </motion.h3>
+            </div>
+            <motion.p
+              className="font-nunito text-lg text-foreground font-semibold"
+              variants={itemVariants}
+            >
+              Book a free discovery call to find out!
+            </motion.p>
+          </div>
+
           <div className="flex flex-col gap-6 lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
             {/* Step 1 */}
             <motion.div
-              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              className="px-6 py-4 rounded-3xl bg-box-bg text-center w-full"
               variants={cardVariants}
               custom={0}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
             >
-              <p className="font-nunito text-secondary text-lg">
+              <p className="font-nunito text-[#353535] font-bold text-lg">
                 Book a free discovery call with me
               </p>
             </motion.div>
@@ -527,18 +546,18 @@ const Page = () => {
                 alt="Down arrow"
                 width={50}
                 height={20}
-                className="rotate-90"
+                className="rotate-90 opacity-70 invert"
               />
             </motion.div>
 
             {/* Step 2 */}
             <motion.div
-              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              className="px-6 py-4 rounded-3xl bg-box-bg text-center w-full"
               variants={cardVariants}
               custom={1}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
             >
-              <p className="font-nunito text-secondary text-lg">
+              <p className="font-nunito text-[#353535] font-bold text-lg">
                 Find out what&apos;s the best plan for you
               </p>
             </motion.div>
@@ -554,18 +573,18 @@ const Page = () => {
                 alt="Down arrow"
                 width={50}
                 height={20}
-                className="rotate-90"
+                className="rotate-90 opacity-70 invert"
               />
             </motion.div>
 
             {/* Step 3 */}
             <motion.div
-              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              className="px-6 py-4 rounded-3xl bg-box-bg text-center w-full"
               variants={cardVariants}
               custom={2}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
             >
-              <p className="font-nunito text-secondary text-lg">
+              <p className="font-nunito text-[#353535] font-bold text-lg">
                 We&apos;ll develop an individualised plan tailored to you
               </p>
             </motion.div>
@@ -581,18 +600,18 @@ const Page = () => {
                 alt="Down arrow"
                 width={50}
                 height={20}
-                className="rotate-90 "
+                className="rotate-90 opacity-70 invert"
               />
             </motion.div>
 
             {/* Step 4 */}
             <motion.div
-              className="px-6 py-4 border-2 border-secondary/30 rounded-3xl bg-primary text-center w-full"
+              className="px-6 py-4 rounded-3xl bg-box-bg text-center w-full"
               variants={cardVariants}
               custom={3}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
             >
-              <p className="font-nunito text-secondary text-lg">
+              <p className="font-nunito text-[#353535] font-bold text-lg">
                 Decide if you want to work with me
               </p>
             </motion.div>

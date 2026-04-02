@@ -64,7 +64,7 @@ export function WhatSetsMeApart() {
       </motion.div>
 
       <motion.div
-        className="lg:col-span-2 order-1 lg:order-1 shadow-left px-4 py-8 md:p-8 lg:p-10 flex flex-col gap-6 md:gap-8 bg-primary border-secondary border rounded-3xl"
+        className="lg:col-span-2 order-1 lg:order-1 shadow-left-orange px-4 py-8 md:p-8 lg:p-10 flex flex-col gap-6 md:gap-8 bg-primary border-secondary border rounded-3xl"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -74,7 +74,7 @@ export function WhatSetsMeApart() {
           variants={itemVariants}
           className="w-full flex flex-col items-start gap-4"
         >
-          <h2 className="h2">What sets me apart?</h2>
+          <h2 className="h2 text-yellow-bg">What sets me apart?</h2>
         </motion.div>
 
         <motion.div
@@ -127,20 +127,21 @@ export function WhatSetsMeApart() {
 
         <motion.div
           variants={itemVariants}
-          className="flex lg:gap-10 gap-4 flex-wrap"
+          className="flex lg:gap-10 gap-4 flex-wrap md:mt-8 mt-4"
         >
           <InteractiveButton
             variant="filled"
             text="Explore Coaching"
-            className="md:w-64 w-full py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 hover:border-0"
-            ballClassName="lg:left-[7%] left-[15%] top-[35%] bg-accent-2"
+            className="md:w-64 w-full py-3 transition-all ease-in duration-100"
+            ballClassName="lg:left-[7%] left-[15%] top-[35%]"
             href="/coaching"
           />
           <InteractiveButton
             variant="transparent"
             text="Explore Breathwork"
-            className="md:w-70 w-full py-4 hover:text-primary transition-all ease-in duration-100"
+            className="md:w-70 w-full py-3 transition-all ease-in duration-100"
             ballClassName="md:left-[13%] md:top-[35%] left-[15%] top-[35%]"
+            textClassName="text-foreground"
             href="/breathwork"
           />
         </motion.div>

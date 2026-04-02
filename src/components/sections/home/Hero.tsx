@@ -10,12 +10,13 @@ interface HeroProps {
 
 export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
   return (
-    <section className="bg-primary h-full lg:min-h-[calc(100vh-6rem)] w-screen bg-[url('/wave-icon.svg')] bg-no-repeat bg-[position:0%_120%] md:bg-[length:85%_auto] md:bg-[position:250%_50%] lg:bg-[length:63%_auto] lg:bg-[position:130%_85%] relative">
+    <section className="bg-primary h-full lg:min-h-[calc(100vh-6rem)] w-screen relative">
       <div className="lg:px-[2vw] md:px-[2.5vw] px-[3.5vw]">
         <div className="w-full min-h-full lg:flex lg:flex-row flex flex-col justify-between items-center pt-10 pb-10 relative">
-          <div className="flex flex-col w-full min-h-full items-start lg:justify-between gap-8">
-            <h1 className="h1 font-fraunces font-bold text-foreground">
-              Helping you live with <br></br> integrity & leadership
+          <div className="flex flex-col w-full min-h-full items-start lg:justify-between gap-10">
+            <h1 className="h1 font-fraunces font-bold text-yellow-bg">
+              Helping you become the <br></br>{" "}
+              <span className="text-accent-1">best version</span> of yourself
             </h1>
 
             <div className="flex flex-col items-start gap-6">
@@ -24,11 +25,11 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
                   Nervous System & Leadership Coach: Transform your life
                 </p>
                 <div className="flex items-center justify-start gap-3">
-                  <div className="flex items-center justify-center rounded-full w-6 h-6 bg-accent-1">
-                    <div className="rounded-full w-2.5 h-2.5 bg-accent-2 animate-pulse"></div>
+                  <div className="flex items-center justify-center rounded-full w-6 h-6 bg-transparent border-2 border-accent-1">
+                    <div className="rounded-full w-2.5 h-2.5 bg-accent-1 animate-pulse"></div>
                   </div>
-                  <p className="lg:text-lg md:text-[16px] text-sm font-nunito font-semibold">
-                    Offering Personalised Coaching and Breathwork Sessions.
+                  <p className="lg:text-lg md:text-[16px] text-sm font-nunito font-semibold text-foreground/80">
+                    Offering 1 to 1 Personalised Coaching Sessions.
                   </p>
                 </div>
               </div>
@@ -37,14 +38,14 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
 
               <div className="flex flex-col items-start gap-4">
                 <p className="font-fraunces lg:text-2xl md:text-xl text-[16px] font-semibold text-foreground">
-                  Sharing a Journey to the other side of addiction
+                  Breathwork Facilitator
                 </p>
                 <div className="flex items-center justify-start gap-3">
                   <div className="flex items-center justify-center rounded-full w-6 h-6 bg-transparent border-2 border-accent-1">
                     <div className="rounded-full w-2.5 h-2.5 bg-accent-1 animate-pulse"></div>
                   </div>
-                  <p className="lg:text-lg md:text-[16px] text-sm font-nunito font-semibold">
-                    Helping Students Understand the Realities of Addiction.
+                  <p className="lg:text-lg md:text-[16px] text-sm font-nunito font-semibold text-foreground/80">
+                    Guiding you through 1-1 or group breathwork sessions.
                   </p>
                 </div>
               </div>
@@ -53,25 +54,26 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
             <div className="flex flex-wrap items-center w-full lg:gap-12 md:gap-8 gap-6">
               <InteractiveButton
                 variant="filled"
-                text="Coaching"
-                className="md:w-56 w-44 py-4 border-0 hover:border-0 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2"
+                text="1-1 Coaching"
+                className="md:w-56 w-44 py-3 border-accent-1/0 transition-all ease-in duration-100"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-                href="/coaching"
+                href="/coaching"  
               />
               <InteractiveButton
                 variant="transparent"
-                text="Book a talk"
-                className="md:w-56 w-44 py-4 hover:text-primary transition-all ease-in duration-100"
+                text="Breathwork"
+                className="md:w-56 w-44 py-3 transition-all ease-in duration-100"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+                textClassName="text-foreground"
                 href="/book-appointment"
               />
             </div>
           </div>
 
           {/* Right image section - aligned with buttons */}
-          <div className="relative lg:w-[28%] md:w-[60%] w-full lg:min-h-full h-[400px] md:h-[500px] flex lg:items-start items-end lg:mt-0 mt-8 md:mr-[21px]">
+          <div className="relative xl:w-1/2 2xl:w-[36%] md:w-[40%] w-full lg:min-h-full h-[400px] md:h-[500px] flex lg:items-start items-end lg:mt-0 mt-8 md:mr-[21px]">
             {/* Main portrait image - height controlled to align with buttons */}
-            <div className="lg:shadow-right md:shadow-left shadow-right w-full h-full rounded-3xl lg:rounded-bl-none md:rounded-br-none lg:rounded-br-3xl z-20">
+            <div className="lg:shadow-right md:shadow-left shadow-right w-full h-full rounded-3xl z-20">
               <Image
                 src={hero1}
                 alt="Portrait"
@@ -80,22 +82,11 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
                 priority
                 placeholder="blur"
                 blurDataURL={base64}
-                className="rounded-3xl lg:rounded-bl-none md:rounded-br-none lg:rounded-br-3xl border border-secondary"
+                className="rounded-3xl lg:rounded-3xl border border-white"
               />
             </div>
 
-            {/* Presentation image - positioning adjusted to eliminate shadow gap */}
-            <div className="absolute md:shadow-right lg:shadow-left md:-right-[65%] lg:-left-[75%] bottom-0 w-[80%] h-[60%] rounded-2xl md:rounded-tl-none md:rounded-bl-none lg:rounded-tl-2xl lg:rounded-bl-2xl lg:rounded-br-none lg:rounded-tr-none overflow-hidden z-10 hidden md:block">
-              <Image
-                src={hero2}
-                alt="Presentation"
-                fill
-                style={{ objectFit: "cover" }}
-                placeholder="blur"
-                blurDataURL={base64Hero2}
-                className="rounded-2xl lg:rounded-br-none lg:rounded-tr-none md:rounded-tl-none md:rounded-bl-none lg:rounded-tl-2xl lg:rounded-bl-2xl border border-secondary"
-              />
-            </div>
+            
           </div>
         </div>
       </div>

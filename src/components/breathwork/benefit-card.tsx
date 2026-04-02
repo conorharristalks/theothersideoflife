@@ -33,7 +33,7 @@ const BenefitCard = ({
 
   return (
     <motion.div
-      className={`bg-primary p-6 md:p-8 rounded-2xl border-2 border-secondary/30 shadow-${shadowDirection} relative overflow-hidden h-full`}
+      className={`bg-primary p-6 md:p-8 rounded-2xl border-2 border-secondary/30 shadow-lg shadow-foreground/10 relative overflow-hidden h-full`}
       transition={{ duration: 0.2 }}
       layout={false}
     >
@@ -109,9 +109,9 @@ const BenefitCard = ({
             {isExpanded ? "Show Less" : "Learn More"}
             <div className="w-5 h-5 rounded-full bg-accent-1 flex items-center justify-center p-1 transition-all">
               {isExpanded ? (
-                <ArrowUp className="text-primary" />
+                <ArrowUp className="text-foreground" />
               ) : (
-                <ArrowDown className="text-primary" />
+                <ArrowDown className="text-foreground" />
               )}
             </div>
           </button>

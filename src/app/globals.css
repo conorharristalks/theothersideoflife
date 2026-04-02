@@ -16,6 +16,8 @@ body {
   min-height: 100vh; /* Full viewport height */
   display: flex;
   flex-direction: column;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
 main {
@@ -28,22 +30,38 @@ main {
   --font-fraunces: 'Fraunces', serif;
   --font-nunito-sans: 'Nunito Sans', sans-serif;
   --font-libre-baskerville: 'Libre Baskerville', serif;
-  
-  
+
+  /* Target dynamic shadow offsets - mobile first */
+  --shadow-off: 4px;
+  --shadow-off-neg: -4px;
+}
+
+/* Tablet (md) and up */
+@media (min-width: 768px) {
+  :root {
+    --shadow-off: 7px;
+    --shadow-off-neg: -7px;
+  }
 }
 
 @theme {
-  --color-background: #FAEDCF;
-  --color-foreground: #353535;
-  --color-primary: #FAEDCD;
-  --color-primary-light: #FCF3DE;
-  --color-secondary: #353535;
-  --color-accent-1: #003049;
-  --color-accent-2: #8ECAE6;
-  --color-accent-2-light: #B3DBEE;
-  --shadow-right: 7px 7px 0px 0px rgba(30, 30, 30, 1);
-  --shadow-left: -7px 7px 0px 0px #1e1e1e;
-  --shadow-marquee: 0px 7px 0px 0px #1e1e1e;
+  --color-background: #2A2A2A;
+  --color-foreground: #F5F5F5;
+  --color-primary: #2A2A2A;
+  --color-primary-light: #3A3A3A;
+  --color-secondary: #4A4A4A;
+  --color-accent-1: #E7590F;
+  --color-accent-2: #F08044;
+  --color-accent-2-light: #F6AA81;
+  --color-box-bg: #eeeeee;
+  --color-yellow-bg: #FAEDCD;  
+  --shadow-right: var(--shadow-off) var(--shadow-off) 0px 0px rgba(255, 255, 255, 1);
+  --shadow-left: var(--shadow-off-neg) var(--shadow-off) 0px 0px rgba(255, 255, 255, 1);
+  --shadow-right-orange: var(--shadow-off) var(--shadow-off) 0px 0px rgba(240, 128, 68, 1);
+  --shadow-left-orange: var(--shadow-off-neg) var(--shadow-off) 0px 0px rgba(240, 128, 68, 1);
+  --shadow-right-yellow: var(--shadow-off) var(--shadow-off) 0px 0px rgba(250, 237, 205, 1);
+  --shadow-left-yellow: var(--shadow-off-neg) var(--shadow-off) 0px 0px rgba(250, 237, 205, 1);
+  --shadow-marquee: 0px var(--shadow-off) 0px 0px rgba(255, 255, 255, 1);
 }
 
 @theme inline {
@@ -184,16 +202,12 @@ main {
 }
 
 .button-blue-shadow {
-   box-shadow: 0px 2px 0px 0px #8ECAE6;
+   box-shadow: 0px 2px 0px 0px #F08044;
   transition: box-shadow 0.3s ease;
 }
 .button-shadow {
-  box-shadow: 0px 2px 0px 0px #003049;
+  box-shadow: 0px 2px 0px 0px #E7590F;
   transition: box-shadow 0.3s ease;
-}
-
-.button-shadow:hover {
-  box-shadow: 0px 0px 0px 0px transparent;
 }
 
 @layer components {

@@ -154,22 +154,22 @@ export const AnimatedEvents = ({
             <div className="flex gap-4">
               <button
                 onClick={handlePrev}
-                className="group/button flex h-10 w-10 items-center justify-center rounded-full bg-primary border border-secondary transition-all hover:bg-accent-1"
+                className="group/button flex h-10 w-10 items-center justify-center rounded-full bg-accent-2 border border-secondary transition-all hover:bg-accent-1 hover:cursor-pointer"
               >
-                <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6 text-secondary transition-transform duration-300 group-hover/button:text-primary group-hover/button:rotate-12" />
+                <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6 text-foreground transition-transform duration-300 group-hover/button:rotate-7" />
               </button>
               <button
                 onClick={handleNext}
-                className="group/button flex h-10 w-10 items-center justify-center rounded-full bg-primary border border-secondary transition-all hover:bg-accent-1"
+                className="group/button flex h-10 w-10 items-center justify-center rounded-full bg-accent-2 border border-secondary transition-all hover:bg-accent-1 hover:cursor-pointer"
               >
-                <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6 text-secondary transition-transform duration-300 group-hover/button:text-primary group-hover/button:-rotate-12" />
+                <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6 text-foreground transition-transform duration-300 group-hover/button:-rotate-7" />
               </button>
             </div>
             <div className="text-left">
               <InteractiveButton
                 variant="filled"
                 text="Book a talk with me"
-                className="md:w-64 w-full py-3 sm:py-4 bg-accent-1 text-primary hover:text-secondary transition-all ease-in duration-100 border-accent-2 border-1 hover:border-1"
+                className="md:w-64 w-full py-3 sm:py-4 border-1 border-accent-1"
                 ballClassName="lg:left-[7%] left-[15%]"
                 href="/book-appointment"
               />

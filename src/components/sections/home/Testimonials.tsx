@@ -13,7 +13,7 @@ export function Testimonials({ testimonialData }: TestimonialsProps) {
   return (
     <section className="mb-20 md:mb-32">
       <div className="text-center mb-10 md:mb-16">
-        <h2 className="h2 mb-3 md:mb-4">What People Say</h2>
+        <h2 className="h2 mb-3 md:mb-4 text-yellow-bg">What People Say</h2>
         <p className="body-text-lg font-bold italic max-w-2xl mx-auto px-2">
           Hear from those who have experienced the transformative power of
           my breathwork and educational sessions.
