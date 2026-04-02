@@ -51,20 +51,23 @@ const Navbar = () => {
       {/* Desktop Navigation - hidden on mobile */}
       <div className="hidden md:flex items-center  justify-between w-full">
         <div className="flex items-center gap-10 justify-start pr-10 border-r-2 border-foreground h-12 ">
-          <Link href="/" className="font-baskerville font-semibold">
+          <Link href="/" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             Home
           </Link>
-          <Link href="/about" className="font-baskerville font-semibold">
+          <Link href="/about" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             About
           </Link>
-          <Link href="/coaching" className="font-baskerville font-semibold">
+          <Link href="/coaching" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             Coaching
           </Link>
-          <Link href="/breathwork" className="font-baskerville font-semibold">
+          <Link href="/breathwork" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             Breathwork
           </Link>
-          <Link href="/help" className="font-baskerville font-semibold">
+          <Link href="/help" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             Help
+          </Link>
+          <Link href="/book-appointment" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
+            Talks
           </Link>
         </div>
         <InteractiveButton
@@ -168,6 +171,7 @@ const Navbar = () => {
                     { name: "Coaching", href: "/coaching" },
                     { name: "Breathwork", href: "/breathwork" },
                     { name: "Help", href: "/help" },
+                    { name: "Talks", href: "/book-appointment" },
                   ].map((item, index) => (
                     <motion.div
                       key={item.name}
@@ -178,7 +182,7 @@ const Navbar = () => {
                     >
                       <Link
                         href={item.href}
-                        className="font-baskerville font-semibold text-lg py-3 border-b border-secondary/30 block w-full"
+                        className="font-baskerville font-semibold text-lg py-3 border-b border-secondary/30 block w-full hover:opacity-70 transition-opacity duration-200"
                         onClick={toggleMenu}
                       >
                         {item.name}

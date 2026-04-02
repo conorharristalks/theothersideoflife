@@ -6,7 +6,7 @@ import { getPlaiceholder } from "plaiceholder";
 // Section components
 
 import { HomeClient } from "@/components/sections/home/HomeClient";
-import { testimonialData } from "@/lib/constants";
+import { testimonialDataBreathwork } from "@/lib/constants";
 
 export default async function Home() {
   // Image processing - this stays in server component
@@ -58,7 +58,7 @@ export default async function Home() {
       base64={base64}
       base64Hero2={base64Hero2}
       statsData={statsData}
-      testimonialData={testimonialData}
+      testimonialData={testimonialDataBreathwork}
       events={Events}
     />
   );
