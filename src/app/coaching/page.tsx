@@ -209,7 +209,7 @@ const Page = () => {
                   </motion.h2>
                 </div>
                 <motion.ul
-                  className="mt-4 h-full flex flex-col justify-between w-full list-disc pl-5 text-foreground font-nunito lg:text-lg text-md leading-relaxed font-semibold"
+                  className=" h-full flex flex-col justify-between w-full list-disc pl-5 text-foreground font-nunito lg:text-lg text-md leading-relaxed font-semibold"
                   variants={containerVariants}
                   initial="hidden"
                   whileInView="visible"

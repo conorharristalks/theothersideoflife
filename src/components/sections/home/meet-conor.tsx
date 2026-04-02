@@ -77,9 +77,9 @@ export function MeetConor() {
               initial="hidden"
               animate={isInView ? "enter" : "hidden"}
             >
-              6 years ago, I broke free from addiction and rebuilt my life. Now,
-              at The Other Side of Life, I&apos;m on a mission to help others do
-              the same.
+              7 years ago I broke the cycle, defied the odds and rebuilt my
+              life. My coaching is designed to help you achieve the same,
+              without the guess work.
             </motion.p>
           </div>
         </div>
@@ -126,8 +126,8 @@ export function MeetConor() {
                     animate={isInView ? "enter" : "hidden"}
                     className="body-text font-semibold"
                   >
-                    Supporting you to live your life with integrity so you
-                    can live with leadership and purpose.
+                    Supporting you to live your life with integrity so you can
+                    live with leadership and purpose.
                   </motion.div>
                 </div>
               </li>
@@ -156,8 +156,8 @@ export function MeetConor() {
               initial="hidden"
               animate={isInView ? "enter" : "hidden"}
             >
-              Is this your time to step into your power and create something new? 
-              If so join me on this journey of transformation
+              Is this your time to step into your power and create something
+              new? If so join me on this journey of transformation
             </motion.p>
           </div>
         </div>

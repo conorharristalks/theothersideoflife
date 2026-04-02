@@ -119,8 +119,8 @@ export function WhatSetsMeApart() {
           >
             <h5 className="h5 mb-3">My Mission</h5>
             <p className="body-text font-semibold">
-              Supporting you towards greater wellbeing, whether you&apos;re
-              seeking stress management, healing, or direction.
+              My mission is to help people become the best version of themselves
+              moving from the inner chaos to inner clarity
             </p>
           </motion.div>
         </motion.div>
