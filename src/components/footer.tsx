@@ -44,7 +44,7 @@ const Footer = () => {
                   href="/coaching"
                   className="hover:text-accent-1 transition-colors text-foreground"
                 >
-                  • Wellness Coaching
+                  • Coaching
                 </Link>
               </li>
               <li>
@@ -78,7 +78,7 @@ const Footer = () => {
                   href="/book-appointment"
                   className="hover:text-accent-1 transition-colors text-foreground"
                 >
-                  • Book an Event
+                  • Book a talk
                 </Link>
               </li>
 
