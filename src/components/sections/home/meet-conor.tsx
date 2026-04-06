@@ -110,8 +110,7 @@ export function MeetConor() {
                     animate={isInView ? "enter" : "hidden"}
                     className="body-text font-semibold"
                   >
-                    Inspiring young people in schools to live a balanced
-                    lifestyle without using drugs.
+                    Guiding you through 1 to 1 and group breathwork sessions.
                   </motion.div>
                 </div>
               </li>
@@ -140,7 +139,10 @@ export function MeetConor() {
                     animate={isInView ? "enter" : "hidden"}
                     className="body-text font-semibold"
                   >
-                    Guiding you through 1 to 1 and group breathwork sessions
+                    
+
+                    Inspiring young people in schools to live a balanced
+                    lifestyle without using drugs.
                   </motion.div>
                 </div>
               </li>

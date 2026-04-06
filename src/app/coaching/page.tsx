@@ -4,6 +4,8 @@ import { InteractiveButton } from "@/components/ui/buttons/interactive-button";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { useRef } from "react";
+import { Testimonials } from "@/components/sections/home/Testimonials";
+import { testimonialDataBreathwork } from "@/lib/constants";
 
 const Page = () => {
   const containerRef = useRef(null);
@@ -90,8 +92,8 @@ const Page = () => {
                     delay: 0.1,
                   }}
                 >
-                  1:1 coaching designed to help you lead with integrity
-                  and find your purpose
+                  1:1 coaching designed to help you lead with integrity and find
+                  your purpose
                 </motion.h1>
               </div>
 
@@ -107,10 +109,10 @@ const Page = () => {
                       className="lg:text-xl md:text-lg text-[16px] font-nunito"
                       variants={itemVariants}
                     >
-                      This is a container for deep change, and honest conversations.
-                      Whether you’re feeling burnt out, tired of the same loop, or know
-                      you&apos;re worth more - my coaching will help you lead with clarity
-                      and purpose.
+                      This is a container for deep change, and honest
+                      conversations. Whether you’re feeling burnt out, tired of
+                      the same loop, or know you&apos;re worth more - my
+                      coaching will help you lead with clarity and purpose.
                     </motion.p>
                   </div>
                 </div>
@@ -145,7 +147,7 @@ const Page = () => {
                   src="/coaching-hero-img.png"
                   alt="Portrait"
                   fill
-                  style={{ objectFit: "contain"}}
+                  style={{ objectFit: "contain" }}
                   priority
                 />
               </div>
@@ -364,8 +366,8 @@ const Page = () => {
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <p className="font-nunito text-[#353535] font-semibold text-lg mb-6 flex-grow">
-                    Understand who you are beneath the noise and step
-                    into your power.
+                    Understand who you are beneath the noise and step into your
+                    power.
                   </p>
                   <div className="flex justify-center mt-auto py-4">
                     <Image
@@ -527,7 +529,9 @@ const Page = () => {
             </motion.div>
           </div>
         </div>
-
+        <div className="pt-24">
+          <Testimonials testimonialData={testimonialDataBreathwork} />
+        </div>
         {/* Process Flow Diagram */}
         <motion.div
           className="mt-24 mb-8 md:max-w-2xl w-full mx-auto"
