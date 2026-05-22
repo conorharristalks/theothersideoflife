@@ -496,7 +496,7 @@ const Page: React.FC = () => {
                   Booking Information
                 </h3>
                 <a
-                  href="https://docs.google.com/document/d/1fimZyxR1sk852o0_KmXEYQA26kS_2_ib/edit?usp=drivesdk&ouid=101349312426059065008&rtpof=true&sd=true"
+                  href="/leaflet.pdf"
                   className="text-sm text-accent-1 hover:text-accent-1/80 font-bold transition-colors cursor-pointer underline sm:ml-2"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -568,7 +568,7 @@ const Page: React.FC = () => {
                     Booking Information
                   </h3>
                   <a
-                    href="https://docs.google.com/document/d/1fimZyxR1sk852o0_KmXEYQA26kS_2_ib/edit?usp=drivesdk&ouid=101349312426059065008&rtpof=true&sd=true"
+                    href="/leaflet.pdf"
                     className="text-sm text-accent-1 hover:text-accent-1/80 font-bold transition-colors cursor-pointer underline"
                     target="_blank"
                     rel="noopener noreferrer"
