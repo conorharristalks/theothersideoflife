@@ -285,7 +285,7 @@ const Page = () => {
           >
             <InteractiveButton
               variant="filled"
-              text="book a talk"
+              text="Book A Talk"
               className="md:w-56 w-44 py-3 border-accent-1/0 transition-all ease-in duration-100"
               ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
               href="/book-appointment"

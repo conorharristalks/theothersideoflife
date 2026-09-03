@@ -54,7 +54,7 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
             <div className="flex flex-wrap items-center w-full lg:gap-12 md:gap-8 gap-6">
               <InteractiveButton
                 variant="filled"
-                text="book a talk"
+                text="Book A Talk"
                 className="md:w-56 w-44 py-3 border-accent-1/0 transition-all ease-in duration-100"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
                 href="/book-appointment"  

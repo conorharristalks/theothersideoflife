@@ -131,7 +131,7 @@ export function WhatSetsMeApart() {
         >
           <InteractiveButton
             variant="filled"
-            text="Book a Talk"
+            text="Book A Talk"
             className="md:w-64 w-full py-3 transition-all ease-in duration-100"
             ballClassName="lg:left-[7%] left-[15%] top-[35%]"
             href="/coaching"
