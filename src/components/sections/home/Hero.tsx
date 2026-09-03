@@ -22,14 +22,14 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
             <div className="flex flex-col items-start gap-6">
               <div className="flex flex-col items-start gap-4">
                 <p className="font-fraunces lg:text-2xl md:text-xl text-[16px] font-semibold text-foreground">
-                  Nervous System & Leadership Coach: Transform your life
+                  Public Speaker: Real Life Workshops
                 </p>
                 <div className="flex items-center justify-start gap-3">
                   <div className="flex items-center justify-center rounded-full w-6 h-6 bg-transparent border-2 border-accent-1">
                     <div className="rounded-full w-2.5 h-2.5 bg-accent-1 animate-pulse"></div>
                   </div>
                   <p className="lg:text-lg md:text-[16px] text-sm font-nunito font-semibold text-foreground/80">
-                    Offering 1 to 1 Personalised Coaching Sessions.
+                    Offering workshops based on lived experience and education
                   </p>
                 </div>
               </div>
@@ -54,10 +54,10 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
             <div className="flex flex-wrap items-center w-full lg:gap-12 md:gap-8 gap-6">
               <InteractiveButton
                 variant="filled"
-                text="1-1 Coaching"
+                text="book a talk"
                 className="md:w-56 w-44 py-3 border-accent-1/0 transition-all ease-in duration-100"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-                href="/coaching"  
+                href="/book-appointment"  
               />
               <InteractiveButton
                 variant="transparent"
@@ -65,7 +65,7 @@ export function Hero({ hero1, hero2, base64, base64Hero2 }: HeroProps) {
                 className="md:w-56 w-44 py-3 transition-all ease-in duration-100"
                 ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
                 textClassName="text-foreground"
-                href="/book-appointment"
+                href="/breathwork"
               />
             </div>
           </div>

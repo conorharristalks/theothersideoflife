@@ -285,10 +285,10 @@ const Page = () => {
           >
             <InteractiveButton
               variant="filled"
-              text="1-1 Coaching"
+              text="book a talk"
               className="md:w-56 w-44 py-3 border-accent-1/0 transition-all ease-in duration-100"
               ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-              href="/coaching"
+              href="/book-appointment"
             />
           </motion.div>
         </div>

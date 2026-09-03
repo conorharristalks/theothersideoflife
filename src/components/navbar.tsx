@@ -57,8 +57,8 @@ const Navbar = () => {
           <Link href="/about" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             About
           </Link>
-          <Link href="/coaching" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
-            Coaching
+          <Link href="/book-appointment" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
+            Talks
           </Link>
           <Link href="/breathwork" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             Breathwork
@@ -66,8 +66,8 @@ const Navbar = () => {
           <Link href="/help" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             Help
           </Link>
-          <Link href="/book-appointment" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
-            Talks
+          <Link href="/coaching" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
+            Coaching
           </Link>
         </div>
         <InteractiveButton
@@ -168,10 +168,10 @@ const Navbar = () => {
                   {[
                     { name: "Home", href: "/" },
                     { name: "About", href: "/about" },
-                    { name: "Coaching", href: "/coaching" },
+                    { name: "Talks", href: "/book-appointment" },
                     { name: "Breathwork", href: "/breathwork" },
                     { name: "Help", href: "/help" },
-                    { name: "Talks", href: "/book-appointment" },
+                    { name: "Coaching", href: "/coaching" },
                   ].map((item, index) => (
                     <motion.div
                       key={item.name}
@@ -203,7 +203,6 @@ const Navbar = () => {
                         variant="transparent"
                         text="Let's Chat"
                         className="btn w-full py-3"
-                        
                       />
                     </Link>
                   </motion.div>
