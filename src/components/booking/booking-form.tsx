@@ -365,30 +365,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedDate, initialData, on
             )}
           </div>
 
-          {/* Workshop Option */}
-          <div className="form-group md:col-span-2 mt-2">
-            <div className="flex items-start">
-              <div className="flex items-center h-5">
-                <input
-                  id="includeWorkshop"
-                  name="includeWorkshop"
-                  type="checkbox"
-                  checked={formData.includeWorkshop}
-                  onChange={handleChange}
-                  className="focus:ring-accent-1 h-5 w-5 border border-white/20 bg-primary cursor-pointer accent-accent-1 rounded shadow-sm"
-                />
-              </div>
-              <div className="ml-3 text-sm flex flex-col pt-0.5">
-                <label htmlFor="includeWorkshop" className="font-medium text-foreground cursor-pointer">
-                  Include Workshop Session
-                </label>
-                <p className="text-foreground/60 mt-1">
-                  Add an interactive workshop session in addition to the wellbeing talks. 
-                  This includes hands-on activities and group exercises for students.
-                </p>
-              </div>
-            </div>
-          </div>
+         
         </div>
         
         <div className="mt-10 flex justify-end space-x-4">

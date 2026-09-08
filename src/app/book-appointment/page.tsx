@@ -318,28 +318,34 @@ const Page: React.FC = () => {
 
         {/* Speaking Services Information Section */}
         <div className="mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-6xl mx-auto">
+            
             {/* Single Talk Card */}
-            <div className="bg-primary-light text-foreground border border-white/10 rounded-3xl p-6 lg:p-8">
+            <div className="bg-primary-light mx-auto relative text-foreground border border-accent-1 rounded-3xl p-6 lg:p-8">
+            <div className="absolute -top-3 right-6">
+                <span className="bg-accent-1 text-white px-4 py-1 rounded-full text-sm font-bold font-nunito shadow-sm">
+                  Recommended
+                </span>
+              </div>
               <div className="mb-6">
                 <h3 className="h3 font-fraunces font-bold text-foreground mb-4">
                   Single Talk - 1 hour
                 </h3>
                 <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <span className="text-accent-1 text-xl mt-1">•</span>
+                  <div className="flex items-start lg:items-center gap-3">
+                    <span className="text-accent-1 text-xl mt-1 lg:mt-0">•</span>
                     <p className="font-nunito font-semibold text-foreground/80">
                       <strong className="text-foreground">Customised Content:</strong> Expect a talk crafted for your audience, ensuring maximum impact
                     </p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-accent-1 text-xl mt-1">•</span>
+                  <div className="flex items-start lg:items-center gap-3">
+                    <span className="text-accent-1 text-xl mt-1 lg:mt-0">•</span>
                     <p className="font-nunito font-semibold text-foreground/80">
                       <strong className="text-foreground">Interactive Elements:</strong> Engaging Q&A session, small group discussions, and 1-on-1 chats after the talk
                     </p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-accent-1 text-xl mt-1">•</span>
+                  <div className="flex items-start lg:items-center gap-3">
+                    <span className="text-accent-1 text-xl mt-1 lg:mt-0">•</span>
                     <p className="font-nunito font-semibold text-foreground/80">
                       <strong className="text-foreground">Authentic Story:</strong> Hear a powerful and relatable personal journey shared with honesty and vulnerability
                     </p>
@@ -352,47 +358,7 @@ const Page: React.FC = () => {
               </div>
             </div>
 
-            {/* Talk + Workshop Package Card - Recommended */}
-            <div className="bg-primary-light text-foreground border border-accent-1 rounded-3xl p-6 lg:p-8 relative">
-              {/* Recommended Badge */}
-              <div className="absolute -top-3 right-6">
-                <span className="bg-accent-1 text-white px-4 py-1 rounded-full text-sm font-bold font-nunito shadow-sm">
-                  Recommended
-                </span>
-              </div>
-              
-              <div className="mb-6">
-                <h3 className="h3 font-fraunces font-bold text-foreground mb-4">
-                  Talk + Workshop Package - 2 hours
-                </h3>
-                <p className="mb-6 font-nunito font-semibold text-foreground/80">
-                  For a deeper dive and a more hands-on experience, this 2-hour session{" "}
-                  <strong className="text-foreground">combines the talk (as described previously) with a practical workshop</strong>{" "}
-                  designed specifically for students to apply its core messages and
-                  explore them in greater detail, helping them integrate these lessons into their everyday lives:
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <span className="text-accent-1 text-xl mt-1">•</span>
-                    <p className="font-nunito font-semibold text-foreground/80">
-                      Understanding and applying your core values, and learning how they shape decisions
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-accent-1 text-xl mt-1">•</span>
-                    <p className="font-nunito font-semibold text-foreground/80">
-                      Gain insights into your &quot;shadow&quot; and &quot;persona&quot; to foster self-awareness and personal growth
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-accent-1 text-xl mt-1">•</span>
-                    <p className="font-nunito font-semibold text-foreground/80">
-                      Engage in practical exercises that delve deeper into themes explored in the talk
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        
           </div>
         </div>
 

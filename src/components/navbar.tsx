@@ -50,7 +50,23 @@ const Navbar = () => {
     <nav className="w-full px-[2vw] flex justify-between items-center border-b-1 border-secondary h-24 bg-primary">
       {/* Desktop Navigation - hidden on mobile */}
       <div className="hidden md:flex items-center  justify-between w-full">
-        <div className="flex items-center gap-10 justify-start pr-10 border-r-2 border-foreground h-12 ">
+        
+
+        {/* Right side: logo + CTA button */}
+        <div className="flex items-center gap-6">
+          <Link href="/" aria-label="Home">
+            <Image
+              src="/conor-logo.svg"
+              alt="Conor Harris logo"
+              width={80}
+              height={80}
+              priority
+            />
+          </Link>
+          
+        </div>
+
+        <div className="flex items-center gap-10 justify-start pr-10 border-foreground h-12 ">
           <Link href="/" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             Home
           </Link>
@@ -69,49 +85,61 @@ const Navbar = () => {
           <Link href="/coaching" className="font-baskerville font-semibold hover:opacity-70 transition-opacity duration-200">
             Coaching
           </Link>
+          <InteractiveButton
+            variant="transparent"
+            text="Let's Chat"
+            className="md:w-56 w-44 py-3 transition-all ease-in duration-100"
+            ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
+            textClassName="text-foreground"
+            href="https://calendly.com/conorharris-talks/discovery-call"
+          />
         </div>
-        <InteractiveButton
-          variant="transparent"
-          text="Let's Chat"
-          className="md:w-56 w-44 py-3 transition-all ease-in duration-100"
-          ballClassName="md:left-[13%] md:top-[35%] left-[9%] top-[35%]"
-          textClassName="text-foreground"
-          href="https://calendly.com/conorharris-talks/discovery-call"
-        />
       </div>
 
-      {/* Mobile menu button - visible only on mobile */}
-      <button
-        className="md:hidden flex items-center"
-        onClick={toggleMenu}
-        aria-label="Toggle menu"
-      >
-        <motion.svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          className="w-8 h-8"
-          animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
-          transition={{ duration: 0.3 }}
+      {/* Mobile top bar - visible only on mobile */}
+      <div className="md:hidden flex items-center justify-between w-full">
+        <Link href="/" aria-label="Home">
+          <Image
+            src="/conor-logo.svg"
+            alt="Conor Harris logo"
+            width={64}
+            height={64}
+            priority
+          />
+        </Link>
+
+        <button
+          className="flex items-center"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          ) : (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          )}
-        </motion.svg>
-      </button>
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-8 h-8"
+            animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {mobileMenuOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </motion.svg>
+        </button>
+      </div>
 
       {/* Mobile menu drawer with Framer Motion animations */}
       <AnimatePresence>
@@ -135,7 +163,7 @@ const Navbar = () => {
               <div className="flex flex-col h-full">
                 <div className="flex justify-between items-center p-6 border-b border-secondary">
                   <Image
-                    src="/other-side-of-life-logo.svg"
+                    src="/conor-logo.svg"
                     alt="logo"
                     width={80}
                     height={80}
